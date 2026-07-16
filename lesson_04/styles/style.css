@@ -1,0 +1,128 @@
+:root {
+    /* Base */
+    --white: #ffffff;
+    --black: #000000;
+
+    /* Gray */
+    --gray-100: #f1f5f9;
+    --gray-300: #cbd5e1;
+
+    /* Blue */
+    --blue-200: #bfdbfe;
+    --blue-300: #93c5fd;
+
+    /* Purple */
+    --purple-200: #ddd6fe;
+    --purple-300: #c4b5fd;
+
+    /* Green */
+    --green-200: #bbf7d0;
+    --green-300: #86efac;
+
+    /* Yellow */
+    --yellow-200: #fde68a;
+
+    /* Pink */
+    --pink-200: #fbcfe8;
+}
+
+html {
+    font-size: 14px;
+}
+
+body {
+    background: var(--gray-100);
+    margin: 0;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+h1 {
+    font-size: 1.8rem;
+}
+
+.header {
+    background: var(--blue-300);
+    padding: 10px;
+}
+
+.main {
+    background: var(--white);
+    padding: 10px;
+}
+
+.footer {
+    background: var(--purple-300);
+    padding: 10px;
+}
+
+.ocean {
+    width: 300px;
+    min-height: 100px;
+    background-image: url("../images/ocean.png");
+    background-size: cover;
+    font-family: "DynaPuff", system-ui;
+}
+
+a {
+    color: var(--black);
+}
+
+/* #linkGoogle {
+    color: var(--pink-200);
+} */
+
+a[href="https://google.com"] {
+    color: crimson;
+}
+
+input[type="email"] {
+    color: var(--green-300);
+}
+
+#linkHillel {
+    color: var(--yellow-200);
+}
+
+.link {
+    text-decoration-thickness: 3px;
+}
+
+.link--google {
+    color: crimson;
+}
+
+.square {
+    width: 100px;
+    height: 100px;
+    background-color: var(--blue-200);
+    border: 3px solid crimson;
+    border-width: 10px 5px 3px 1px;
+    box-sizing: border-box;
+}
+
+.square--innner {
+    width: 50%;
+    height: 80%;
+    background-color: var(--yellow-200);
+}
+
+.align-left {
+    text-align: left;
+    /* Вирівнювання тексту ліворуч */
+}
+
+.decoration-underline {
+    text-decoration: underline 3px crimson;
+}
+
+.transform-uppercase {
+    text-transform: uppercase;
+    /* Зміна тексту на великі літери */
+}
+
+.list--unordered {
+    list-style-type: disclosure-closed;
+    list-style-image: url('../images/orange.avif');
+    padding: 0;
+    list-style-position: inside;
+}

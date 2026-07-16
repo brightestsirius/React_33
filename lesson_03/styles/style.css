@@ -1,0 +1,40 @@
+body {
+    color: #FFEB3B;
+    background: gray;
+    margin: 0;
+}
+
+section {
+    background-image: url(../images/dog_1.webp);
+    background-size: cover;
+    min-height: 200px;
+    width: 300px;
+}
+
+p {
+    font-size: 18px;
+}
+
+header {
+    background: lightblue;
+}
+
+main {
+    background: lightgreen;
+}
+
+footer {
+    background: lightcoral;
+}
+
+ul {
+    margin: 0;
+}
+
+h1 {
+    margin: 0;
+}
+
+p {
+    margin: 0;
+}

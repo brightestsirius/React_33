@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contacts</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contacts.html">Contact</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="articles.html">Articles</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <h1>Contact Us</h1>
+      <p>Feel free to reach out to us with any questions or inquiries.</p>
+
+      <form action="" method="GET">
+        <fieldset>
+          <legend>Contact Form</legend>
+          <div>
+            <label for="name">Your name:</label>
+            <input
+              type="text"
+              placeholder="Enter your name"
+              id="name"
+              name="name"
+              value="Taras"
+              required
+            />
+          </div>
+          <br />
+          <div>
+            <label for="surname">Your surname:</label>
+            <input
+              type="text"
+              placeholder="Enter your surname"
+              id="surname"
+              name="surname"
+              value="Sheva"
+            />
+          </div>
+          <br />
+          <div>
+            <label
+              >Your email:
+              <input
+                type="email"
+                placeholder="Enter your email"
+                id="email"
+                name="email"
+                value="sheva@gmail.com"
+                required
+            /></label>
+          </div>
+          <br />
+          <div>
+            <label for="message">Your message:</label>
+            <textarea
+              placeholder="Enter your message"
+              id="message"
+              name="message"
+            ></textarea>
+          </div>
+          <br />
+
+          <div>
+            <label for="country">Country:</label>
+            <select id="country" name="country">
+              <option value="usa">USA</option>
+              <option value="uk">UK</option>
+              <option value="canada">Canada</option>
+              <option value="australia">Australia</option>
+            </select>
+          </div>
+          <br />
+
+          <fieldset>
+            <legend>Products:</legend>
+            <div>
+              <label for="potato">Potato:</label>
+              <input
+                type="checkbox"
+                id="potato"
+                name="products"
+                value="potato"
+              />
+            </div>
+            <div>
+              <label for="tomato">Tomato:</label>
+              <input
+                type="checkbox"
+                id="tomato"
+                name="products"
+                value="tomato"
+              />
+            </div>
+            <div>
+              <label for="cucumber">Cucumber:</label>
+              <input
+                type="checkbox"
+                id="cucumber"
+                name="products"
+                value="cucumber"
+              />
+            </div>
+          </fieldset>
+
+          <br />
+
+          <fieldset>
+            <legend>Souces:</legend>
+            <label for="ketchup">Ketchup:</label>
+            <input type="checkbox" id="ketchup" name="souces" value="ketchup" />
+
+            <label for="mayonnaise">Mayonnaise:</label>
+            <input
+              type="checkbox"
+              id="mayonnaise"
+              name="souces"
+              value="mayonnaise"
+            />
+
+            <label for="mustard">Mustard:</label>
+            <input type="checkbox" id="mustard" name="souces" value="mustard" />
+          </fieldset>
+
+          <br />
+
+          <fieldset>
+            <legend>Delivery:</legend>
+            <label for="standard">Standard</label>
+            <input
+              type="radio"
+              id="standard"
+              name="delivery"
+              value="standard"
+              checked
+            />
+            <label for="express">Express</label>
+            <input type="radio" id="express" name="delivery" value="express" />
+          </fieldset>
+
+          <br />
+
+          <button type="reset">Reset</button>
+          <button type="submit">Submit</button>
+          <button type="button">Send email</button>
+        </fieldset>
+      </form>
+    </main>
+    <footer>
+      <p>&copy; 2026 Our Company. All rights reserved.</p>
+    </footer>
+  </body>
+</html>

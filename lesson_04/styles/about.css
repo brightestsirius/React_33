@@ -1,0 +1,114 @@
+:root {
+    /* Base */
+    --white: #ffffff;
+    --black: #000000;
+
+    /* Gray */
+    --gray-100: #f1f5f9;
+    --gray-300: #cbd5e1;
+
+    /* Blue */
+    --blue-200: #bfdbfe;
+    --blue-300: #93c5fd;
+
+    /* Purple */
+    --purple-200: #ddd6fe;
+    --purple-300: #c4b5fd;
+
+    /* Green */
+    --green-200: #bbf7d0;
+    --green-300: #86efac;
+
+    /* Yellow */
+    --yellow-200: #fde68a;
+
+    /* Pink */
+    --pink-200: #fbcfe8;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+div p {
+    color: blue;
+}
+
+section p {
+    color: green;
+}
+
+span {
+    color: crimson;
+}
+
+div p span {
+    color: orange;
+}
+
+.first {
+    width: 100px;
+    height: 100px;
+    background: var(--blue-300);
+}
+
+.second {
+    width: 50px;
+    height: 50px;
+    background: var(--green-300);
+}
+
+.first .second {
+    background: crimson;
+}
+
+.first.special {
+    border: 2px solid crimson;
+}
+
+
+.bread {
+    border: 1px solid black;
+    margin: 10px 0;
+}
+
+.bread p {
+    color: blue;
+}
+
+.bread>p {
+    color: green;
+}
+
+.error {
+    font-size: 0.8rem;
+    font-weight: 100;
+    color: red;
+}
+
+div.error {
+    color: blue;
+}
+
+span.error {
+    color: green;
+}
+
+.content h4 {
+    color: crimson !important;
+}
+
+.parent {
+    border: #000000 1px solid;
+    margin: 10px 0;
+    color: crimson;
+    font-size: 2rem;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.child {
+    color: green;
+}
