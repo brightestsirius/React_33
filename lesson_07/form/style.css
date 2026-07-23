@@ -1,0 +1,43 @@
+* {
+  box-sizing: border-box;
+}
+fieldset {
+  max-width: 500px;
+  margin: 25px auto;
+  background-color: lightsteelblue;
+}
+select,
+input {
+  width: 100%;
+  padding: 10px 20px;
+}
+input[type='file'] {
+  padding: 0;
+}
+input[type='radio'],
+input[type='checkbox'] {
+  width: auto;
+}
+textarea {
+  width: 100%;
+  padding: 10px 20px;
+  resize: vertical;
+  min-height: 75px;
+  max-height: 33vh;
+}
+legend {
+  transform: translateY(-10px);
+}
+.form-group:not(:first-of-type) {
+  margin: 10px 0;
+}
+.form-group-sm {
+  margin: 5px 0;
+}
+.hidden {
+  display: none;
+}
+.btn {
+  width: 100%;
+  padding: 10px 20px;
+}
