@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contacts</title>
+  </head>
+  <body>
+    <h1>Contacts</h1>
+    <p>Here you can find our contact information.</p>
+    <ul>
+      <li>Email: <a href="mailto:sheva@gmail.com">sheva@gmail.com</a></li>
+      <li>Phone: <a href="tel:+1234567890">+1 (234) 567-890</a></li>
+      <li>Address: 123 Main Street, Anytown, USA</li>
+    </ul>
+
+    <form action="" method="get">
+      <fieldset>
+        <legend>Contact Form</legend>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required /><br /><br />
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required /><br /><br />
+        <label for="message">Message:</label><br />
+        <textarea
+          id="message"
+          name="message"
+          rows="4"
+          cols="50"
+          required
+        ></textarea
+        ><br /><br />
+        <input type="submit" value="Submit" />
+      </fieldset>
+    </form>
+    <br />
+    <table border="1">
+      <caption>
+        Contact List
+      </caption>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>John Doe</td>
+          <td><a href="mailto:johndoe@example.com">johndoe@example.com</a></td>
+          <td><a href="tel:+1987654321">+1 (987) 654-321</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
