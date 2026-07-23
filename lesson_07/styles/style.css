@@ -1,0 +1,94 @@
+:root {
+    /* Base */
+    --white: #ffffff;
+    --black: #000000;
+
+    /* Gray */
+    --gray-100: #f1f5f9;
+    --gray-300: #cbd5e1;
+
+    /* Blue */
+    --blue-200: #bfdbfe;
+    --blue-300: #93c5fd;
+
+    /* Purple */
+    --purple-200: #ddd6fe;
+    --purple-300: #c4b5fd;
+
+    /* Green */
+    --green-200: #bbf7d0;
+    --green-300: #86efac;
+
+    /* Yellow */
+    --yellow-200: #fde68a;
+
+    /* Pink */
+    --pink-200: #fbcfe8;
+}
+
+.btn {
+    background: var(--purple-200);
+}
+
+/* .btn:hover {
+    background: var(--purple-300);
+} */
+/*  */
+/* .children .paragraph:first-child {
+    background: var(--green-200);
+} */
+
+/* .children .paragraph:last-child {
+    background: var(--yellow-200);
+} */
+
+/* .children .paragraph:nth-child(2) {
+    background: var(--pink-200);
+} */
+
+/* .types .paragraph:first-of-type {
+    background: var(--blue-200);
+} */
+
+/* .types .paragraph:last-of-type {
+    background: var(--blue-300);
+} */
+
+/* .types .paragraph:nth-of-type(2) {
+    background: var(--gray-300);
+} */
+
+/* .exeption .paragraph:not(.special) {
+    background: var(--gray-300);
+} */
+
+/* .pseudo .first__letter::first-letter {
+    font-size: 2rem;
+    color: var(--green-300);
+} */
+
+/* .pseudo .first__line::first-line {
+    font-size: 1.5rem;
+    color: var(--pink-200);
+} */
+
+/* .pseudo .title::before {
+    content: '►';
+    color: var(--blue-300);
+    margin-right: 10px;
+} */
+
+/* .pseudo .title::after {
+    content: '★';
+    color: var(--yellow-200);
+    margin-left: 10px;
+} */
+
+/* .pseudo .input::placeholder {
+    color: var(--blue-300);
+    font-style: italic;
+} */
+
+/* .pseudo .input:focus::placeholder {
+    color: transparent;
+} */
