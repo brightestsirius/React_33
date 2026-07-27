@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>БЕМ — приклад верстки</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body class="page">
+    <header class="header">
+      <div class="header__container container">
+        <a class="logo" href="#" aria-label="Головна сторінка">
+          <span class="logo__mark">B</span>
+          <span class="logo__text">Bemify</span>
+        </a>
+
+        <nav class="navigation" aria-label="Основна навігація">
+          <ul class="navigation__list">
+            <li class="navigation__item">
+              <a class="navigation__link navigation__link--active" href="#features">
+                Можливості
+              </a>
+            </li>
+            <li class="navigation__item">
+              <a class="navigation__link" href="#pricing">Тарифи</a>
+            </li>
+            <li class="navigation__item">
+              <a class="navigation__link" href="#contacts">Контакти</a>
+            </li>
+          </ul>
+        </nav>
+
+        <a class="button button--small button--primary" href="#pricing">
+          Почати
+        </a>
+      </div>
+    </header>
+
+    <main class="page__main">
+      <section class="hero">
+        <div class="hero__container container">
+          <div class="hero__content">
+            <p class="hero__eyebrow">Методологія БЕМ</p>
+
+            <h1 class="hero__title">
+              Зрозуміла структура класів для масштабованої верстки
+            </h1>
+
+            <p class="hero__description">
+              Приклад сторінки, де кожен компонент оформлений як незалежний
+              блок, його внутрішні частини — як елементи, а стани й варіанти —
+              як модифікатори.
+            </p>
+
+            <div class="hero__actions">
+              <a class="button button--primary" href="#features">
+                Переглянути приклади
+              </a>
+              <a class="button button--secondary" href="#pricing">
+                Обрати тариф
+              </a>
+            </div>
+          </div>
+
+          <div class="hero__preview">
+            <div class="code-card">
+              <div class="code-card__header">
+                <span class="code-card__dot"></span>
+                <span class="code-card__dot"></span>
+                <span class="code-card__dot"></span>
+              </div>
+
+              <pre class="code-card__content"><code>.card {}
+.card__title {}
+.card__text {}
+.card--featured {}</code></pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="features section" id="features">
+        <div class="features__container container">
+          <div class="section-heading">
+            <p class="section-heading__eyebrow">Основні поняття</p>
+            <h2 class="section-heading__title">З чого складається БЕМ</h2>
+            <p class="section-heading__description">
+              Назви класів одразу показують роль кожного елемента в інтерфейсі.
+            </p>
+          </div>
+
+          <div class="features__list">
+            <article class="feature-card">
+              <span class="feature-card__number">01</span>
+              <h3 class="feature-card__title">Блок</h3>
+              <p class="feature-card__text">
+                Незалежний компонент, який можна повторно використовувати в
+                різних частинах сторінки.
+              </p>
+              <code class="feature-card__code">.card</code>
+            </article>
+
+            <article class="feature-card feature-card--highlighted">
+              <span class="feature-card__badge">Головне</span>
+              <span class="feature-card__number">02</span>
+              <h3 class="feature-card__title">Елемент</h3>
+              <p class="feature-card__text">
+                Частина блока, яка не має самостійного значення поза цим
+                компонентом.
+              </p>
+              <code class="feature-card__code">.card__title</code>
+            </article>
+
+            <article class="feature-card">
+              <span class="feature-card__number">03</span>
+              <h3 class="feature-card__title">Модифікатор</h3>
+              <p class="feature-card__text">
+                Додатковий клас, який змінює вигляд, стан або поведінку блока
+                чи елемента.
+              </p>
+              <code class="feature-card__code">.card--featured</code>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="pricing section section--muted" id="pricing">
+        <div class="pricing__container container">
+          <div class="section-heading">
+            <p class="section-heading__eyebrow">Компоненти</p>
+            <h2 class="section-heading__title">Приклад карток тарифів</h2>
+            <p class="section-heading__description">
+              Один блок <code>plan-card</code> має кілька модифікаторів.
+            </p>
+          </div>
+
+          <div class="pricing__list">
+            <article class="plan-card">
+              <div class="plan-card__header">
+                <h3 class="plan-card__title">Starter</h3>
+                <p class="plan-card__price">
+                  <span class="plan-card__amount">$0</span>
+                  <span class="plan-card__period">/ місяць</span>
+                </p>
+              </div>
+
+              <ul class="plan-card__features">
+                <li class="plan-card__feature">1 навчальний проєкт</li>
+                <li class="plan-card__feature">Базові компоненти</li>
+                <li class="plan-card__feature">Підтримка спільноти</li>
+              </ul>
+
+              <a class="button button--secondary button--full" href="#">
+                Обрати Starter
+              </a>
+            </article>
+
+            <article class="plan-card plan-card--featured">
+              <span class="plan-card__badge">Популярний</span>
+
+              <div class="plan-card__header">
+                <h3 class="plan-card__title">Professional</h3>
+                <p class="plan-card__price">
+                  <span class="plan-card__amount">$19</span>
+                  <span class="plan-card__period">/ місяць</span>
+                </p>
+              </div>
+
+              <ul class="plan-card__features">
+                <li class="plan-card__feature">Необмежені проєкти</li>
+                <li class="plan-card__feature">Бібліотека компонентів</li>
+                <li class="plan-card__feature">Перевірка домашніх робіт</li>
+              </ul>
+
+              <a class="button button--primary button--full" href="#">
+                Обрати Professional
+              </a>
+            </article>
+
+            <article class="plan-card">
+              <div class="plan-card__header">
+                <h3 class="plan-card__title">Team</h3>
+                <p class="plan-card__price">
+                  <span class="plan-card__amount">$49</span>
+                  <span class="plan-card__period">/ місяць</span>
+                </p>
+              </div>
+
+              <ul class="plan-card__features">
+                <li class="plan-card__feature">До 10 учасників</li>
+                <li class="plan-card__feature">Спільні компоненти</li>
+                <li class="plan-card__feature">Пріоритетна підтримка</li>
+              </ul>
+
+              <a class="button button--secondary button--full" href="#">
+                Обрати Team
+              </a>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" id="contacts">
+      <div class="footer__container container">
+        <a class="logo logo--light" href="#">
+          <span class="logo__mark">B</span>
+          <span class="logo__text">Bemify</span>
+        </a>
+
+        <p class="footer__copyright">
+          © 2026 Bemify. Навчальний приклад методології БЕМ.
+        </p>
+
+        <ul class="footer__links">
+          <li class="footer__item">
+            <a class="footer__link" href="#">GitHub</a>
+          </li>
+          <li class="footer__item">
+            <a class="footer__link" href="#">Figma</a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+  </body>
+</html>
