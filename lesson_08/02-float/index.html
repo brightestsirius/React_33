@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS float</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="page-header">
+      <h1>Властивість float</h1>
+      <p>Обтікання контенту, clear і clearfix.</p>
+    </header>
+
+    <main class="container">
+      <section class="example">
+        <h2>1. float: left</h2>
+        <div class="article">
+          <div class="image-placeholder float-left">Фото</div>
+          <p>
+            Цей блок має float: left, тому текст обтікає його справа. Спочатку float часто
+            використовували саме для розміщення зображень усередині тексту.
+          </p>
+          <p>
+            Для сучасних макетів краще використовувати Flexbox або Grid, але float досі
+            корисний для обтікання зображень текстом.
+          </p>
+        </div>
+      </section>
+
+      <section class="example">
+        <h2>2. float: right</h2>
+        <div class="article">
+          <div class="image-placeholder float-right">Фото</div>
+          <p>
+            Тепер блок притиснуто до правого краю, а текст обтікає його зліва. Float виймає
+            елемент зі звичайного потоку частково, тому це впливає на батьківський блок.
+          </p>
+        </div>
+      </section>
+
+      <section class="example">
+        <h2>3. Проблема висоти батьківського елемента</h2>
+        <div class="float-parent without-clearfix">
+          <div class="float-card">Картка 1</div>
+          <div class="float-card">Картка 2</div>
+          <div class="float-card">Картка 3</div>
+        </div>
+        <p class="note">Рамка батьківського елемента не охоплює float-елементи.</p>
+      </section>
+
+      <section class="example">
+        <h2>4. Рішення через clearfix</h2>
+        <div class="float-parent clearfix">
+          <div class="float-card">Картка 1</div>
+          <div class="float-card">Картка 2</div>
+          <div class="float-card">Картка 3</div>
+        </div>
+      </section>
+
+      <section class="example">
+        <h2>5. clear: both</h2>
+        <div class="float-card">Float-картка</div>
+        <p class="clear-both">Цей абзац має clear: both, тому починається нижче float-елемента.</p>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Flexbox</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="page-header">
+      <h1>Flexbox</h1>
+      <p>Одновимірне розташування елементів у рядку або колонці.</p>
+    </header>
+
+    <main class="container">
+      <section class="example">
+        <h2>1. display: flex</h2>
+        <div class="flex-demo basic-flex">
+          <div class="item">1</div>
+          <div class="item">2</div>
+          <div class="item">3</div>
+        </div>
+      </section>
+
+      <section class="example">
+        <h2>2. justify-content</h2>
+        <p>Розташування елементів уздовж головної осі.</p>
+        <div class="flex-demo justify-demo">
+          <div class="item">1</div>
+          <div class="item">2</div>
+          <div class="item">3</div>
+        </div>
+      </section>
+
+      <section class="example">
+        <h2>3. align-items</h2>
+        <p>Розташування всіх елементів уздовж поперечної осі.</p>
+        <div class="flex-demo align-demo">
+          <div class="item small">1</div>
+          <div class="item tall">2</div>
+          <div class="item medium">3</div>
+        </div>
+      </section>
+
+      <section class="example">
+        <h2>4. align-self</h2>
+        <p><code>align-self</code> перевизначає <code>align-items</code> для одного конкретного flex-елемента.</p>
+        <div class="flex-demo self-demo">
+          <div class="self-item self-start">flex-start</div>
+          <div class="self-item self-center">center</div>
+          <div class="self-item self-end">flex-end</div>
+          <div class="self-item self-stretch">stretch</div>
+        </div>
+      </section>
+
+      <section class="example">
+        <h2>5. flex-direction: column</h2>
+        <div class="flex-demo column-demo">
+          <div class="item">1</div>
+          <div class="item">2</div>
+          <div class="item">3</div>
+        </div>
+      </section>
+
+      <section class="example">
+        <h2>6. flex-wrap і gap</h2>
+        <div class="flex-demo wrap-demo">
+          <div class="card">Картка 1</div>
+          <div class="card">Картка 2</div>
+          <div class="card">Картка 3</div>
+          <div class="card">Картка 4</div>
+          <div class="card">Картка 5</div>
+        </div>
+      </section>
+
+      <section class="example">
+        <h2>7. Скорочена властивість flex</h2>
+        <p class="syntax"><code>flex: none | &lt;flex-grow&gt; &lt;flex-shrink&gt;? || &lt;flex-basis&gt;</code></p>
+        <p>
+          Найзрозуміліша форма з трьома значеннями:
+          <code>flex: grow shrink basis</code>.
+        </p>
+        <div class="flex-demo shorthand-demo">
+          <div class="flex-box flex-none"><code>flex: none</code><span>Не росте і не стискається</span></div>
+          <div class="flex-box flex-one"><code>flex: 1</code><span>Займає частину вільного місця</span></div>
+          <div class="flex-box flex-full"><code>flex: 2 1 180px</code><span>grow: 2; shrink: 1; basis: 180px</span></div>
+        </div>
+      </section>
+
+      <section class="example">
+        <h2>8. flex-grow, flex-shrink і flex-basis</h2>
+        <p>Контейнер навмисно вузький: елементи мають однаковий basis, але по-різному ростуть і стискаються.</p>
+        <div class="flex-demo components-demo">
+          <div class="component-box component-a">A<br /><code>1 1 180px</code></div>
+          <div class="component-box component-b">B<br /><code>2 1 180px</code></div>
+          <div class="component-box component-c">C<br /><code>1 0 180px</code></div>
+        </div>
+        <ul class="notes">
+          <li><code>flex-grow</code> визначає, як ділиться вільне місце.</li>
+          <li><code>flex-shrink</code> визначає, чи може елемент стискатися.</li>
+          <li><code>flex-basis</code> задає початковий розмір уздовж головної осі.</li>
+        </ul>
+      </section>
+
+      <section class="example">
+        <h2>9. order</h2>
+        <div class="flex-demo order-demo">
+          <div class="order-item first">A</div>
+          <div class="order-item second">B: order: -1</div>
+          <div class="order-item third">C</div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,193 @@
+:root {
+  /* Base */
+  --white: #ffffff;
+  --black: #0f172a;
+
+  /* Gray */
+  --gray-100: #f8fafc;
+  --gray-300: #cbd5e1;
+  --gray-500: #64748b;
+
+  /* Blue */
+  --blue-200: #bfdbfe;
+  --blue-400: #60a5fa;
+  --blue-500: #2563eb;
+
+  /* Purple */
+  --purple-200: #ddd6fe;
+  --purple-400: #a78bfa;
+  --purple-500: #7c3aed;
+
+  /* Green */
+  --green-200: #bbf7d0;
+  --green-400: #4ade80;
+  --green-500: #16a34a;
+
+  /* Yellow */
+  --yellow-200: #fde68a;
+  --yellow-400: #facc15;
+  --yellow-500: #ca8a04;
+
+  /* Pink */
+  --pink-200: #fbcfe8;
+  --pink-400: #f472b6;
+  --pink-500: #db2777;
+
+  /* Cyan */
+  --cyan-200: #a5f3fc;
+  --cyan-400: #22d3ee;
+  --cyan-500: #0891b2;
+
+  /* Orange */
+  --orange-200: #fed7aa;
+  --orange-400: #fb923c;
+  --orange-500: #ea580c;
+
+  /* Semantic aliases for this lesson */
+  --color-page: var(--gray-100);
+  --color-surface: var(--white);
+  --color-text: var(--black);
+  --color-muted: var(--gray-500);
+  --color-primary: var(--blue-500);
+  --color-primary-light: var(--blue-200);
+  --color-secondary: var(--green-500);
+  --color-secondary-light: var(--green-200);
+  --color-accent: var(--orange-500);
+  --color-accent-light: var(--orange-200);
+  --color-purple: var(--purple-500);
+  --color-purple-light: var(--purple-200);
+  --color-green: var(--green-500);
+  --color-success: var(--green-500);
+  --color-rose: var(--pink-500);
+  --color-yellow: var(--yellow-500);
+  --color-border: var(--gray-300);
+  --color-shadow: rgb(15 23 42 / 14%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  line-height: 1.5;
+  color: var(--color-text);
+  background: var(--color-page);
+}
+
+.page-header {
+  padding: 32px 20px;
+  color: var(--color-surface);
+  text-align: center;
+  background: var(--color-primary);
+}
+
+.page-header h1,
+.page-header p {
+  margin: 0;
+}
+
+.page-header p {
+  margin-top: 8px;
+}
+
+.container {
+  width: min(100% - 32px, 900px);
+  margin: 32px auto;
+}
+
+.example {
+  margin-bottom: 24px;
+  padding: 24px;
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: 12px;
+  box-shadow: 0 6px 18px var(--color-shadow);
+}
+
+.example h2 {
+  margin-top: 0;
+  color: var(--color-primary);
+}
+
+.block-item {
+  display: block;
+  width: 60%;
+  margin: 8px 0;
+  padding: 12px;
+  color: var(--color-text);
+  background: var(--color-primary-light);
+  border: 2px solid var(--color-primary);
+}
+
+.inline-item {
+  display: inline;
+  width: 200px; /* Для inline ширина не спрацює */
+  height: 80px; /* Для inline висота не спрацює */
+  padding: 4px 8px;
+  color: var(--color-text);
+  background: var(--color-accent-light);
+  border: 2px solid var(--color-accent);
+}
+
+.inline-block-row {
+  padding: 16px;
+  background: var(--color-primary-light);
+  border: 2px dashed var(--color-primary);
+  border-radius: 10px;
+}
+
+.inline-block-item {
+  display: inline-block;
+  width: 160px;
+  margin: 4px;
+  padding: 14px;
+  vertical-align: top;
+  color: var(--color-surface);
+  font-weight: 700;
+  background: var(--color-success);
+  border-radius: 8px;
+}
+
+.short-card {
+  min-height: 70px;
+}
+
+.medium-card {
+  min-height: 110px;
+  background: var(--color-purple);
+}
+
+.tall-card {
+  min-height: 150px;
+  background: var(--color-accent);
+}
+
+.comparison-row {
+  display: block;
+  padding: 12px;
+  background: var(--color-primary-light);
+}
+
+.small-box {
+  display: inline-block;
+  width: 70px;
+  height: 70px;
+  margin-right: 8px;
+  color: var(--color-surface);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 70px;
+  text-align: center;
+  background: var(--color-accent);
+  border-radius: 8px;
+}
+
+.hidden-display {
+  display: none;
+}
+
+.hidden-visibility {
+  visibility: hidden;
+}

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS display</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="page-header">
+      <h1>Властивість display</h1>
+      <p>Порівнюємо block, inline, inline-block, none та visibility.</p>
+    </header>
+
+    <main class="container">
+      <section class="example">
+        <h2>1. display: block</h2>
+        <p>Блокові елементи займають всю доступну ширину та починаються з нового рядка.</p>
+        <div class="block-item">Перший block</div>
+        <div class="block-item">Другий block</div>
+      </section>
+
+      <section class="example">
+        <h2>2. display: inline</h2>
+        <p>
+          Inline-елементи розташовуються в одному рядку:
+          <span class="inline-item">перший inline</span>
+          <span class="inline-item">другий inline</span>.
+        </p>
+      </section>
+
+      <section class="example">
+        <h2>3. display: inline-block</h2>
+        <p>
+          Елементи стоять в одному рядку, для них працюють width і height.
+          Різна висота карток показує дію <code>vertical-align: top</code>.
+        </p>
+        <div class="inline-block-row">
+          <div class="inline-block-item short-card">Коротка картка</div>
+          <div class="inline-block-item tall-card">
+            Вища картка<br />
+            з кількома<br />
+            рядками тексту
+          </div>
+          <div class="inline-block-item medium-card">Середня картка<br />з текстом</div>
+        </div>
+      </section>
+
+      <section class="example">
+        <h2>4. display: none</h2>
+        <p>Елемент повністю зникає і не займає місця.</p>
+        <div class="comparison-row">
+          <div class="small-box">1</div>
+          <div class="small-box hidden-display">2</div>
+          <div class="small-box">3</div>
+        </div>
+      </section>
+
+      <section class="example">
+        <h2>5. visibility: hidden</h2>
+        <p>Елемент невидимий, але його місце зберігається.</p>
+        <div class="comparison-row">
+          <div class="small-box">1</div>
+          <div class="small-box hidden-visibility">2</div>
+          <div class="small-box">3</div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

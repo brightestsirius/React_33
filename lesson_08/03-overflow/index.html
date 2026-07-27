@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS overflow</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="page-header">
+      <h1>Властивість overflow</h1>
+      <p>Що відбувається, коли контент не вміщується в межі елемента.</p>
+    </header>
+
+    <main class="container">
+      <section class="example">
+        <h2>1. overflow: visible</h2>
+        <p>Значення за замовчуванням: контент виходить за межі блока.</p>
+        <div class="overflow-box visible-box">
+          Цей текст навмисно довгий і не вміщується у контейнер. Він залишається
+          видимим навіть за межами блока.
+        </div>
+      </section>
+
+      <section class="example safe-space">
+        <h2>2. overflow: hidden</h2>
+        <p>Усе, що виходить за межі, обрізається. Смуг прокручування немає.</p>
+        <div class="overflow-box hidden-box">
+          Цей текст навмисно довгий і не вміщується у контейнер. Зайва частина
+          контенту буде прихована.
+        </div>
+      </section>
+
+      <section class="example">
+        <h2>3. overflow: scroll</h2>
+        <p>
+          Смуги прокручування резервуються незалежно від того, чи потрібні вони.
+        </p>
+        <div class="overflow-box scroll-box">
+          Довгий текст для демонстрації вертикального прокручування. Прокрутіть
+          контейнер, щоб побачити приховане продовження. Додаємо ще кілька
+          речень. Overflow не змінює розмір контейнера, а визначає спосіб показу
+          зайвого контенту.
+        </div>
+      </section>
+
+      <section class="example">
+        <h2>4. overflow: auto</h2>
+        <p>
+          Смуги прокручування з’являються лише тоді, коли контент справді не
+          вміщується.
+        </p>
+        <div class="overflow-box auto-box">
+          Довгий текст для демонстрації overflow: auto. Смуга прокручування
+          з’явиться автоматично. Це значення часто використовують для модальних
+          вікон, таблиць і внутрішніх панелей.
+        </div>
+      </section>
+
+      <section class="example">
+        <h2>5. overflow-x і overflow-y</h2>
+        <p>
+          Керування переповненням окремо по горизонтальній та вертикальній осях.
+        </p>
+        <div class="axis-box">
+          <div class="wide-content">
+            Дуже широкий внутрішній елемент — overflow-x: auto; overflow-y:
+            hidden;
+          </div>
+        </div>
+      </section>
+
+      <section class="example">
+        <h2>6. text-overflow: ellipsis</h2>
+        <p>Для однорядкового тексту можна показати три крапки.</p>
+        <p class="ellipsis">
+          Дуже довга назва статті або товару, яка не повинна переноситися на
+          новий рядок
+        </p>
+      </section>
+    </main>
+  </body>
+</html>

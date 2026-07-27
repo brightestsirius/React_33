@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS position</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="page-header">
+      <h1>Властивість position</h1>
+      <p>Static, relative, absolute, fixed, sticky та z-index.</p>
+    </header>
+
+    <nav class="sticky-navigation">
+      <a href="#static">static</a>
+      <a href="#relative">relative</a>
+      <a href="#absolute">absolute</a>
+      <a href="#fixed">fixed</a>
+    </nav>
+
+    <main class="container">
+      <section id="static" class="example">
+        <h2>1. position: static</h2>
+        <p>Це стандартне значення. top, right, bottom і left не працюють.</p>
+        <div class="box static-box">static</div>
+      </section>
+
+      <section id="relative" class="example">
+        <h2>2. position: relative</h2>
+        <p>Елемент зміщується від свого початкового місця, але місце в потоці зберігається.</p>
+        <div class="position-row">
+          <div class="box">1</div>
+          <div class="box relative-box">relative</div>
+          <div class="box">3</div>
+        </div>
+      </section>
+
+      <section id="absolute" class="example">
+        <h2>3. position: absolute</h2>
+        <p>Елемент позиціонується відносно найближчого предка з position не static.</p>
+        <div class="relative-parent">
+          Батьківський блок: position: relative
+          <div class="absolute-badge">absolute</div>
+        </div>
+      </section>
+
+      <section class="example">
+        <h2>4. z-index</h2>
+        <p>z-index визначає, який позиціонований елемент буде вище.</p>
+        <div class="layers">
+          <div class="layer layer-one">z-index: 1</div>
+          <div class="layer layer-two">z-index: 2</div>
+          <div class="layer layer-three">z-index: 3</div>
+        </div>
+      </section>
+
+      <section id="fixed" class="example tall-example">
+        <h2>5. position: fixed і sticky</h2>
+        <p>
+          Кнопка внизу праворуч має position: fixed. Навігація зверху має position: sticky.
+          Прокрутіть сторінку, щоб побачити різницю.
+        </p>
+      </section>
+    </main>
+
+    <button class="fixed-button" type="button">fixed</button>
+  </body>
+</html>

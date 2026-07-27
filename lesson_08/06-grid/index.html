@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Grid</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="page-header">
+      <h1>CSS Grid</h1>
+      <p>Двовимірне розташування елементів у рядках і колонках.</p>
+    </header>
+
+    <main class="container">
+      <section class="example">
+        <h2>1. grid-template-columns</h2>
+        <div class="grid-demo three-columns">
+          <div class="item">1</div>
+          <div class="item">2</div>
+          <div class="item">3</div>
+          <div class="item">4</div>
+          <div class="item">5</div>
+          <div class="item">6</div>
+        </div>
+      </section>
+
+      <section class="example">
+        <h2>2. Різні розміри колонок</h2>
+        <div class="grid-demo custom-columns">
+          <div class="item">200px</div>
+          <div class="item">1fr</div>
+          <div class="item">2fr</div>
+        </div>
+      </section>
+
+      <section class="example">
+        <h2>3. repeat(), minmax() і auto-fit</h2>
+        <p>
+          Кількість колонок автоматично змінюється залежно від ширини
+          контейнера.
+        </p>
+        <div class="grid-demo responsive-grid">
+          <div class="card">Картка 1</div>
+          <div class="card">Картка 2</div>
+          <div class="card">Картка 3</div>
+          <div class="card">Картка 4</div>
+        </div>
+      </section>
+
+      <section class="example">
+        <h2>4. grid-column і grid-row</h2>
+        <div class="grid-demo placement-grid">
+          <div class="placement-item wide">grid-column: span 2</div>
+          <div class="placement-item tall">grid-row: span 2</div>
+          <div class="placement-item">3</div>
+          <div class="placement-item">4</div>
+          <div class="placement-item">5</div>
+        </div>
+      </section>
+
+      <section class="example">
+        <h2>5. Іменовані grid-лінії та span</h2>
+        <p>
+          У шаблоні нижче кожна вертикальна лінія має власне ім’я. Елемент
+          починається на
+          <code>col1-start</code> і розтягується до наступної лінії з ім’ям
+          <code>col4-start</code>.
+        </p>
+        <div class="named-lines-grid">
+          <div class="named-item named-wide">
+            <code>grid-column-start: col1-start;</code><br />
+            <code>grid-column-end: span col4-start;</code>
+          </div>
+          <div class="named-item">Інший елемент</div>
+        </div>
+      </section>
+
+      <section class="example">
+        <h2>6. Макет через grid-template-areas</h2>
+        <div class="page-layout">
+          <header class="layout-header">Header</header>
+          <aside class="layout-sidebar">Sidebar</aside>
+          <article class="layout-main">Main</article>
+          <footer class="layout-footer">Footer</footer>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
