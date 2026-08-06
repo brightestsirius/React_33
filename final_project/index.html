@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nexcent — Landing Page</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="styles/style.css" />
+  <link rel="stylesheet" href="styles/landing.css" />
+</head>
+<body>
+
+  <!-- Reusable icon sprite -->
+  <svg style="display:none">
+    <symbol id="icon-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="9" />
+      <path d="M9 12l2 2 4-4" />
+    </symbol>
+    <symbol id="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 12h14M13 6l6 6-6 6" />
+    </symbol>
+    <symbol id="icon-members" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="9" cy="8" r="3" />
+      <circle cx="17" cy="9" r="2.3" />
+      <path d="M2 20c0-3.3 3-5.5 7-5.5s7 2.2 7 5.5" />
+      <path d="M16 14.6c2.3.3 4 2 4 5.4" />
+    </symbol>
+    <symbol id="icon-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" />
+    </symbol>
+    <symbol id="icon-group" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="8" cy="9" r="3" />
+      <circle cx="16" cy="9" r="3" />
+      <path d="M2 20c0-3 2.5-5 6-5s6 2 6 5" />
+      <path d="M10 20c0-3 2.5-5 6-5s6 2 6 5" />
+    </symbol>
+    <symbol id="icon-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 21V7l8-4 8 4v14" />
+      <path d="M9 21v-6h6v6" />
+    </symbol>
+    <symbol id="icon-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="5" width="18" height="16" rx="2" />
+      <path d="M16 3v4M8 3v4M3 10h18" />
+    </symbol>
+    <symbol id="icon-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2" y="6" width="20" height="14" rx="2" />
+      <path d="M2 10h20" />
+    </symbol>
+    <symbol id="icon-quote" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M7 7c-2 0-3.5 1.5-3.5 3.5S5 14 7 14c.3 0 .6 0 .8-.1C7.4 15.8 6 17 4 17v2c3.3 0 6-2.3 6-6v-2c0-2.2-1.3-4-3-4zm10 0c-2 0-3.5 1.5-3.5 3.5s1.5 3.5 3.5 3.5c.3 0 .6 0 .8-.1-.4 1.9-1.8 3.1-3.8 3.1v2c3.3 0 6-2.3 6-6v-2c0-2.2-1.3-4-3-4z" />
+    </symbol>
+    <symbol id="icon-facebook" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M13 22v-8h3l.5-3.5H13V8.2c0-1 .3-1.7 1.8-1.7H17V3.2C16.6 3.1 15.4 3 14 3c-3 0-5 1.8-5 5.2V10.5H6V14h3v8h4z" />
+    </symbol>
+    <symbol id="icon-twitter" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M4 4l7 9-7 7h2l6-6 5 6h5l-8-9.5L20 4h-2l-5.5 5.5L8 4H4z" />
+    </symbol>
+    <symbol id="icon-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="3" width="18" height="18" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+    </symbol>
+    <symbol id="icon-youtube" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2" y="6" width="20" height="12" rx="3" />
+      <path d="M10 9.5l5 2.5-5 2.5z" fill="currentColor" stroke="none" />
+    </symbol>
+  </svg>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <a href="#" class="logo">
+        <svg class="icon"><use href="#icon-logo"></use></svg>
+        Nexcent
+      </a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="#">Home</a></li>
+          <li><a href="#community">Service</a></li>
+          <li><a href="#features">Feature</a></li>
+          <li><a href="#stats">Product</a></li>
+          <li><a href="#testimonial">Testimonial</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="#" class="login-link">Login</a>
+        <a href="#" class="btn btn-sm">Sign Up</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Lessons and insights<br /><span class="accent">from 8 years</span></h1>
+        <p>Where to grow your business as a photographer, site or social media?</p>
+        <a href="#" class="btn">Register</a>
+      </div>
+      <div class="hero-image">
+        <div class="placeholder-box" aria-hidden="true">Illustration</div>
+      </div>
+    </div>
+    <div class="hero-dots">
+      <span></span>
+      <span class="is-active"></span>
+      <span></span>
+    </div>
+  </section>
+
+  <!-- Clients -->
+  <section class="clients">
+    <div class="container">
+      <div class="section-heading">
+        <h2>Our Clients</h2>
+        <p>We've been working with some Fortune 500+ clients</p>
+      </div>
+      <div class="clients-logos">
+        <div class="logo-placeholder" aria-hidden="true"></div>
+        <div class="logo-placeholder" aria-hidden="true"></div>
+        <div class="logo-placeholder" aria-hidden="true"></div>
+        <div class="logo-placeholder" aria-hidden="true"></div>
+        <div class="logo-placeholder" aria-hidden="true"></div>
+        <div class="logo-placeholder" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Community -->
+  <section class="community" id="community">
+    <div class="container">
+      <div class="section-heading">
+        <h2>Manage your entire community in a single system</h2>
+        <p>Who is Nexcent suitable for?</p>
+      </div>
+      <div class="community-cards">
+        <article class="community-card">
+          <div class="icon-circle">
+            <svg class="icon"><use href="#icon-members"></use></svg>
+          </div>
+          <h4>Membership Organisations</h4>
+          <p>Our membership management software provides full automation of membership renewals and payments.</p>
+        </article>
+        <article class="community-card">
+          <div class="icon-circle">
+            <svg class="icon"><use href="#icon-shield"></use></svg>
+          </div>
+          <h4>National Associations</h4>
+          <p>Our membership management software provides full automation of membership renewals and payments.</p>
+        </article>
+        <article class="community-card">
+          <div class="icon-circle">
+            <svg class="icon"><use href="#icon-group"></use></svg>
+          </div>
+          <h4>Clubs And Groups</h4>
+          <p>Our membership management software provides full automation of membership renewals and payments.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature 1 -->
+  <section class="feature-split" id="features">
+    <div class="container">
+      <div class="feature-image">
+        <div class="placeholder-box" aria-hidden="true">Image</div>
+      </div>
+      <div class="feature-content">
+        <h2>The unseen of spending three years at Pixelgrade</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget
+          risus varius blandit sit amet non magna. Donec ullamcorper nulla non metus
+          auctor fringilla.
+        </p>
+        <a href="#" class="btn">Learn More <svg class="icon"><use href="#icon-arrow"></use></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats" id="stats">
+    <div class="container">
+      <div class="stats-content">
+        <h2>Helping a local<br /><span class="accent">business reinvent itself</span></h2>
+        <p>We reached this with our hard work and dedication</p>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <svg class="icon"><use href="#icon-members"></use></svg>
+          <div>
+            <strong>2,245,341</strong>
+            <span>Members</span>
+          </div>
+        </div>
+        <div class="stat-item">
+          <svg class="icon"><use href="#icon-building"></use></svg>
+          <div>
+            <strong>46,328</strong>
+            <span>Clubs</span>
+          </div>
+        </div>
+        <div class="stat-item">
+          <svg class="icon"><use href="#icon-calendar"></use></svg>
+          <div>
+            <strong>828,867</strong>
+            <span>Event Bookings</span>
+          </div>
+        </div>
+        <div class="stat-item">
+          <svg class="icon"><use href="#icon-card"></use></svg>
+          <div>
+            <strong>1,926,436</strong>
+            <span>Payments</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature 2 -->
+  <section class="feature-split">
+    <div class="container">
+      <div class="feature-image">
+        <div class="placeholder-box" aria-hidden="true">Image</div>
+      </div>
+      <div class="feature-content">
+        <h2>How to design your site footer like we did</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eget dui non
+          erat ultricies porta. Fusce malesuada, felis id tincidunt viverra, arcu neque
+          condimentum tellus, id posuere dolor risus quis erat.
+        </p>
+        <a href="#" class="btn">Learn More <svg class="icon"><use href="#icon-arrow"></use></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial -->
+  <section class="testimonial" id="testimonial">
+    <div class="container">
+      <div class="testimonial-main">
+        <div class="testimonial-image">
+          <svg class="icon"><use href="#icon-quote"></use></svg>
+        </div>
+        <div class="testimonial-content">
+          <p>
+            "Maecenas dignissim justo eget nulla rutrum molestie. Maecenas lobortis sem eu
+            eleifend ullamcorper. Proin eu enim metus. Vivamus sed diem a tortor tempus
+            posuere. Nullam id fermentum arcu, ut fermentum diam."
+          </p>
+          <div class="testimonial-author">
+            <strong>Tim Smith</strong>
+            <span>SVP, Oregon Boat Racing Association</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-footer">
+        <div class="testimonial-logos">
+          <div class="logo-placeholder" aria-hidden="true"></div>
+          <div class="logo-placeholder" aria-hidden="true"></div>
+          <div class="logo-placeholder" aria-hidden="true"></div>
+          <div class="logo-placeholder" aria-hidden="true"></div>
+        </div>
+        <a href="#" class="link-arrow">Meet all customers <svg class="icon"><use href="#icon-arrow"></use></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog -->
+  <section class="blog">
+    <div class="container">
+      <div class="section-heading">
+        <h2>Caring is the new marketing</h2>
+        <p>The Nexcent blog is the best place to read about the latest membership insights,
+          trends and interviews with the community, read about how you can manage their
+          engagement their networks and info here.</p>
+      </div>
+      <div class="blog-cards">
+        <article class="blog-card">
+          <div class="thumb placeholder-box" aria-hidden="true">Image</div>
+          <h4>Creating Streamlined Safeguarding Processing with OneRun</h4>
+          <a href="#" class="link-arrow">Readmore <svg class="icon"><use href="#icon-arrow"></use></svg></a>
+        </article>
+        <article class="blog-card">
+          <div class="thumb placeholder-box" aria-hidden="true">Image</div>
+          <h4>What are your safeguarding responsibilities and how can you manage them?</h4>
+          <a href="#" class="link-arrow">Readmore <svg class="icon"><use href="#icon-arrow"></use></svg></a>
+        </article>
+        <article class="blog-card">
+          <div class="thumb placeholder-box" aria-hidden="true">Image</div>
+          <h4>Revamping the Membership Model with Triathlon Australia</h4>
+          <a href="#" class="link-arrow">Readmore <svg class="icon"><use href="#icon-arrow"></use></svg></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="container">
+      <h2>Pellentesque suscipit fringilla libero eu.</h2>
+      <a href="#" class="btn">Get a Demo <svg class="icon"><use href="#icon-arrow"></use></svg></a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#" class="logo">
+            <svg class="icon"><use href="#icon-logo"></use></svg>
+            Nexcent
+          </a>
+          <p>Copyright © 2026 Nexcent Inc. All rights reserved.</p>
+        </div>
+
+        <div class="footer-links">
+          <div class="footer-col">
+            <h5>Company</h5>
+            <ul>
+              <li><a href="#">About us</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Contact us</a></li>
+              <li><a href="#">Pricing</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5>Support</h5>
+            <ul>
+              <li><a href="#">Help center</a></li>
+              <li><a href="#">Terms of service</a></li>
+              <li><a href="#">Legal</a></li>
+              <li><a href="#">Privacy policy</a></li>
+              <li><a href="#">Status</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-newsletter">
+          <h5>Stay up to date</h5>
+          <form class="newsletter-form" action="#">
+            <input type="email" placeholder="Your email" aria-label="Email address" required />
+            <button type="submit" aria-label="Subscribe">
+              <svg class="icon"><use href="#icon-arrow"></use></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>Copyright © 2026 Nexcent Inc. All rights reserved.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook"><svg class="icon"><use href="#icon-facebook"></use></svg></a>
+          <a href="#" aria-label="Twitter"><svg class="icon"><use href="#icon-twitter"></use></svg></a>
+          <a href="#" aria-label="Instagram"><svg class="icon"><use href="#icon-instagram"></use></svg></a>
+          <a href="#" aria-label="YouTube"><svg class="icon"><use href="#icon-youtube"></use></svg></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
