@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Медіа-запити</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="page-header">
+      <h1>Медіа-запити</h1>
+      <p>Змінюй ширину вікна браузера, щоб побачити, як спрацьовують умови.</p>
+    </header>
+
+    <main class="container">
+      <section class="example">
+        <h2>1. min-width / max-width</h2>
+        <p>Один і той самий блок показує різний напис залежно від ширини вікна.</p>
+        <div class="demo">
+          <div class="breakpoint-box">
+            <span class="label-mobile">📱 Мобільний: ширина &lt; 600px</span>
+            <span class="label-tablet">💻 Планшет: 600px–899px</span>
+            <span class="label-desktop">🖥️ Десктоп: ≥ 900px</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="example">
+        <h2>2. Mobile-first проти Desktop-first</h2>
+        <p>Два способи писати медіа-запити — відрізняються напрямком умов.</p>
+        <div class="compare-demo">
+          <div class="compare-card">
+            <h3>Mobile-first</h3>
+            <p>Базові стилі — для мобільних, розширюємо через <code>min-width</code>.</p>
+            <pre class="syntax"><code>.el { font-size: 14px; }
+
+@media (min-width: 768px) {
+  .el { font-size: 16px; }
+}</code></pre>
+          </div>
+          <div class="compare-card">
+            <h3>Desktop-first</h3>
+            <p>Базові стилі — для десктопа, звужуємо через <code>max-width</code>.</p>
+            <pre class="syntax"><code>.el { font-size: 16px; }
+
+@media (max-width: 767px) {
+  .el { font-size: 14px; }
+}</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <section class="example">
+        <h2>3. orientation</h2>
+        <p>Розтягни вікно вужче за висоту або ширше — напис зміниться.</p>
+        <div class="demo">
+          <div class="orientation-box">
+            <span class="orientation-portrait">⬆️ portrait</span>
+            <span class="orientation-landscape">➡️ landscape</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="example">
+        <h2>4. prefers-color-scheme</h2>
+        <p>Стиль залежить від теми операційної системи/браузера, а не від ширини екрана.</p>
+        <div class="demo">
+          <div class="theme-card">Ця картка сама підлаштовується під світлу чи темну тему системи</div>
+        </div>
+      </section>
+
+      <section class="example">
+        <h2>5. prefers-reduced-motion</h2>
+        <p>Якщо в системі ввімкнено "зменшення руху", анімація вимикається автоматично.</p>
+        <div class="demo">
+          <div class="motion-box"></div>
+        </div>
+      </section>
+
+      <section class="example">
+        <h2>6. Комбінування умов: and, кома (або), not</h2>
+        <div class="demo logic-demo">
+          <div class="logic-item">
+            <code>screen and (min-width: 700px)</code>
+            <div class="logic-box logic-and-box">and</div>
+          </div>
+          <div class="logic-item">
+            <code>(max-width: 500px), (min-width: 1100px)</code>
+            <div class="logic-box logic-or-box">кома = «або»</div>
+          </div>
+          <div class="logic-item">
+            <code>not all and (min-width: 700px)</code>
+            <div class="logic-box logic-not-box">not</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="example">
+        <h2>7. Діапазон ширини (range)</h2>
+        <p>Стиль застосовується лише в межах 600px–1000px.</p>
+        <p class="syntax"><code>@media (min-width: 600px) and (max-width: 1000px) { ... }</code></p>
+        <div class="demo">
+          <div class="range-box">Активно тільки в діапазоні 600–1000px</div>
+        </div>
+      </section>
+
+      <section class="example">
+        <h2>8. Практика: адаптивне меню без JavaScript</h2>
+        <p>На вузьких екранах пункти ховаються за кнопкою-гамбургером (реалізовано через checkbox hack).</p>
+        <nav class="adaptive-nav">
+          <input type="checkbox" id="nav-toggle" class="adaptive-nav__toggle-input" />
+          <label for="nav-toggle" class="adaptive-nav__toggle-label" aria-label="Відкрити меню">☰</label>
+          <ul class="adaptive-nav__list">
+            <li><a href="#">Головна</a></li>
+            <li><a href="#">Про нас</a></li>
+            <li><a href="#">Послуги</a></li>
+            <li><a href="#">Контакти</a></li>
+          </ul>
+        </nav>
+      </section>
+
+      <section class="example">
+        <h2>9. @media print</h2>
+        <p>Ці стилі побачиш лише в попередньому перегляді друку (Ctrl+P / Cmd+P).</p>
+        <div class="demo">
+          <p class="screen-only">👀 Цей текст видно тільки на екрані.</p>
+          <p class="print-only">🖨️ Цей текст видно тільки під час друку.</p>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

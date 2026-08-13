@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Адаптивність</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="page-header">
+      <h1>Адаптивність</h1>
+      <p>
+        Як зробити верстку гнучкою без жодного медіа-запиту. Зміни розмір вікна
+        браузера.
+      </p>
+    </header>
+
+    <main class="container">
+      <section class="example">
+        <h2>1. % проти px</h2>
+        <p>
+          Блок у відсотках підлаштовується під ширину контейнера, блок у
+          пікселях — ні.
+        </p>
+        <div class="demo">
+          <div class="bar bar-percent">width: 60%</div>
+        </div>
+        <div class="demo">
+          <div class="bar bar-fixed">width: 320px</div>
+        </div>
+      </section>
+
+      <section class="example">
+        <h2>2. Одиниці viewport: vw, vh, vmin</h2>
+        <p>
+          Розмір залежить від розмірів вікна перегляду, а не батьківського
+          елемента.
+        </p>
+        <div class="demo viewport-demo">
+          <div class="vw-box">width: 40vw</div>
+        </div>
+      </section>
+
+      <section class="example">
+        <h2>3. clamp() для флюїдної типографіки</h2>
+        <p>
+          Заголовок росте і зменшується разом з екраном, залишаючись у межах
+          min/max.
+        </p>
+        <p class="syntax"><code>font-size: clamp(20px, 4vw, 42px);</code></p>
+        <div class="demo">
+          <p class="fluid-title">Текст, що масштабується плавно</p>
+        </div>
+      </section>
+
+      <section class="example">
+        <h2>4. min() і max() для адаптивних відступів</h2>
+        <div class="demo">
+          <div class="padded-box">
+            <code>padding: min(8vw, 48px)</code>
+            <p>
+              Відступ ніколи не перевищить 48px, але зменшується на вузьких
+              екранах.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="example">
+        <h2>5. flex-wrap і flex-basis замість фіксованої сітки</h2>
+        <p>
+          Картки самі переносяться в новий рядок, коли не вміщуються — без
+          медіа-запитів.
+        </p>
+        <div class="demo cards-demo">
+          <div class="flex-card">Картка 1</div>
+          <div class="flex-card">Картка 2</div>
+          <div class="flex-card">Картка 3</div>
+          <div class="flex-card">Картка 4</div>
+          <div class="flex-card">Картка 5</div>
+        </div>
+      </section>
+
+      <section class="example">
+        <h2>6. Адаптивні зображення</h2>
+        <p>
+          <code>max-width: 100%; height: auto;</code> — зображення ніколи не
+          вилазить за межі контейнера.
+        </p>
+        <div class="demo">
+          <img
+            class="responsive-img"
+            src="https://picsum.photos/800/400"
+            alt="Приклад адаптивного зображення"
+            width="800"
+            height="400"
+            loading="lazy"
+          />
+        </div>
+      </section>
+
+      <section class="example">
+        <h2>7. aspect-ratio</h2>
+        <p>Пропорції блока лишаються сталими незалежно від ширини.</p>
+        <div class="demo">
+          <div class="ratio-box">16 / 9</div>
+        </div>
+      </section>
+
+      <section class="example">
+        <h2>8. rem, em і px</h2>
+        <p>
+          <code>rem</code> завжди рахується від розміру шрифту
+          <code>html</code>, <code>em</code> — від розміру шрифту поточного
+          контексту, <code>px</code> — фіксований. Цей блок навмисно має
+          збільшений <code>font-size: 20px</code>.
+        </p>
+        <div class="demo units-demo">
+          <div class="unit-box unit-rem">width: 10rem</div>
+          <div class="unit-box unit-em">width: 10em</div>
+          <div class="unit-box unit-px">width: 160px</div>
+        </div>
+      </section>
+
+      <section class="example">
+        <h2>9. Практика: картка профілю без медіа-запитів</h2>
+        <article class="profile-card">
+          <img
+            class="profile-card__avatar"
+            src="https://commons.wikimedia.org/wiki/Special:FilePath/Max_Verstappen_2022.jpg?width=320"
+            alt="Max Verstappen"
+            width="160"
+            height="160"
+          />
+          <div class="profile-card__body">
+            <h3 class="profile-card__name">Max Verstappen</h3>
+            <p class="profile-card__text">
+              Верстка адаптується завдяки <code>flex-wrap</code> для блоків
+              картки і <code>clamp(60px, 12vw, 160px)</code> для розміру фото.
+            </p>
+          </div>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>

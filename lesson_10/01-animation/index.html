@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Анімація</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="page-header">
+      <h1>CSS Анімація</h1>
+      <p>Від простих transition до @keyframes і практичних прикладів.</p>
+    </header>
+
+    <main class="container">
+      <section class="example">
+        <h2>1. transition</h2>
+        <p>
+          Плавний перехід властивості з одного значення в інше за
+          <code>transition-duration</code> та
+          <code>transition-timing-function</code>.
+        </p>
+        <div class="demo">
+          <button class="btn btn-transition">Наведи на мене</button>
+        </div>
+      </section>
+
+      <section class="example">
+        <h2>2. transform</h2>
+        <p>
+          Зміщення, масштабування, поворот і нахил елемента без впливу на
+          розмітку сусідів.
+        </p>
+        <div class="demo transform-demo">
+          <div class="box box-translate">translate</div>
+          <div class="box box-scale">scale</div>
+          <div class="box box-rotate">rotate</div>
+          <div class="box box-skew">skew</div>
+        </div>
+      </section>
+
+      <section class="example">
+        <h2>3. @keyframes і animation</h2>
+        <p>
+          <code>@keyframes</code> описує проміжні стани, а
+          <code>animation</code> прив'язує їх до елемента.
+        </p>
+        <div class="demo">
+          <div class="box box-pulse">pulse</div>
+        </div>
+        <p class="syntax">
+          <code>animation: pulse 1.6s ease-in-out infinite;</code>
+        </p>
+      </section>
+
+      <section class="example">
+        <h2>4. animation-timing-function</h2>
+        <p>Той самий рух, але з різною динамікою прискорення.</p>
+        <div class="demo timing-demo">
+          <div class="timing-row">
+            <span class="timing-label"><code>linear</code></span>
+            <div class="timing-track">
+              <div class="timing-ball timing-linear"></div>
+            </div>
+          </div>
+          <div class="timing-row">
+            <span class="timing-label"><code>ease</code></span>
+            <div class="timing-track">
+              <div class="timing-ball timing-ease"></div>
+            </div>
+          </div>
+          <div class="timing-row">
+            <span class="timing-label"><code>ease-in-out</code></span>
+            <div class="timing-track">
+              <div class="timing-ball timing-ease-in-out"></div>
+            </div>
+          </div>
+          <div class="timing-row">
+            <span class="timing-label"
+              ><code>cubic-bezier(.68,-0.55,.27,1.55)</code></span
+            >
+            <div class="timing-track">
+              <div class="timing-ball timing-cubic"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="example">
+        <h2>5. delay, iteration-count, direction</h2>
+        <div class="demo delay-demo">
+          <div class="box box-delay-none">
+            без затримки
+            <code>infinite</code>
+          </div>
+          <div class="box box-delay-half">
+            delay: .5s
+            <code>infinite</code>
+          </div>
+          <div class="box box-delay-alt">
+            direction: alternate
+            <code>iteration-count: 3</code>
+          </div>
+        </div>
+      </section>
+
+      <section class="example">
+        <h2>6. fill-mode і play-state</h2>
+        <p>
+          <code>animation-fill-mode: forwards</code> зберігає останній кадр
+          після завершення. (<code>animation-play-state: paused</code>).
+        </p>
+        <div class="demo">
+          <div class="box box-fill-mode">пауза при hover</div>
+        </div>
+      </section>
+
+      <section class="example">
+        <h2>7. transition + transform: картка з ефектом підняття</h2>
+        <div class="demo card-demo">
+          <article class="card-lift">
+            <h3>Наведи курсор</h3>
+            <p>transform: translateY(-8px) і посилена тінь за transition.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="example">
+        <h2>8. Практика: спінер завантаження</h2>
+        <div class="demo">
+          <div class="spinner"></div>
+        </div>
+        <p class="syntax"><code>animation: spin 1s linear infinite;</code></p>
+      </section>
+
+      <section class="example">
+        <h2>9. Практика: індетермінований прогрес-бар</h2>
+        <div class="demo">
+          <div class="progress-track">
+            <div class="progress-fill"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

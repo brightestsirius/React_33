@@ -1,0 +1,399 @@
+:root {
+  --white: #ffffff;
+  --black: #0f172a;
+
+  --gray-100: #f8fafc;
+  --gray-300: #cbd5e1;
+  --gray-500: #64748b;
+
+  --teal-200: #99f6e4;
+  --teal-500: #0d9488;
+  --teal-600: #0f766e;
+
+  --pink-200: #fbcfe8;
+  --pink-500: #db2777;
+
+  --amber-200: #fde68a;
+  --amber-500: #d97706;
+
+  --color-page: var(--gray-100);
+  --color-surface: var(--white);
+  --color-text: var(--black);
+  --color-muted: var(--gray-500);
+  --color-primary: var(--teal-500);
+  --color-primary-dark: var(--teal-600);
+  --color-primary-light: var(--teal-200);
+  --color-accent: var(--pink-500);
+  --color-accent-light: var(--pink-200);
+  --color-warn: var(--amber-500);
+  --color-warn-light: var(--amber-200);
+  --color-border: var(--gray-300);
+  --color-shadow: rgb(15 23 42 / 16%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  line-height: 1.5;
+  color: var(--color-text);
+  background: var(--color-page);
+}
+
+code {
+  padding: 2px 6px;
+  color: var(--color-primary-dark);
+  background: var(--color-primary-light);
+  border-radius: 5px;
+}
+
+.page-header {
+  padding: 34px 20px;
+  color: var(--color-surface);
+  text-align: center;
+  background: var(--color-primary);
+}
+
+.page-header h1,
+.page-header p {
+  margin: 0;
+}
+
+.page-header p {
+  margin-top: 8px;
+}
+
+.container {
+  width: min(100% - 32px, 1040px);
+  margin: 32px auto;
+}
+
+.example {
+  margin-bottom: 26px;
+  padding: 24px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px var(--color-shadow);
+}
+
+.example h2 {
+  margin-top: 0;
+  color: var(--color-primary-dark);
+}
+
+.syntax {
+  padding: 12px 14px;
+  overflow-x: auto;
+  background: var(--color-primary-light);
+  border-left: 4px solid var(--color-primary);
+  border-radius: 8px;
+}
+
+.demo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  min-height: 100px;
+  padding: 20px;
+  background: var(--color-page);
+  border: 2px dashed var(--color-border);
+  border-radius: 12px;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  width: 130px;
+  min-height: 90px;
+  padding: 12px;
+  color: var(--color-surface);
+  font-weight: 700;
+  text-align: center;
+  background: var(--color-primary);
+  border-radius: 12px;
+}
+
+.box code {
+  color: inherit;
+  font-size: 12px;
+  font-weight: 400;
+  background: rgb(255 255 255 / 18%);
+}
+
+/* --- 1. transition --- */
+.btn-transition {
+  padding: 14px 28px;
+  color: var(--color-surface);
+  font-size: 16px;
+  font-weight: 700;
+  background: var(--color-primary);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.btn-transition:hover {
+  background: var(--color-accent);
+  transform: scale(1.08);
+}
+
+/* --- 2. transform --- */
+.transform-demo .box-translate:hover {
+  transform: translateY(-14px);
+}
+
+.box-scale {
+  background: var(--color-accent);
+}
+
+.box-scale:hover {
+  transform: scale(1.2);
+}
+
+.box-rotate {
+  background: var(--color-warn);
+}
+
+.box-rotate:hover {
+  transform: rotate(180deg);
+}
+
+.box-skew {
+  background: var(--color-primary-dark);
+}
+
+.box-skew:hover {
+  transform: skew(-10deg);
+}
+
+.transform-demo .box {
+  transition: transform 0.3s ease;
+}
+
+/* --- 3. keyframes + animation --- */
+@keyframes pulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  40% {
+    transform: skew(-10deg);
+  }
+
+  50% {
+    transform: scale(1.12);
+  }
+
+  80% {
+    transform: skew(0deg);
+  }
+}
+
+.box-pulse {
+  background: var(--color-accent);
+  animation: pulse 1.6s ease-in-out infinite;
+}
+
+/* --- 4. timing-function --- */
+.timing-demo {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.timing-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.timing-label {
+  flex-shrink: 0;
+  width: 260px;
+  font-size: 14px;
+}
+
+.timing-track {
+  position: relative;
+  flex: 1;
+  height: 26px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+}
+
+.timing-ball {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  animation-name: move-right;
+  animation-duration: 2.2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes move-right {
+  from {
+    left: 3px;
+  }
+
+  to {
+    left: calc(100% - 23px);
+  }
+}
+
+.timing-linear {
+  animation-timing-function: linear;
+}
+
+.timing-ease {
+  animation-timing-function: ease;
+  background: var(--color-accent);
+}
+
+.timing-ease-in-out {
+  animation-timing-function: ease-in-out;
+  background: var(--color-warn);
+}
+
+.timing-cubic {
+  animation-timing-function: cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  background: var(--color-primary-dark);
+}
+
+/* --- 5. delay, iteration-count, direction --- */
+.box-delay-none {
+  background: var(--color-primary);
+  animation: pulse 1s ease-in-out infinite;
+}
+
+.box-delay-half {
+  background: var(--color-accent);
+  animation: pulse 1s ease-in-out infinite;
+  animation-delay: 0.5s;
+}
+
+.box-delay-alt {
+  background: var(--color-warn);
+  animation: pulse 1s ease-in-out;
+  animation-direction: alternate;
+  animation-iteration-count: 3;
+}
+
+/* --- 6. fill-mode, play-state --- */
+@keyframes slide-in {
+  from {
+    transform: translateX(-40px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.box-fill-mode {
+  background: var(--color-primary-dark);
+  animation: slide-in 1.8s ease-out infinite alternate;
+  animation-fill-mode: forwards;
+}
+
+.box-fill-mode:hover {
+  animation-play-state: paused;
+}
+
+/* --- 7. card lift --- */
+.card-demo {
+  justify-content: center;
+}
+
+.card-lift {
+  width: 280px;
+  padding: 24px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  box-shadow: 0 4px 10px var(--color-shadow);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.card-lift h3 {
+  margin-top: 0;
+  color: var(--color-primary-dark);
+}
+
+.card-lift p {
+  margin-bottom: 0;
+  color: var(--color-muted);
+}
+
+.card-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 30px var(--color-shadow);
+}
+
+/* --- 8. spinner --- */
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 5px solid var(--color-border);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* --- 9. indeterminate progress bar --- */
+.progress-track {
+  position: relative;
+  width: 100%;
+  height: 10px;
+  overflow: hidden;
+  background: var(--color-border);
+  border-radius: 999px;
+}
+
+.progress-fill {
+  position: absolute;
+  top: 0;
+  left: -40%;
+  width: 40%;
+  height: 100%;
+  background: var(--color-primary);
+  border-radius: inherit;
+  animation: indeterminate 1.6s ease-in-out infinite;
+}
+
+@keyframes indeterminate {
+  0% {
+    left: -40%;
+  }
+
+  100% {
+    left: 100%;
+  }
+}
