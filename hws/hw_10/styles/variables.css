@@ -1,0 +1,53 @@
+:root {
+  /* --- Colors --- */
+  --color-bg-light: #eeeff1;
+  --color-accent: #34547a;
+  --color-black: #000000;
+  --color-gray: #727272;
+  --color-white: #ffffff;
+
+  /* --- Typography (мобільна база) --- */
+  --font-main: "Roboto", sans-serif;
+
+  --fs-h1: 32px;
+  --fs-h2: 28px;
+  --fs-h3: 21px;
+  --fs-body: 16px;
+  --fs-small: 13px;
+
+  --lh-heading: 1.2;
+  --lh-tight: 1;
+  --lh-body: 1.64;
+
+  --fw-regular: 400;
+  --fw-medium: 500;
+
+  --ls-wide: 0.1em;
+
+  /* --- Layout --- */
+  --container-max-width: 1140px;
+  --container-padding: 24px;
+  --content-max-width: 540px;
+
+  /* --- Spacing (мобільна база) --- */
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 24px;
+  --space-xl: 40px;
+  --space-2xl: 56px;
+  --space-3xl: 64px;
+}
+
+/* Планшети та ширші екрани — повертаємо просторіші відступи й типографіку */
+@media (min-width: 768px) {
+  :root {
+    --fs-h1: 48px;
+    --fs-h2: 36px;
+
+    --space-lg: 40px;
+    --space-xl: 64px;
+    --space-2xl: 96px;
+    --space-3xl: 120px;
+  }
+}

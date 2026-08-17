@@ -1,0 +1,21 @@
+@use "../abstracts/variables" as vars
+@use "../abstracts/mixins" as mix
+@use "../abstracts/placeholders"
+
+.footer
+  background: vars.$color-accent
+  padding: vars.$space-lg 0
+
+  .container
+    @include mix.flex($direction: column)
+
+  @include mix.responsive(vars.$bp-tablet)
+    padding: vars.$space-lg-desktop 0
+
+.footer__name
+  @extend %heading-accent
+  margin: 0 0 vars.$space-sm
+
+.footer__copy
+  @include mix.text(vars.$fs-small, vars.$fw-regular, vars.$lh-body, vars.$color-white)
+  margin: 0

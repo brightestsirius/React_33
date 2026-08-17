@@ -1,0 +1,31 @@
+@use "../abstracts/variables" as vars
+@use "../abstracts/mixins" as mix
+
+.header
+  background: vars.$color-bg-light
+
+  .container
+    @include mix.flex($align: center)
+    padding-top: vars.$space-lg
+    padding-bottom: vars.$space-lg
+
+    @include mix.responsive(vars.$bp-tablet)
+      padding-top: vars.$space-lg-desktop
+      padding-bottom: vars.$space-lg-desktop
+
+.nav__list
+  @include mix.flex($align: center, $wrap: wrap, $gap: vars.$space-lg)
+
+  @include mix.responsive(vars.$bp-tablet)
+    flex-wrap: nowrap
+    gap: vars.$space-lg-desktop
+
+.nav__link
+  @include mix.text(vars.$fs-body, vars.$fw-regular, vars.$lh-body, vars.$color-black, vars.$ls-wide, uppercase)
+
+  &:hover
+    color: vars.$color-accent
+
+  &--active
+    color: vars.$color-accent
+    font-weight: vars.$fw-medium

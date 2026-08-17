@@ -1,0 +1,44 @@
+@use "../abstracts/variables" as vars
+@use "../abstracts/mixins" as mix
+
+*
+  box-sizing: border-box
+
+body
+  margin: 0
+  font-family: vars.$font-main
+  color: vars.$color-black
+  background: vars.$color-white
+
+ul
+  margin: 0
+  padding: 0
+  list-style: none
+
+a
+  text-decoration: none
+  color: inherit
+
+img
+  max-width: 100%
+  display: block
+
+.container
+  width: 100%
+  max-width: vars.$container-max-width
+  margin: 0 auto
+  padding: 0 vars.$container-padding
+
+.section__title
+  @include mix.text(vars.$fs-h2, vars.$fw-medium, vars.$lh-heading, vars.$color-black)
+  text-align: center
+  margin: 0 0 vars.$space-md
+
+  @include mix.responsive(vars.$bp-tablet)
+    font-size: vars.$fs-h2-desktop
+
+.section__text
+  max-width: vars.$content-max-width
+  margin: 0 auto
+  @include mix.text(vars.$fs-body, vars.$fw-regular, vars.$lh-body, vars.$color-gray)
+  text-align: center

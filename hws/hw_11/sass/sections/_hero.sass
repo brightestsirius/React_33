@@ -1,0 +1,46 @@
+@use "../abstracts/variables" as vars
+@use "../abstracts/mixins" as mix
+
+.hero
+  background: vars.$color-bg-light
+  padding-bottom: vars.$space-2xl
+
+  .container
+    @include mix.flex($direction: column, $align: flex-start)
+
+  @include mix.responsive(vars.$bp-tablet)
+    padding-bottom: vars.$space-2xl-desktop
+
+.hero__title
+  max-width: 541px
+  @include mix.text(vars.$fs-h1, vars.$fw-medium, vars.$lh-body, vars.$color-black)
+  margin: vars.$space-3xl 0 vars.$space-md
+
+  @include mix.responsive(vars.$bp-tablet)
+    font-size: vars.$fs-h1-desktop
+    margin-top: vars.$space-3xl-desktop
+
+.hero__text
+  max-width: vars.$content-max-width
+  @include mix.text(vars.$fs-body, vars.$fw-regular, vars.$lh-body, vars.$color-gray)
+  margin: 0 0 vars.$space-lg
+
+  @include mix.responsive(vars.$bp-tablet)
+    margin-bottom: vars.$space-lg-desktop
+
+.btn
+  @include mix.flex($align: center, $justify: center)
+  width: 100%
+  min-width: 225px
+  height: 65px
+  padding: 0 vars.$space-md
+  background: vars.$color-accent
+  @include mix.text(vars.$fs-body, vars.$fw-regular, null, vars.$color-white, vars.$ls-wide, uppercase)
+  border: none
+  cursor: pointer
+
+  &:hover
+    opacity: 0.9
+
+  @include mix.responsive(vars.$bp-tablet)
+    width: auto

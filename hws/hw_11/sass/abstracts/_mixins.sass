@@ -1,0 +1,24 @@
+@use "variables" as vars
+
+@mixin flex($direction: row, $align: stretch, $justify: flex-start, $wrap: nowrap, $gap: null)
+  display: flex
+  flex-direction: $direction
+  align-items: $align
+  justify-content: $justify
+  flex-wrap: $wrap
+  @if $gap
+    gap: $gap
+
+@mixin text($size, $weight, $line-height, $color, $letter-spacing: null, $transform: null)
+  font-size: $size
+  font-weight: $weight
+  line-height: $line-height
+  color: $color
+  @if $letter-spacing
+    letter-spacing: $letter-spacing
+  @if $transform
+    text-transform: $transform
+
+@mixin responsive($breakpoint)
+  @media (min-width: $breakpoint)
+    @content
