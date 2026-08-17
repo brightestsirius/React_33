@@ -9,6 +9,69 @@
   box-sizing: border-box;
 }
 
+.menu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.menu--item {
+  background-color: red;
+}
+.menu--item:hover {
+  background-color: black;
+}
+.menu--link {
+  color: white;
+}
+.menu--link:hover, .menu--link:focus, .menu--link:active {
+  color: red;
+}
+.menu--link:active {
+  text-decoration: underline;
+}
+
+.button {
+  background-color: blue;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+
+.special {
+  border: 2px solid black;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+}
+
+.maxym {
+  background: white;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  border-radius: 12px;
+}
+
+.h1 {
+  font-size: 14px;
+  line-height: 24px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+
+.h2 {
+  font-size: 12px;
+  line-height: 22px;
+}
+
+.text {
+  color: rgba(30, 255, 255, 0.9);
+}
+
+.text--super {
+  color: rgba(20, 255, 18, 0.9);
+}
+
 body {
   margin: 0;
   font-family: Inter, "Segoe UI", Arial, sans-serif;
@@ -572,3 +635,5 @@ code {
 .cheatsheet code {
   white-space: nowrap;
 }
+
+/*# sourceMappingURL=main.css.map */

@@ -14,6 +14,67 @@
 *
   box-sizing: border-box
 
+// LESSON_11 PRACTICE
+
+.menu
+  margin: 0
+  padding: 0
+  list-style: none
+
+  &--item
+    background-color: red
+
+    &:hover
+      background-color: black
+
+  &--link
+    color: white
+
+    &:hover, &:focus, &:active
+      color: red
+
+    &:active
+      text-decoration: underline
+
+@mixin border-radius($value)
+  -webkit-border-radius: $value+px
+  -moz-border-radius: $value+px
+  border-radius: $value+px
+
+.button
+  background-color: blue
+  @include border-radius(10)
+
+.special
+  border: 2px solid black
+  @include border-radius(8)
+
+.maxym
+  background: white
+  @include border-radius(12)
+
+@mixin heading($value)
+  font-size: $value+px
+  line-height: $value + 10px
+
+.h1
+  @include heading(14)
+  @include border-radius(10)
+
+.h2
+  @include heading(12)
+
+@mixin color-transparent($red, $green, $blue)
+  color: rgba($red, $green, $blue, 0.9)
+
+.text
+  @include color-transparent(30, 255, 255)
+
+.text--super
+  @include color-transparent(20, 255, 18)
+
+// LESSON_11 PRACTICE
+
 body
   margin: 0
   font-family: vars.$font-stack

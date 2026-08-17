@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "sourceRoot": "",
+  "sources": [
+    "../example/example.sass"
+  ],
+  "names": [],
+  "mappings": "AAEA;EACI,kBAHW;EAIX;;;AAEJ;EACI;;;AAEJ;EACI;EACA;;;AAEJ;EACI;EACA",
+  "file": "base.css"
+}
