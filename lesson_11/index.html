@@ -1,0 +1,612 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Заняття 11. CSS-препроцесори Sass/SCSS</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="page-header">
+      <h1>CSS-препроцесори: Sass / SCSS</h1>
+      <p><code>sass sass/main.sass styles.css</code></p>
+    </header>
+
+    <main class="container">
+      <nav class="toc">
+        <h2>Зміст</h2>
+        <ol>
+          <li><a href="#less-vs-sass">Less vs Sass/SCSS</a></li>
+          <li><a href="#install">Встановлення та компіляція (Dart Sass)</a></li>
+          <li>
+            <a href="#variables">Змінні <code>$var</code></a>
+          </li>
+          <li>
+            <a href="#nesting">Вкладеність та <code>&amp;</code></a>
+          </li>
+          <li><a href="#mixin">@mixin</a></li>
+          <li><a href="#extend">@extend і тихі класи</a></li>
+          <li><a href="#function">@function</a></li>
+          <li><a href="#for">@for</a></li>
+          <li><a href="#each">@each</a></li>
+          <li><a href="#if">@if / @else</a></li>
+          <li><a href="#import">@import</a></li>
+          <li><a href="#use">@use</a></li>
+          <li><a href="#forward">@forward</a></li>
+          <li><a href="#content">@content</a></li>
+          <li><a href="#at-root">@at-root</a></li>
+          <li><a href="#cheatsheet">Шпаргалка</a></li>
+        </ol>
+      </nav>
+
+      <!-- 1. Less vs Sass/SCSS -->
+      <section class="example" id="less-vs-sass">
+        <h2><span class="step">1</span>Less vs Sass/SCSS</h2>
+        <p class="lead">
+          Обидва — CSS-препроцесори: додають змінні, вкладеність, міксини та
+          інші можливості поверх звичайного CSS. Ключові відмінності — у
+          синтаксисі, глибині мовних можливостей і процесі компіляції.
+        </p>
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Критерій</th>
+              <th>Less</th>
+              <th>Sass / SCSS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Змінні</td>
+              <td><code>@variable</code></td>
+              <td><code>$variable</code></td>
+            </tr>
+            <tr>
+              <td>Синтаксис</td>
+              <td>Один, дуже близький до CSS</td>
+              <td>
+                Два: SCSS (як CSS) і Sass (відступний, без <code>{ }</code> і
+                <code>;</code>)
+              </td>
+            </tr>
+            <tr>
+              <td>Логіка</td>
+              <td>Базовий набір можливостей</td>
+              <td>
+                Повноцінне керування потоком: <code>@if</code>,
+                <code>@for</code>, <code>@each</code>
+              </td>
+            </tr>
+            <tr>
+              <td>Міксини</td>
+              <td>
+                Будь-який клас можна підключити як міксин — гнучко, але менш
+                явно
+              </td>
+              <td>
+                Явне оголошення <code>@mixin</code> + <code>@include</code> —
+                зрозуміліше й структурованіше
+              </td>
+            </tr>
+            <tr>
+              <td>Компіляція</td>
+              <td>JavaScript</td>
+              <td>Dart Sass (сучасний стандарт), раніше — Ruby / LibSass</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p class="lead" style="margin-top: 18px">
+          Один і той самий стиль двома синтаксисами Sass — SCSS (з фігурними
+          дужками) та Sass (відступний, без дужок і крапки з комою):
+        </p>
+        <div class="compare-demo">
+          <div class="compare-card">
+            <h3>SCSS</h3>
+            <pre class="syntax"><code>.nav
+  ul {
+    margin: 0;
+  }
+  li {
+    display: inline-block;
+
+    &amp;:hover {
+      background: blue;
+    }
+  }
+}</code></pre>
+          </div>
+          <div class="compare-card">
+            <h3>Sass (indented)</h3>
+            <pre class="syntax"><code>.nav
+  ul
+    margin: 0
+  li
+    display: inline-block
+
+    &amp;:hover
+      background: blue</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Встановлення та компіляція -->
+      <section class="example" id="install">
+        <h2>
+          <span class="step">2</span>Встановлення та компіляція через Dart Sass
+        </h2>
+        <p class="lead">
+          Dart Sass — офіційна сучасна реалізація Sass (Ruby Sass та LibSass
+          давно застаріли). Ставимо через pnpm — він швидший за npm і
+          економніший на диску завдяки спільному кешу пакетів та жорстким
+          лінкам, разом із Node.js.
+        </p>
+        <pre
+          class="syntax"
+        ><code># глобально, щоб команда `sass` була доступна в будь-якій папці
+pnpm add -g sass
+
+# або тільки в межах проєкту (тоді запускати через pnpm exec sass ...)
+pnpm add -D sass
+
+sass --version</code></pre>
+        <p class="lead">На macOS альтернативно можна через Homebrew:</p>
+        <pre class="syntax"><code>brew install sass/sass/sass</code></pre>
+        <p class="lead">Одноразова компіляція файлу в CSS:</p>
+        <pre class="syntax"><code>sass sass/main.sass styles.css</code></pre>
+        <p class="lead">
+          Режим спостереження — Sass сам перекомпільовує файл при кожному
+          збереженні:
+        </p>
+        <pre
+          class="syntax"
+        ><code>sass --watch sass/main.sass:styles.css</code></pre>
+        <p class="lead">
+          За замовчуванням поруч зі <code>styles.css</code> Dart Sass створює ще
+          й файл <code>styles.css.map</code> (source map) та додає в кінець CSS
+          коментар <code>/*# sourceMappingURL=styles.css.map */</code>. Це не
+          помилка: мапа дозволяє браузеру в DevTools показувати, якому саме
+          рядку в <code>.sass</code>-файлі відповідає той чи інший стиль,
+          замість скомпільованого CSS.
+        </p>
+        <p class="lead">
+          Якщо мапа не потрібна — вимкнути її генерацію можна прапорцем
+          <code>--no-source-map</code>:
+        </p>
+        <pre
+          class="syntax"
+        ><code>sass --no-source-map sass/main.sass styles.css</code></pre>
+      </section>
+
+      <!-- 3. Змінні -->
+      <section class="example" id="variables">
+        <h2><span class="step">3</span>Змінні <code>$variable</code></h2>
+        <p class="lead">
+          Оголошуються через <code>$</code>, зберігають кольори, розміри,
+          шрифти. Можна передавати в міксини та функції як параметри.
+        </p>
+        <pre class="syntax"><code>$primary-color: #4caf50
+
+.button
+  background-color: $primary-color</code></pre>
+        <div class="demo swatch-row">
+          <div class="swatch swatch--primary">$primary-color</div>
+          <div class="swatch swatch--secondary">$secondary-color</div>
+          <div class="swatch swatch--accent">$accent-color</div>
+          <div class="swatch swatch--warn">$warn-color</div>
+        </div>
+      </section>
+
+      <!-- 3. Вкладеність -->
+      <section class="example" id="nesting">
+        <h2>
+          <span class="step">4</span>Вкладеність та батьківський селектор
+          <code>&amp;</code>
+        </h2>
+        <p class="lead">
+          Вкладені правила повторюють структуру HTML, а
+          <code>&amp;</code> посилається на батьківський селектор — зручно для
+          псевдокласів (<code>&amp;:hover</code>) та модифікаторів.
+        </p>
+        <pre class="syntax"><code>.nav
+  li
+    display: inline-block
+
+    &amp;:hover
+      background-color: blue
+
+    &amp;:first-child a
+      border-radius: 10px 0 0 10px</code></pre>
+        <div class="demo">
+          <ul class="nav-demo">
+            <li><a href="#">Головна</a></li>
+            <li><a href="#">Про нас</a></li>
+            <li><a href="#">Послуги</a></li>
+            <li><a href="#">Контакти</a></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 4. @mixin -->
+      <section class="example" id="mixin">
+        <h2><span class="step">5</span>@mixin / @include</h2>
+        <p class="lead">
+          Міксин групує стилі, що повторюються, і може приймати параметри — так
+          один набір правил підлаштовується під різні елементи.
+        </p>
+        <pre class="syntax"><code>@mixin border-radius($radius)
+  -webkit-border-radius: $radius
+  -moz-border-radius: $radius
+  border-radius: $radius
+
+.button
+  @include border-radius(3px)
+  background-color: blue</code></pre>
+        <div class="demo mixin-demo">
+          <button class="btn-mixin-demo">@include border-radius(3px)</button>
+          <button class="alert-mixin-demo">@include border-radius(20px)</button>
+        </div>
+      </section>
+
+      <!-- 5. @extend + placeholder -->
+      <section class="example" id="extend">
+        <h2>
+          <span class="step">6</span>@extend і тихі класи (placeholder
+          <code>%</code>)
+        </h2>
+        <p class="lead">
+          <code>@extend</code> дозволяє одному селектору успадкувати стилі
+          іншого, уникаючи дублювання. Якщо базовий клас не потрібен сам по собі
+          в розмітці — його краще оголосити як <b>тихий клас</b> через
+          <code>%</code>: він не потрапить у скомпільований CSS, поки його хоч
+          раз не розширили.
+        </p>
+        <pre class="syntax"><code>.btn-basic
+  padding: 10px 15px
+  border-radius: 4px
+
+.btn-primary
+  @extend .btn-basic
+  background-color: blue
+
+// тихий клас
+%flex-center
+  display: flex
+  justify-content: center
+  align-items: center
+
+.container
+  @extend %flex-center</code></pre>
+        <p class="lead">Розширення звичайного класу <code>.btn-basic</code>:</p>
+        <div class="demo">
+          <button class="btn-primary-extend">@extend .btn-basic</button>
+          <button class="btn-danger-extend">@extend .btn-basic</button>
+        </div>
+        <p class="lead" style="margin-top: 14px">
+          Розширення тихого класу <code>%flex-center</code>:
+        </p>
+        <div class="demo placeholder-demo">
+          <div class="placeholder-box">@extend %flex-center</div>
+          <div class="placeholder-box--alt">@extend %flex-center</div>
+        </div>
+      </section>
+
+      <!-- 6. @function -->
+      <section class="example" id="function">
+        <h2><span class="step">7</span>@function</h2>
+        <p class="lead">
+          На відміну від міксина, функція <b>повертає значення</b> (через
+          <code>@return</code>), яке можна одразу підставити у властивість.
+        </p>
+        <pre class="syntax"><code>@function calculate-padding($size)
+  @return 10px * $size
+
+.container
+  padding: calculate-padding(2)</code></pre>
+        <div class="demo function-demo">
+          <div class="padding-box padding-box--sm">calculate-padding(1)</div>
+          <div class="padding-box padding-box--md">calculate-padding(2)</div>
+          <div class="padding-box padding-box--lg">calculate-padding(3)</div>
+        </div>
+      </section>
+
+      <!-- 7. @for -->
+      <section class="example" id="for">
+        <h2><span class="step">8</span>@for</h2>
+        <p class="lead">
+          Цикл, що автоматизує створення схожих класів за числовим шаблоном.
+        </p>
+        <pre class="syntax"><code>@for $i from 1 through 5
+  .col-#{$i}
+    width: 20% * $i</code></pre>
+        <div class="demo">
+          <div class="for-demo">
+            <div class="col-1">.col-1 → 20%</div>
+            <div class="col-2">.col-2 → 40%</div>
+            <div class="col-3">.col-3 → 60%</div>
+            <div class="col-4">.col-4 → 80%</div>
+            <div class="col-5">.col-5 → 100%</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8. @each -->
+      <section class="example" id="each">
+        <h2><span class="step">9</span>@each</h2>
+        <p class="lead">
+          Проходить по списку або мапі <code>ключ: значення</code> й генерує
+          стиль для кожного елемента. Мапа кольорів нижче взята з
+          <code>lib/_colors.sass</code> і потрапила сюди через
+          <a href="#forward">@forward</a>.
+        </p>
+        <pre
+          class="syntax"
+        ><code>$colors: (red: #dc2626, green: #16a34a, blue: #2563eb)
+
+@each $name, $hex in $colors
+  .text-#{$name}
+    color: $hex</code></pre>
+        <div class="demo each-demo">
+          <div class="text-red">.text-red</div>
+          <div class="text-green">.text-green</div>
+          <div class="text-blue">.text-blue</div>
+          <div class="text-amber">.text-amber</div>
+          <div class="text-violet">.text-violet</div>
+        </div>
+      </section>
+
+      <!-- 9. @if -->
+      <section class="example" id="if">
+        <h2><span class="step">10</span>@if / @else</h2>
+        <p class="lead">
+          Умовна логіка на етапі компіляції. Тут міксин
+          <code>themed-button($theme)</code>
+          викликається двічі з різними аргументами — і для кожного виклику Sass
+          одразу вирішує, яку гілку застосувати.
+        </p>
+        <pre class="syntax"><code>@mixin themed-button($theme)
+  @if $theme == "dark"
+    background-color: black
+    color: white
+  @else
+    background-color: white
+    color: black
+
+.btn-dark
+  @include themed-button("dark")
+
+.btn-light
+  @include themed-button("light")</code></pre>
+        <div class="demo if-demo">
+          <button class="btn-theme-dark">themed-button("dark")</button>
+          <button class="btn-theme-light">themed-button("light")</button>
+        </div>
+      </section>
+
+      <!-- 10. @import -->
+      <section class="example" id="import">
+        <h2>
+          <span class="step">11</span>@import
+          <span style="font-weight: 400; font-size: 0.6em; color: #64748b"
+            >(застарілий підхід)</span
+          >
+        </h2>
+        <p class="lead">
+          Класичний спосіб розбити стилі на файли. На відміну від Less, у
+          Sass/SCSS
+          <code>@import</code> також вміє вставляти звичайний
+          <code>.css</code> файл прямо в результат компіляції.
+        </p>
+        <pre
+          class="syntax"
+        ><code>@import "reset"      // reset.css вставляється як є
+@import "variables"  // variables.sass
+@import "mixins"     // mixins.sass
+
+.body
+  font-family: $primary-font</code></pre>
+        <p class="note">
+          Sass офіційно визнав <code>@import</code> застарілим: усі змінні,
+          міксини й функції потрапляють в один спільний простір імен, тож легко
+          отримати конфлікт назв між файлами. Сучасна заміна —
+          <a href="#use">@use</a> та <a href="#forward">@forward</a>.
+        </p>
+      </section>
+
+      <!-- 11. @use -->
+      <section class="example" id="use">
+        <h2><span class="step">12</span>@use</h2>
+        <p class="lead">
+          Підключає файл як окремий <b>простір імен</b> — звертання йде через
+          <code>namespace.$variable</code> або
+          <code>namespace.mixin-name()</code>. Стилі файлу застосовуються лише
+          один раз, навіть якщо на нього роблять <code>@use</code> з кількох
+          місць.
+        </p>
+        <pre class="syntax"><code>// _variables.sass
+$primary-color: blue
+
+// _mixins.sass
+@mixin example-mixin
+  color: $primary-color
+
+// main.sass
+@use "variables" as vars
+@use "mixins"
+
+.body
+  @include mixins.example-mixin
+  color: vars.$primary-color</code></pre>
+        <p class="lead">Реальна структура файлів цього заняття:</p>
+        <pre class="syntax"><code>sass/
+├── main.sass          @use "variables" as vars
+│                       @use "functions" as fn
+│                       @use "mixins" as mix
+│                       @use "lib" as lib
+├── _variables.sass
+├── _functions.sass
+├── _mixins.sass        @use "variables" as vars
+├── _placeholders.sass
+└── lib/
+    ├── _index.sass     @forward "colors"
+    └── _colors.sass</code></pre>
+      </section>
+
+      <!-- 12. @forward -->
+      <section class="example" id="forward">
+        <h2><span class="step">13</span>@forward</h2>
+        <p class="lead">
+          Перенаправляє вміст одного файлу далі, не змушуючи споживача
+          звертатись до нього напряму. Так будують "публічний API" бібліотеки
+          стилів.
+        </p>
+        <pre class="syntax"><code>// lib/_colors.sass
+$colors: (red: #dc2626, green: #16a34a, blue: #2563eb)
+
+// lib/_index.sass
+@forward "colors"
+
+// main.sass
+@use "lib" as lib
+
+@each $name, $hex in lib.$colors
+  .text-#{$name}
+    color: $hex</code></pre>
+        <p class="note">
+          Мапа кольорів у прикладі з <a href="#each">@each</a> вище фізично
+          лежить у <code>lib/_colors.sass</code>, а
+          <code>main.sass</code> ніколи не імпортує цей файл напряму — лише
+          <code>lib/_index.sass</code> через <code>@forward</code>.
+        </p>
+      </section>
+
+      <!-- 13. @content -->
+      <section class="example" id="content">
+        <h2><span class="step">14</span>@content</h2>
+        <p class="lead">
+          Дозволяє передати в міксин блок стилів, який підставляється туди, де в
+          міксині стоїть
+          <code>@content</code>. Класичний приклад — обгортка для медіа-запитів.
+        </p>
+        <pre class="syntax"><code>@mixin responsive($breakpoint)
+  @media (min-width: $breakpoint)
+    @content
+
+.container
+  width: 100%
+
+  @include responsive(700px)
+    width: 50%</code></pre>
+        <p class="lead">
+          Зміни ширину вікна браузера — блок нижче реагує на брейкпоінт 700px:
+        </p>
+        <div class="demo">
+          <div class="responsive-demo-box"></div>
+        </div>
+      </section>
+
+      <!-- 14. @at-root -->
+      <section class="example" id="at-root">
+        <h2><span class="step">15</span>@at-root</h2>
+        <p class="lead">
+          Виводить вкладені стилі на кореневий рівень скомпільованого CSS,
+          навіть якщо в Sass вони написані всередині іншого селектора. Зручно,
+          коли хочеться логічно згрупувати код, але не отримати зайву
+          вкладеність (і зайву специфічність) у результаті.
+        </p>
+        <pre class="syntax"><code>.card
+  padding: 18px
+
+  @at-root
+    .card-badge
+      position: absolute
+      top: -12px
+      right: -12px</code></pre>
+        <p class="lead">
+          Без <code>@at-root</code> селектор
+          <code>.card-badge</code> скомпілювався б у
+          <code>.card .card-badge</code>. З ним — бейдж виходить окремим,
+          "плоским" класом <code>.card-badge</code>, який можна перевикористати
+          будь-де на сторінці:
+        </p>
+        <div class="demo at-root-demo">
+          <div class="at-root-card">
+            .at-root-card
+            <span class="at-root-badge">NEW</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Шпаргалка -->
+      <section class="example" id="cheatsheet">
+        <h2>Шпаргалка</h2>
+        <table class="cheatsheet">
+          <thead>
+            <tr>
+              <th>Директива</th>
+              <th>Навіщо</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>$var</code></td>
+              <td>Змінна: колір, розмір, шрифт тощо</td>
+            </tr>
+            <tr>
+              <td><code>&amp;</code></td>
+              <td>Посилання на батьківський селектор у вкладеності</td>
+            </tr>
+            <tr>
+              <td><code>@mixin</code> / <code>@include</code></td>
+              <td>Перевикористовуваний блок стилів з параметрами</td>
+            </tr>
+            <tr>
+              <td><code>@extend</code></td>
+              <td>Успадкувати стилі іншого селектора</td>
+            </tr>
+            <tr>
+              <td><code>%placeholder</code></td>
+              <td>"Тихий" клас — існує лише для <code>@extend</code></td>
+            </tr>
+            <tr>
+              <td><code>@function</code></td>
+              <td>Обчислення, що повертає значення</td>
+            </tr>
+            <tr>
+              <td><code>@for</code></td>
+              <td>Цикл за числовим діапазоном</td>
+            </tr>
+            <tr>
+              <td><code>@each</code></td>
+              <td>Цикл за списком або мапою</td>
+            </tr>
+            <tr>
+              <td><code>@if / @else</code></td>
+              <td>Умовна логіка на етапі компіляції</td>
+            </tr>
+            <tr>
+              <td><code>@import</code></td>
+              <td>Застарілий спосіб підключення файлів</td>
+            </tr>
+            <tr>
+              <td><code>@use</code></td>
+              <td>Сучасне підключення файлу як простору імен</td>
+            </tr>
+            <tr>
+              <td><code>@forward</code></td>
+              <td>Перенаправлення вмісту файлу далі (публічний API)</td>
+            </tr>
+            <tr>
+              <td><code>@content</code></td>
+              <td>Вставка блоку стилів, переданого в міксин</td>
+            </tr>
+            <tr>
+              <td><code>@at-root</code></td>
+              <td>Вивести стиль поза поточною вкладеністю</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </body>
+</html>

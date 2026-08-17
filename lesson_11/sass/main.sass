@@ -1,0 +1,452 @@
+// ============================================================
+// main.sass — вхідний файл. Тут @use збирає всі партіали докупи.
+// ============================================================
+@use "sass:math"
+@use "variables" as vars
+@use "functions" as fn
+@use "mixins" as mix
+@use "placeholders"
+@use "lib" as lib
+
+// ------------------------------------------------------------
+// Базова "оболонка" сторінки
+// ------------------------------------------------------------
+*
+  box-sizing: border-box
+
+body
+  margin: 0
+  font-family: vars.$font-stack
+  line-height: 1.6
+  color: vars.$text-color
+  background: vars.$page-color
+
+code
+  padding: 2px 6px
+  color: vars.$primary-color-dark
+  background: vars.$primary-color-light
+  border-radius: 5px
+  font-size: 0.9em
+
+.page-header
+  padding: 40px 20px
+  color: vars.$surface-color
+  text-align: center
+  background: linear-gradient(135deg, vars.$primary-color, vars.$primary-color-dark)
+
+.page-header h1
+  margin: 0
+  font-size: 2rem
+
+.page-header p
+  max-width: 640px
+  margin: 10px auto 0
+  opacity: 0.95
+
+.container
+  width: min(100% - 32px, 1080px)
+  margin: 32px auto 64px
+
+.toc
+  padding: 20px 24px
+  margin-bottom: 26px
+  background: vars.$surface-color
+  border: 1px solid vars.$border-color
+  border-radius: vars.$radius-base
+
+.toc h2
+  margin-top: 0
+
+.toc ol
+  columns: 2
+  padding-left: 20px
+
+.toc a
+  color: vars.$secondary-color
+
+.example
+  margin-bottom: 26px
+  padding: 24px
+  background: vars.$surface-color
+  border: 1px solid vars.$border-color
+  border-radius: vars.$radius-base
+  box-shadow: 0 8px 24px rgb(15 23 42 / 10%)
+  scroll-margin-top: 16px
+
+.example h2
+  margin-top: 0
+  color: vars.$primary-color-dark
+
+.example h2 .step
+  display: inline-block
+  min-width: 28px
+  padding: 2px 6px
+  margin-right: 8px
+  font-size: 0.7em
+  color: vars.$surface-color
+  text-align: center
+  background: vars.$primary-color
+  border-radius: 6px
+  vertical-align: middle
+
+.lead
+  color: vars.$muted-color
+
+.syntax
+  padding: 12px 14px
+  overflow-x: auto
+  background: vars.$gray-800
+  border-left: 4px solid vars.$primary-color
+  border-radius: 8px
+
+.syntax code
+  padding: 0
+  color: vars.$gray-100
+  background: none
+  white-space: pre
+
+.demo
+  display: flex
+  flex-wrap: wrap
+  align-items: center
+  gap: 16px
+  min-height: 90px
+  padding: 20px
+  background: vars.$page-color
+  border: 2px dashed vars.$border-color
+  border-radius: 12px
+
+.note
+  padding: 12px 16px
+  margin-top: 14px
+  font-size: 0.95em
+  background: vars.$warn-color-light
+  border-left: 4px solid vars.$warn-color
+  border-radius: 8px
+
+// ------------------------------------------------------------
+// 1. Less vs Sass/SCSS — таблиця й порівняння синтаксису
+// ------------------------------------------------------------
+.compare-table
+  width: 100%
+  border-collapse: collapse
+
+.compare-table th, .compare-table td
+  padding: 10px 12px
+  text-align: left
+  vertical-align: top
+  border-bottom: 1px solid vars.$border-color
+
+.compare-table th
+  color: vars.$muted-color
+  font-size: 0.85em
+  text-transform: uppercase
+  letter-spacing: 0.03em
+
+.compare-demo
+  display: flex
+  flex-wrap: wrap
+  gap: 16px
+
+.compare-card
+  flex: 1 1 260px
+  padding: 16px
+  background: vars.$page-color
+  border: 1px solid vars.$border-color
+  border-radius: 12px
+
+.compare-card h3
+  margin-top: 0
+  color: vars.$primary-color-dark
+
+.compare-card pre
+  margin: 0
+
+// ------------------------------------------------------------
+// 3. Змінні ($primary-color тощо)
+// ------------------------------------------------------------
+.swatch-row
+  display: flex
+  flex-wrap: wrap
+  gap: 14px
+
+.swatch
+  display: flex
+  align-items: center
+  justify-content: center
+  width: 120px
+  height: 70px
+  color: vars.$surface-color
+  font-weight: 700
+  font-size: 0.85em
+  text-align: center
+  border-radius: 10px
+
+.swatch--primary
+  background: vars.$primary-color
+
+.swatch--secondary
+  background: vars.$secondary-color
+
+.swatch--accent
+  background: vars.$accent-color
+
+.swatch--warn
+  background: vars.$warn-color
+
+// ------------------------------------------------------------
+// 4. Вкладеність і батьківський селектор &
+// ------------------------------------------------------------
+.nav-demo
+  display: flex
+  gap: 0
+  padding: 0
+  margin: 0
+  list-style: none
+  border-radius: 10px
+  overflow: hidden
+
+  li
+    display: inline-block
+
+    a
+      display: block
+      padding: 12px 18px
+      color: vars.$text-color
+      text-decoration: none
+      background: vars.$page-color
+
+      &:hover
+        color: vars.$surface-color
+        background: vars.$secondary-color
+
+    &:first-child a
+      border-radius: 10px 0 0 10px
+
+    &:last-child a
+      border-radius: 0 10px 10px 0
+
+// ------------------------------------------------------------
+// 5. @mixin
+// ------------------------------------------------------------
+.mixin-demo
+  display: flex
+  flex-wrap: wrap
+  gap: 14px
+
+.btn-mixin-demo
+  @include mix.border-radius(3px)
+  padding: 10px 18px
+  color: vars.$surface-color
+  font-weight: 600
+  background: vars.$secondary-color
+  border: none
+
+.alert-mixin-demo
+  @include mix.border-radius(20px)
+  padding: 10px 18px
+  color: vars.$surface-color
+  font-weight: 600
+  background: vars.$accent-color
+
+// ------------------------------------------------------------
+// 6. @extend (реальний клас) + тихі класи (placeholder %)
+// ------------------------------------------------------------
+.btn-basic
+  display: inline-block
+  padding: 10px 18px
+  cursor: pointer
+  border: none
+  border-radius: 4px
+
+.btn-primary-extend
+  @extend .btn-basic
+  color: vars.$surface-color
+  background: vars.$secondary-color
+
+.btn-danger-extend
+  @extend .btn-basic
+  color: vars.$surface-color
+  background: vars.$accent-color
+
+.placeholder-demo
+  display: flex
+  flex-wrap: wrap
+  gap: 14px
+
+.placeholder-box
+  @extend %flex-center
+  width: 140px
+  height: 70px
+  color: vars.$surface-color
+  font-weight: 600
+  text-align: center
+  background: vars.$primary-color
+  border-radius: 10px
+
+.placeholder-box--alt
+  @extend %flex-center
+  width: 140px
+  height: 70px
+  color: vars.$surface-color
+  font-weight: 600
+  text-align: center
+  background: vars.$gray-800
+  border-radius: 10px
+
+// ------------------------------------------------------------
+// 7. @function
+// ------------------------------------------------------------
+.function-demo
+  display: flex
+  flex-wrap: wrap
+  align-items: flex-end
+  gap: 14px
+
+.padding-box
+  color: vars.$surface-color
+  font-size: 0.85em
+  font-weight: 700
+  text-align: center
+  background: vars.$primary-color-dark
+  border-radius: 8px
+
+.padding-box--sm
+  padding: fn.calculate-padding(1)
+
+.padding-box--md
+  padding: fn.calculate-padding(2)
+
+.padding-box--lg
+  padding: fn.calculate-padding(3)
+
+// ------------------------------------------------------------
+// 8. @for — цикл, що генерує серію класів
+// ------------------------------------------------------------
+.for-demo
+  display: flex
+  flex-direction: column
+  gap: 8px
+  width: 100%
+
+@for $i from 1 through 5
+  .col-#{$i}
+    display: flex
+    align-items: center
+    padding: 6px 10px
+    color: vars.$surface-color
+    font-size: 0.8em
+    font-weight: 700
+    width: math.percentage($i * 0.2)
+    background: vars.$secondary-color
+    border-radius: 6px
+
+// ------------------------------------------------------------
+// 9. @each — ітерація по мапі кольорів (forward-нута з lib/)
+// ------------------------------------------------------------
+.each-demo
+  display: flex
+  flex-wrap: wrap
+  gap: 10px
+
+@each $name, $hex in lib.$colors
+  .text-#{$name}
+    display: flex
+    align-items: center
+    justify-content: center
+    width: 100px
+    height: 54px
+    color: $hex
+    font-weight: 700
+    background: vars.$surface-color
+    border: 2px solid $hex
+    border-radius: 8px
+
+// ------------------------------------------------------------
+// 10. @if / @else — умовна логіка всередині міксину
+// ------------------------------------------------------------
+.if-demo
+  display: flex
+  flex-wrap: wrap
+  gap: 14px
+
+.btn-theme-dark
+  @include mix.themed-button("dark")
+  padding: 10px 20px
+  font-weight: 600
+  border-radius: 8px
+
+.btn-theme-light
+  @include mix.themed-button("light")
+  padding: 10px 20px
+  font-weight: 600
+  border-radius: 8px
+
+// ------------------------------------------------------------
+// 14. @content — міксин responsive() вставляє переданий блок у @media
+// ------------------------------------------------------------
+.responsive-demo-box
+  width: 100%
+  padding: 16px
+  color: vars.$surface-color
+  font-weight: 700
+  text-align: center
+  background: vars.$accent-color
+  border-radius: 10px
+
+  &::after
+    content: "Ширина вікна < 700px"
+
+  @include mix.responsive(700px)
+    background: vars.$primary-color
+
+    &::after
+      content: "Ширина вікна ≥ 700px (спрацював @content)"
+
+// ------------------------------------------------------------
+// 15. @at-root — виведення стилю поза поточною вкладеністю
+// ------------------------------------------------------------
+.at-root-demo
+  position: relative
+  padding: 20px
+
+.at-root-card
+  position: relative
+  width: 220px
+  padding: 18px
+  background: vars.$page-color
+  border: 1px solid vars.$border-color
+  border-radius: 12px
+
+  @at-root
+    .at-root-badge
+      position: absolute
+      top: -12px
+      right: -12px
+      padding: 4px 10px
+      color: vars.$surface-color
+      font-size: 0.75em
+      font-weight: 700
+      background: vars.$accent-color
+      border-radius: 999px
+      box-shadow: 0 4px 10px rgb(220 38 38 / 40%)
+
+// ------------------------------------------------------------
+// Підсумкова шпаргалка
+// ------------------------------------------------------------
+.cheatsheet
+  width: 100%
+  border-collapse: collapse
+
+.cheatsheet th, .cheatsheet td
+  padding: 8px 10px
+  text-align: left
+  border-bottom: 1px solid vars.$border-color
+
+.cheatsheet th
+  color: vars.$muted-color
+  font-size: 0.85em
+  text-transform: uppercase
+
+.cheatsheet code
+  white-space: nowrap
