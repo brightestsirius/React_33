@@ -413,64 +413,35 @@ code {
   width: 100%;
 }
 
-.col-1 {
+.col-5, .col-4, .col-3, .col-2, .col-1 {
   display: flex;
   align-items: center;
   padding: 6px 10px;
   color: #ffffff;
   font-size: 0.8em;
   font-weight: 700;
-  width: 20%;
   background: #2563eb;
   border-radius: 6px;
+}
+
+.col-1 {
+  width: 20%;
 }
 
 .col-2 {
-  display: flex;
-  align-items: center;
-  padding: 6px 10px;
-  color: #ffffff;
-  font-size: 0.8em;
-  font-weight: 700;
   width: 40%;
-  background: #2563eb;
-  border-radius: 6px;
 }
 
 .col-3 {
-  display: flex;
-  align-items: center;
-  padding: 6px 10px;
-  color: #ffffff;
-  font-size: 0.8em;
-  font-weight: 700;
   width: 60%;
-  background: #2563eb;
-  border-radius: 6px;
 }
 
 .col-4 {
-  display: flex;
-  align-items: center;
-  padding: 6px 10px;
-  color: #ffffff;
-  font-size: 0.8em;
-  font-weight: 700;
   width: 80%;
-  background: #2563eb;
-  border-radius: 6px;
 }
 
 .col-5 {
-  display: flex;
-  align-items: center;
-  padding: 6px 10px;
-  color: #ffffff;
-  font-size: 0.8em;
-  font-weight: 700;
   width: 100%;
-  background: #2563eb;
-  border-radius: 6px;
 }
 
 .each-demo {
@@ -544,6 +515,21 @@ code {
   border-radius: 8px;
 }
 
+.padding-sm {
+  padding: 4px;
+  margin: calc(8px * 1px);
+}
+
+.padding-md {
+  padding: 8px;
+  margin: calc(16px * 1px);
+}
+
+.padding-lg {
+  padding: 16px;
+  margin: calc(32px * 1px);
+}
+
 .if-demo {
   display: flex;
   flex-wrap: wrap;
@@ -566,6 +552,53 @@ code {
   padding: 10px 20px;
   font-weight: 600;
   border-radius: 8px;
+}
+
+.container {
+  width: 100%;
+  padding: 0 16px;
+}
+@media (min-width: 768px) {
+  .container {
+    max-width: 1200px;
+    padding: 0 32px;
+  }
+}
+@media (min-width: 900px) {
+  .container {
+    max-width: 1400px;
+    padding: 0 48px;
+  }
+}
+.container--iner {
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+@media (min-width: 500px) {
+  .container--iner {
+    max-width: 1280px;
+  }
+}
+
+.box {
+  width: 30px;
+  height: 30px;
+  background: black;
+}
+@media (min-width: 768px) {
+  .box {
+    width: 60px;
+    height: 60px;
+    background: red;
+  }
+}
+@media (min-width: 1200px) {
+  .box {
+    width: 90px;
+    height: 90px;
+    background: blue;
+  }
 }
 
 .responsive-demo-box {

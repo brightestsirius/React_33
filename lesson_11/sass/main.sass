@@ -2,9 +2,9 @@
 // main.sass — вхідний файл. Тут @use збирає всі партіали докупи.
 // ============================================================
 @use "sass:math"
-@use "variables" as vars
-@use "functions" as fn
-@use "mixins" as mix
+@use "./variables" as vars
+@use "./functions" as fn
+@use "./mixins" as mix
 @use "placeholders"
 @use "lib" as lib
 
@@ -390,17 +390,31 @@ code
   gap: 8px
   width: 100%
 
+@function calculate-width($value)
+  @return 20% * $value
+
+%col
+  display: flex
+  align-items: center
+  padding: 6px 10px
+  color: vars.$surface-color
+  font-size: 0.8em
+  font-weight: 700
+  background: vars.$secondary-color
+  border-radius: 6px
+
+// .col-1
+//   @extend %col
+//   width: calculate-width(1)
+
+// .col-2
+//   @extend %col
+//   width: calculate-width(2)
+
 @for $i from 1 through 5
   .col-#{$i}
-    display: flex
-    align-items: center
-    padding: 6px 10px
-    color: vars.$surface-color
-    font-size: 0.8em
-    font-weight: 700
-    width: math.percentage($i * 0.2)
-    background: vars.$secondary-color
-    border-radius: 6px
+    @extend %col
+    width: calculate-width($i)
 
 // ------------------------------------------------------------
 // 9. @each — ітерація по мапі кольорів (forward-нута з lib/)
@@ -410,18 +424,29 @@ code
   flex-wrap: wrap
   gap: 10px
 
-@each $name, $hex in lib.$colors
-  .text-#{$name}
+@each $key, $value in lib.$colors
+  .text-#{$key}
     display: flex
     align-items: center
     justify-content: center
     width: 100px
     height: 54px
-    color: $hex
+    color: $value
     font-weight: 700
     background: vars.$surface-color
-    border: 2px solid $hex
+    border: 2px solid $value
     border-radius: 8px
+
+$spacing: (
+    "sm": 4px,
+    "md": 8px,
+    "lg": 16px,
+)
+
+@each $key, $value in $spacing
+  .padding-#{$key}
+    padding: $value
+    margin: 2px * $value
 
 // ------------------------------------------------------------
 // 10. @if / @else — умовна логіка всередині міксину
@@ -432,7 +457,7 @@ code
   gap: 14px
 
 .btn-theme-dark
-  @include mix.themed-button("dark")
+  @include mix.themed-button("dar'k")
   padding: 10px 20px
   font-weight: 600
   border-radius: 8px
@@ -446,6 +471,45 @@ code
 // ------------------------------------------------------------
 // 14. @content — міксин responsive() вставляє переданий блок у @media
 // ------------------------------------------------------------
+@mixin responsive($breakpoint)
+  @media (min-width: $breakpoint)
+    @content
+
+.container
+  width: 100%
+  padding: 0 16px
+
+  @include responsive(768px)
+    max-width: 1200px
+    padding: 0 32px
+
+  @include responsive(900px)
+    max-width: 1400px
+    padding: 0 48px
+
+  &--iner
+    width: 100%
+    max-width: 1080px
+    margin: 0 auto
+
+    @include responsive(500px)
+      max-width: 1280px
+
+.box
+  width: 30px
+  height: 30px
+  background: black
+
+  @include responsive(768px)
+    width: 60px
+    height: 60px
+    background: red
+
+  @include responsive(1200px)
+    width: 90px
+    height: 90px
+    background: blue
+
 .responsive-demo-box
   width: 100%
   padding: 16px

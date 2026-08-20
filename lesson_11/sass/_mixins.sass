@@ -13,10 +13,14 @@
 
 // Міксин з умовою @if / @else всередині — обирає тему на етапі компіляції
 @mixin themed-button($theme)
-  @if $theme == "dark"
+  @if $theme == "dar'k" // true/false
     color: vars.$white
     background: vars.$text-color
     border: 1px solid vars.$text-color
+  @else if $theme == "pink" // true/false
+    color: pink
+    background: darkpink
+    border: 1px solid pink
   @else
     color: vars.$text-color
     background: vars.$white
