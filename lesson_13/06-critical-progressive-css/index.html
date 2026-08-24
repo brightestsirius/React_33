@@ -39,29 +39,41 @@
       onload підмінює rel на "stylesheet" — прийом "loadCSS".
       noscript — резервний варіант, якщо JS вимкнено.
     -->
-    <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <link
+      rel="preload"
+      href="styles.css"
+      as="style"
+      onload="
+        this.onload = null;
+        this.rel = 'stylesheet';
+      "
+    />
     <noscript><link rel="stylesheet" href="styles.css" /></noscript>
   </head>
   <body>
     <header>
       <h1>Critical CSS в дії</h1>
-      <p>Цей блок рендериться миттєво, бо його стилі вже лежать у &lt;head&gt;</p>
+      <p>
+        Цей блок рендериться миттєво, бо його стилі вже лежать у &lt;head&gt;
+      </p>
     </header>
 
     <main>
       <section class="below-fold">
         <h2>Контент нижче лінії згину (below the fold)</h2>
         <p>
-          Стилі для цієї секції підʼїжджають окремим файлом <code>styles.css</code> асинхронно і не затримують перший
-          рендер сторінки.
+          Стилі для цієї секції підʼїжджають окремим файлом
+          <code>styles.css</code> асинхронно і не затримують перший рендер
+          сторінки.
         </p>
       </section>
 
       <section class="progressive">
         <h2>Progressive Enhancement через @supports</h2>
         <p>
-          Базовий вигляд карток працює скрізь (flexbox / fallback). Якщо браузер підтримує CSS Grid і CSS-змінні —
-          застосовується покращена сітка (дивись <code>@supports</code> у styles.css).
+          Базовий вигляд карток працює скрізь (flexbox / fallback). Якщо браузер
+          підтримує CSS Grid і CSS-змінні — застосовується покращена сітка
+          (дивись <code>@supports</code> у styles.css).
         </p>
         <div class="cards">
           <div class="card">Картка 1</div>
