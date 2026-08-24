@@ -1,0 +1,33 @@
+@use "../sass/lib" as lib
+
+body
+  font-family: lib.$font-stack
+  background: lib.$color-bg
+  @include lib.page-container
+
+section
+  @include lib.card
+
+// стилізація SVG-елемента як звичайного DOM-елемента
+.box
+  fill: tomato
+  stroke: #333
+  stroke-width: 4
+  opacity: 0.85
+  transition: fill 0.3s ease
+
+  &:hover
+    fill: teal
+
+// currentColor дозволяє іконці підхоплювати колір тексту батька
+.icon
+  color: crimson
+  cursor: pointer
+  transition: transform 0.25s ease, color 0.25s ease
+
+  path
+    fill: currentColor
+
+  &:hover
+    color: hotpink
+    transform: scale(1.15)

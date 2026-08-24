@@ -1,0 +1,38 @@
+@use "variables" as vars
+
+// Однаковий скидання box-sizing у декількох прикладах (a11y)
+@mixin box-sizing-reset
+  box-sizing: border-box
+
+// Обгортка-контейнер: max-width + центрування + внутрішні відступи
+@mixin page-container($max-width: 700px, $padding: 40px 20px)
+  max-width: $max-width
+  margin: 0 auto
+  padding: $padding
+
+// Видимий фокус для інтерактивних елементів (клавіатурна навігація, WCAG 2.4.7)
+@mixin focus-ring
+  outline: 3px solid vars.$color-primary
+  outline-offset: 2px
+
+// Однакова первинна кнопка (04-a11y-semantic, 05-a11y-aria)
+@mixin button-primary
+  cursor: pointer
+  border: none
+  border-radius: 6px
+  background: vars.$color-primary
+  color: #fff
+  padding: 10px 16px
+  font: inherit
+
+// Картка-секція: або з тінню (02), або з рамкою замість тіні (05)
+@mixin card($shadow: true)
+  background: #fff
+  border-radius: 12px
+  padding: 24px
+  margin-bottom: 24px
+
+  @if $shadow
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1)
+  @else
+    border: 1px solid vars.$color-border

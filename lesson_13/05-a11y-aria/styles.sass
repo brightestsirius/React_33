@@ -1,0 +1,74 @@
+@use "../sass/lib" as lib
+
+*
+  @include lib.box-sizing-reset
+
+body
+  font-family: lib.$font-stack
+  color: lib.$color-text
+  @include lib.page-container
+
+section
+  @include lib.card($shadow: false)
+
+button:focus-visible,
+input:focus-visible
+  @include lib.focus-ring
+
+.tabs
+  display: flex
+  gap: 4px
+  border-bottom: 2px solid lib.$color-border
+
+.tab
+  padding: 10px 18px
+  border: none
+  background: none
+  cursor: pointer
+  font: inherit
+  border-bottom: 3px solid transparent
+  margin-bottom: -2px
+
+  &[aria-selected="true"]
+    border-bottom-color: lib.$color-primary
+    font-weight: 700
+    color: lib.$color-primary
+
+.panel
+  padding: 16px 4px
+
+#add-to-cart
+  @include lib.button-primary
+
+.status
+  margin-top: 12px
+  font-weight: 600
+  color: #16a34a
+  min-height: 24px
+
+.field
+  margin-bottom: 16px
+
+label
+  display: flex
+  align-items: center
+  gap: 8px
+  font-weight: 600
+
+input[type="text"]
+  display: block
+  margin-top: 4px
+  padding: 8px
+  border: 1px solid #ccc
+  border-radius: 6px
+  font: inherit
+  width: 100%
+
+.disabled
+  background: #ccc
+  color: lib.$color-muted
+  border: none
+  border-radius: 6px
+  padding: 10px 16px
+  font: inherit
+  cursor: not-allowed

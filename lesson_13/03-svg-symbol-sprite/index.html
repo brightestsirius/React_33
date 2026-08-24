@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SVG спрайт: symbol + use</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>Повторне використання SVG: &lt;symbol&gt; + &lt;use&gt;</h1>
+    <p>
+      Іконки визначені один раз у прихованому спрайті нижче, а потім використовуються скільки завгодно разів через
+      <code>&lt;use&gt;</code> — це зменшує дублювання коду і кількість запитів до сервера.
+    </p>
+    <p>
+      <strong>Наведи курсор на будь-яку іконку на сторінці</strong> — колір і розмір змінюються через CSS
+      <code>:hover</code>. Це працює однаково для символів, визначених локально (серце, телефон, email), і для
+      символів з окремого файлу <code>sprite.svg</code> (star, check) у пункті 4 — успадковувані CSS-властивості
+      (<code>color</code>, <code>fill: currentColor</code>) проходять крізь <code>&lt;use&gt;</code> незалежно від
+      способу підключення.
+    </p>
+
+    <!-- Спрайт: сам по собі нічого не малює, тільки визначає "шаблони" -->
+    <svg style="display: none">
+      <symbol id="icon-heart" viewBox="0 0 24 24">
+        <path
+          d="M12 21s-6.7-4.35-9.3-8.55C.86 9.6 1.9 6 5.1 5.1 7.2 4.5 9.3 5.4 10.5 7 11.1 5.4 13.2 4.5 15.3 5.1c3.2.9 4.24 4.5 2.4 7.35C18.7 16.65 12 21 12 21z"
+        />
+      </symbol>
+      <symbol id="icon-phone" viewBox="0 0 24 24">
+        <path
+          d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1.5 1.5 0 011.68-.27c.75.3 1.56.46 2.4.46.83 0 1.5.67 1.5 1.5v3.5c0 .83-.67 1.5-1.5 1.5A18 18 0 013 3C3 2.17 3.67 1.5 4.5 1.5h3.5c.83 0 1.5.67 1.5 1.5 0 .84-.16 1.65-.46 2.4a1.5 1.5 0 01-.27 1.68l-2.2 2.21z"
+        />
+      </symbol>
+      <symbol id="icon-email" viewBox="0 0 24 24">
+        <path
+          d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
+        />
+      </symbol>
+    </svg>
+
+    <h2>Одна й та сама іконка серця у різних розмірах</h2>
+    <div class="row">
+      <svg class="icon icon--sm"><use href="#icon-heart"></use></svg>
+      <svg class="icon icon--md"><use href="#icon-heart"></use></svg>
+      <svg class="icon icon--lg"><use href="#icon-heart"></use></svg>
+    </div>
+
+    <h2>Контактний блок з іконками телефону і пошти</h2>
+    <ul class="contacts">
+      <li>
+        <svg class="icon icon--sm"><use href="#icon-phone"></use></svg>
+        +380 12 345 6789
+      </li>
+      <li>
+        <svg class="icon icon--sm"><use href="#icon-email"></use></svg>
+        hello@example.com
+      </li>
+    </ul>
+
+    <h2>4. Підключення окремого файлу спрайту (sprite.svg)</h2>
+    <p>
+      Символи <code>icon-star</code> і <code>icon-check</code> визначені не тут, а в окремому файлі
+      sprite.svg, і підключаються прямим посиланням
+      <code>&lt;use href="sprite.svg#icon-star"&gt;</code>.
+    </p>
+    <p>
+      <strong>Важливо:</strong> цей спосіб працює лише якщо сторінка відкрита через http(s)-сервер (наприклад, Live
+      Server), а не подвійним кліком по файлу — при протоколі <code>file://</code> браузер блокує завантаження
+      зовнішнього SVG через <code>&lt;use&gt;</code>.
+    </p>
+    <div class="row">
+      <svg class="icon icon--md"><use href="sprite.svg#icon-star"></use></svg>
+      <svg class="icon icon--md"><use href="sprite.svg#icon-check"></use></svg>
+    </div>
+  </body>
+</html>

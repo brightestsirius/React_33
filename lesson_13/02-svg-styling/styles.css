@@ -1,0 +1,39 @@
+body {
+  font-family: system-ui, sans-serif;
+  background: #f5f5f7;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+section {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.box {
+  fill: tomato;
+  stroke: #333;
+  stroke-width: 4;
+  opacity: 0.85;
+  transition: fill 0.3s ease;
+}
+.box:hover {
+  fill: teal;
+}
+
+.icon {
+  color: crimson;
+  cursor: pointer;
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+.icon path {
+  fill: currentColor;
+}
+.icon:hover {
+  color: hotpink;
+  transform: scale(1.15);
+}

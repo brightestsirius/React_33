@@ -1,0 +1,45 @@
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+.below-fold {
+  margin-bottom: 40px;
+}
+
+.progressive {
+  --card-bg: #f3f4f6;
+  --card-radius: 8px;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.card {
+  background: #eee;
+  border-radius: 6px;
+  padding: 24px;
+  flex: 1 1 200px;
+  text-align: center;
+}
+
+@supports (display: grid) and (background: var(--card-bg)) {
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+  .card {
+    background: var(--card-bg);
+    border-radius: var(--card-radius);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  }
+}
+@media (max-width: 480px) {
+  .card {
+    padding: 16px;
+  }
+}

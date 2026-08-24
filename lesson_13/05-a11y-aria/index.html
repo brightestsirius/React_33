@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WAI-ARIA: таби і live-регіон</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>WAI-ARIA: ролі та стани елементів</h1>
+
+    <section aria-labelledby="tabs-heading">
+      <h2 id="tabs-heading">1. Доступний таб-віджет (Composite Role: tablist)</h2>
+      <p>Керується мишею і клавіатурою (стрілки ← → між табами, Tab — на вихід із групи).</p>
+
+      <div class="tabs" role="tablist" aria-label="Інформація про доставку">
+        <button id="tab-1" class="tab" role="tab" aria-selected="true" aria-controls="panel-1">Доставка</button>
+        <button id="tab-2" class="tab" role="tab" aria-selected="false" aria-controls="panel-2" tabindex="-1">
+          Оплата
+        </button>
+        <button id="tab-3" class="tab" role="tab" aria-selected="false" aria-controls="panel-3" tabindex="-1">
+          Повернення
+        </button>
+      </div>
+
+      <div id="panel-1" class="panel" role="tabpanel" aria-labelledby="tab-1" tabindex="0">
+        Безкоштовна доставка від 1000 грн, термін — 2-4 робочих дні.
+      </div>
+      <div id="panel-2" class="panel" role="tabpanel" aria-labelledby="tab-2" tabindex="0" hidden>
+        Приймаємо карти Visa/Mastercard та оплату при отриманні.
+      </div>
+      <div id="panel-3" class="panel" role="tabpanel" aria-labelledby="tab-3" tabindex="0" hidden>
+        Повернення товару можливе протягом 14 днів з моменту покупки.
+      </div>
+    </section>
+
+    <section aria-labelledby="live-heading">
+      <h2 id="live-heading">2. aria-live регіон (динамічний контент)</h2>
+      <p>
+        Натисни кнопку — повідомлення з'явиться і буде автоматично озвучене екранним читачем без перезавантаження
+        сторінки, завдяки <code>aria-live="polite"</code>.
+      </p>
+      <button id="add-to-cart" type="button">Додати товар у кошик</button>
+      <div id="cart-status" class="status" role="status" aria-live="polite"></div>
+
+      <p>Значення <code>aria-live</code> визначають, наскільки наполегливо екранний читач перериває користувача:</p>
+      <ul>
+        <li>
+          <code>aria-live="off"</code> — значення за замовчуванням, зміни в регіоні взагалі не озвучуються.
+        </li>
+        <li>
+          <code>aria-live="polite"</code> — те, що використано вище: озвучується, коли користувач завершить поточну
+          дію (не перериває). Підходить для лічильників, статусів завантаження.
+        </li>
+        <li>
+          <code>aria-live="assertive"</code> — озвучується негайно, перериваючи будь-що інше, що читає екранний
+          читач. Використовувати обережно і рідко — тільки для критичних/термінових повідомлень, наприклад помилок
+          валідації форми чи втрати з'єднання.
+        </li>
+      </ul>
+      <p>
+        До речі, <code>aria-live="polite"</code> у прикладі вище технічно зайвий — <code>role="status"</code> вже
+        неявно має <code>aria-live="polite"</code> і <code>aria-atomic="true"</code>, тому шкоди немає, просто
+        дублювання.
+      </p>
+    </section>
+
+    <section aria-labelledby="states-heading">
+      <h2 id="states-heading">3. Стани віджетів: aria-checked, aria-disabled, aria-required</h2>
+      <div class="field">
+        <label for="newsletter">
+          <input type="checkbox" id="newsletter" role="checkbox" aria-checked="false" />
+          Підписатися на розсилку
+        </label>
+      </div>
+      <p>
+        <strong>Це приклад поганої практики, залишений навмисно.</strong> Для нативного
+        <code>&lt;input type="checkbox"&gt;</code> атрибути <code>role="checkbox"</code> і <code>aria-checked</code>
+        не потрібні — браузер уже знає його роль і checked-стан сам, без ARIA. Постав галочку і подивись в DevTools:
+        чекбокс візуально й фактично стає checked, а <code>aria-checked="false"</code> так і залишається зафіксованим
+        — бо ніщо його не оновлює. Екранний читач після цього буде "чути" протилежне до того, що бачить зрячий
+        користувач. Це приклад правила <strong>«No ARIA is better than bad ARIA»</strong>: якщо семантика й поведінка
+        вже забезпечені нативним HTML-елементом, дублювання їх через ARIA нічого не додає, а лише створює ризик
+        розсинхронізації. Правильний варіант тут — просто <code>&lt;input type="checkbox" id="newsletter"&gt;</code>
+        без жодного ARIA. ARIA-стани варто додавати лише для кастомних віджетів, зібраних із
+        <code>&lt;div&gt;</code>/<code>&lt;span&gt;</code>, які такої вбудованої поведінки не мають (як таби вище).
+      </p>
+      <div class="field">
+        <label for="promo-code">Промокод (обов'язково)</label>
+        <input type="text" id="promo-code" aria-required="true" required />
+      </div>
+      <button type="button" aria-disabled="true" class="disabled" title="Спочатку заповніть форму">
+        Оформити замовлення
+      </button>
+      <p>
+        Тут навмисно <code>aria-disabled="true"</code>, а не нативний <code>disabled</code>. Нативний
+        <code>disabled</code> повністю прибирає кнопку з tab-порядку — клавіатурний чи screen-reader користувач
+        взагалі не натрапить на неї і не дізнається, чому вона неактивна (<code>title</code> на
+        <code>disabled</code>-елементі теж недосяжний, бо фокус на нього не потрапляє). <code>aria-disabled</code>
+        лишає кнопку фокусованою, тому AT-користувач може "натрапити" на неї й почути пояснення. Але є підступ:
+        <code>aria-disabled</code>, на відміну від <code>disabled</code>, <strong>не блокує клік чи Enter/Space</strong>
+        — це лише семантичний прапорець для асистивних технологій, сама поведінка не заблокована браузером. Якби ця
+        кнопка мала реальний обробник дії, треба було б самому перевіряти <code>aria-disabled</code> в JS і
+        ігнорувати клік — інакше кнопка "виглядає" вимкненою, але мишею все одно спрацьовує.
+      </p>
+      <p>
+        На практиці для звичайної кнопки простіше й безпечніше — нативний <code>disabled</code>, без жодного JS.
+        <code>aria-disabled</code> виправданий лише у складених віджетах з навігацією стрілками (де
+        <code>disabled</code> зламав би roving tabindex) або коли потрібно показати причину саме на фокусі.
+      </p>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A11Y: семантика, лендмарки, форми</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- skip-link: дозволяє користувачу клавіатури пропустити навігацію і перейти одразу до контенту -->
+    <a class="skip-link" href="#main-content">Перейти до основного контенту</a>
+
+    <header>
+      <p class="logo">MyShop</p>
+      <!-- лендмарк navigation -->
+      <nav aria-label="Головна навігація">
+        <ul>
+          <li><a href="#main-content">Головна</a></li>
+          <li><a href="#about">Про нас</a></li>
+          <li><a href="#contact-form">Контакти</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- лендмарк main, атрибут id для skip-link -->
+    <main id="main-content">
+      <h1>Ласкаво просимо до MyShop</h1>
+
+      <section id="about" aria-labelledby="about-heading">
+        <h2 id="about-heading">Про нас</h2>
+        <p>Приклад сторінки з правильною семантичною структурою та ієрархією заголовків (h1 → h2 → h3).</p>
+
+        <article>
+          <h3>Наша місія</h3>
+          <p>Робити доступний і швидкий веб для всіх користувачів, незалежно від їхніх можливостей.</p>
+        </article>
+      </section>
+
+      <section aria-labelledby="products-heading">
+        <h2 id="products-heading">Товари</h2>
+        <ul class="products">
+          <li>
+            <!-- alt для зображення обов'язковий і має описувати зміст, а не повторювати підпис -->
+            <img src="https://placehold.co/120x120" alt="Синій рюкзак з двома зовнішніми кишенями" />
+            <p>Рюкзак</p>
+            <!-- інтерактивний елемент — саме <button>, а не <div>, щоб коректно працювала клавіатура -->
+            <button type="button">Додати в кошик</button>
+          </li>
+          <li>
+            <img src="https://placehold.co/120x120" alt="Чорна керамічна кружка з ручкою" />
+            <p>Кружка</p>
+            <button type="button">Додати в кошик</button>
+          </li>
+        </ul>
+      </section>
+
+      <section id="contact-form" aria-labelledby="contact-heading">
+        <h2 id="contact-heading">Зв'язатися з нами</h2>
+        <form>
+          <div class="field">
+            <label for="name">Ім'я</label>
+            <input type="text" id="name" name="name" autocomplete="name" required />
+          </div>
+
+          <div class="field">
+            <label for="email">Електронна адреса</label>
+            <input type="email" id="email" name="email" autocomplete="email" required />
+          </div>
+
+          <div class="field">
+            <label for="message">Повідомлення</label>
+            <textarea id="message" name="message" rows="4" aria-describedby="message-hint" required></textarea>
+            <small id="message-hint">Опишіть ваше питання якомога детальніше.</small>
+          </div>
+
+          <button type="submit">Надіслати</button>
+        </form>
+      </section>
+    </main>
+
+    <!-- лендмарк contentinfo (footer верхнього рівня трактується як contentinfo) -->
+    <footer>
+      <p>&copy; 2026 MyShop. Усі права захищені.</p>
+    </footer>
+  </body>
+</html>

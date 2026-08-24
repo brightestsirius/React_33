@@ -1,0 +1,54 @@
+@use "../sass/lib" as lib
+
+body
+  font-family: lib.$font-stack
+  background: lib.$color-bg
+  @include lib.page-container
+
+.row
+  display: flex
+  align-items: center
+  gap: 16px
+  margin-bottom: 32px
+
+// hover тут працює однаково і для symbol, визначеного локально (heart, phone, email),
+// і для symbol із зовнішнього sprite.svg (star, check) — CSS-селектор не може "дотягнутись"
+// всередину зовнішнього файлу, але успадковувані властивості (color/fill: currentColor)
+// проходять крізь <use> в обох випадках, тому :hover на самому <svg class="icon"> спрацьовує скрізь
+.icon
+  color: crimson
+  fill: currentColor
+  cursor: pointer
+  transition: color 0.25s ease, transform 0.25s ease
+
+  &:hover
+    color: hotpink
+    transform: scale(1.15)
+
+  &--sm
+    width: 20px
+    height: 20px
+
+  &--md
+    width: 40px
+    height: 40px
+
+  &--lg
+    width: 72px
+    height: 72px
+
+.contacts
+  list-style: none
+  padding: 0
+
+  li
+    display: flex
+    align-items: center
+    gap: 10px
+    padding: 8px 0
+
+  .icon
+    color: #333
+
+    &:hover
+      color: lib.$color-primary

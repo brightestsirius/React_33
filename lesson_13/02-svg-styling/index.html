@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Стилізація SVG: inline style vs CSS</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>Методи стилізації SVG</h1>
+
+    <section>
+      <h2>1. Через атрибут style (inline)</h2>
+      <svg width="100" height="100">
+        <rect
+          width="90"
+          height="90"
+          x="5"
+          y="5"
+          style="fill: blue; stroke: black; stroke-width: 5; opacity: 0.9"
+        />
+      </svg>
+    </section>
+
+    <section>
+      <h2>
+        2. Через клас і зовнішній CSS (краще — легко перевикористати і змінювати
+        тему)
+      </h2>
+      <svg width="100" height="100">
+        <rect class="box" width="90" height="90" x="5" y="5" />
+      </svg>
+    </section>
+
+    <section>
+      <h2>3. Інтерактивність через CSS: :hover, transition, currentColor</h2>
+      <svg class="icon" width="64" height="64" viewBox="0 0 24 24">
+        <path
+          d="M12 21s-6.7-4.35-9.3-8.55C.86 9.6 1.9 6 5.1 5.1 7.2 4.5 9.3 5.4 10.5 7 11.1 5.4 13.2 4.5 15.3 5.1c3.2.9 4.24 4.5 2.4 7.35C18.7 16.65 12 21 12 21z"
+        />
+      </svg>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SVG: основні елементи для фігур</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>SVG: елементи для створення фігур</h1>
+
+    <div class="grid">
+      <!-- rect -->
+      <figure>
+        <svg width="120" height="120">
+          <rect width="80" height="80" x="20" y="20" fill="rgb(0,0,255)" stroke="black" stroke-width="3" />
+        </svg>
+        <figcaption>&lt;rect&gt; — прямокутник</figcaption>
+      </figure>
+
+      <!-- circle -->
+      <figure>
+        <svg width="120" height="120">
+          <circle cx="60" cy="60" r="45" fill="red" stroke="black" stroke-width="3" />
+        </svg>
+        <figcaption>&lt;circle&gt; — коло</figcaption>
+      </figure>
+
+      <!-- ellipse -->
+      <figure>
+        <svg width="120" height="120">
+          <ellipse cx="60" cy="60" rx="55" ry="30" fill="orange" stroke="black" stroke-width="3" />
+        </svg>
+        <figcaption>&lt;ellipse&gt; — еліпс</figcaption>
+      </figure>
+
+      <!-- line -->
+      <figure>
+        <svg width="120" height="120">
+          <line x1="10" y1="10" x2="110" y2="110" stroke="rgb(255,0,0)" stroke-width="4" />
+        </svg>
+        <figcaption>&lt;line&gt; — лінія</figcaption>
+      </figure>
+
+      <!-- polyline -->
+      <figure>
+        <svg width="120" height="120">
+          <polyline points="10,100 40,20 70,90 110,10" fill="none" stroke="green" stroke-width="4" />
+        </svg>
+        <figcaption>&lt;polyline&gt; — ламана лінія</figcaption>
+      </figure>
+
+      <!-- polygon -->
+      <figure>
+        <svg width="120" height="120">
+          <polygon points="60,10 110,45 90,105 30,105 10,45" fill="gold" stroke="black" stroke-width="3" />
+        </svg>
+        <figcaption>&lt;polygon&gt; — багатокутник (замкнений)</figcaption>
+      </figure>
+
+      <!-- path -->
+      <figure>
+        <svg width="120" height="120" viewBox="0 0 32 32">
+          <path
+            d="M16 29s-13-8.35-13-17.5C3 6.36 6.36 3 10.5 3c2.54 0 4.9 1.24 6.5 3.24C18.6 4.24 20.96 3 23.5 3 27.64 3 31 6.36 31 11.5 31 20.65 16 29 16 29z"
+            fill="crimson"
+          />
+        </svg>
+        <figcaption>&lt;path&gt; — довільна форма (серце)</figcaption>
+      </figure>
+
+      <!-- text -->
+      <figure>
+        <svg width="200" height="80">
+          <text x="10" y="45" font-family="Verdana" font-size="28" fill="blue">Hello SVG</text>
+        </svg>
+        <figcaption>&lt;text&gt; — текст в SVG</figcaption>
+      </figure>
+    </div>
+  </body>
+</html>
