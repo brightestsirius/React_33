@@ -1,0 +1,38 @@
+@use "lib" as lib
+
+*
+    @include lib.box-sizing-reset
+
+body
+    font-family: lib.$font-stack
+    max-width: 640px
+    margin: 60px auto
+    padding: 0 20px
+    color: lib.$color-text
+
+h1
+    margin-bottom: 8px
+    // Safari досі розуміє тільки -webkit-background-clip — це і додасть autoprefixer
+    background: linear-gradient(90deg, lib.$color-primary, #7c3aed)
+    background-clip: text
+    color: transparent
+
+ul
+    padding-left: 20px
+
+li
+    margin-bottom: 10px
+
+a
+    color: lib.$color-primary
+    text-decoration: none
+
+    &:hover
+        text-decoration: underline
+
+    &:focus-visible
+        @include lib.focus-ring
+
+.hint
+    color: lib.$color-muted
+    font-size: 14px
