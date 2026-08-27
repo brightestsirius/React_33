@@ -40,7 +40,7 @@ function sprite() {
             sprite: "sprite.svg",
           },
         },
-      })
+      }),
     )
     .pipe(dest("./images"));
 }
@@ -53,4 +53,6 @@ function watchFiles() {
 
 exports.dev = series(styles, sprite, watchFiles);
 exports.build = series(stylesProd, sprite);
+
+exports.styles = styles;
 exports.sprite = sprite;

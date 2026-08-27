@@ -21,6 +21,8 @@
 .title
     margin-bottom: lib.spacing(1.5)
     font-size: 24px
+    background: linear-gradient(90deg, lib.$color-primary, #7c3aed)
+    background-clip: text
     color: lib.$color-primary
 
     @include lib.tablet
@@ -34,7 +36,7 @@
     font-size: 14px
     color: lib.$color-muted
 
-    @include lib.tablet
+    @media (min-width: 600px)
         font-size: 16px
 
 .btn
