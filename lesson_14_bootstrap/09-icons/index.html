@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>08. Bootstrap Icons (CDN)</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons — окремий пакет іконок, не входить в основний bootstrap.css -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="../styles/style.css" />
+  </head>
+  <body class="page-icons">
+    <div class="container">
+      <h1>Bootstrap Icons</h1>
+      <p>
+        Bootstrap Icons — відкритий набір SVG-іконок від команди Bootstrap.
+        Підключається окремо від основного CSS-файлу.</p>
+
+      <h2>Іконки як шрифт (клас .bi)</h2>
+      <p>
+        <i class="bi bi-star-fill"></i>
+        <i class="bi bi-heart-fill"></i>
+        <i class="bi bi-check-circle-fill"></i>
+        <i class="bi bi-github"></i>
+      </p>
+
+      <h2>Іконка в кнопці</h2>
+      <button class="btn btn-primary">
+        <i class="bi bi-download"></i>
+        Завантажити
+      </button>
+    </div>
+  </body>
+</html>

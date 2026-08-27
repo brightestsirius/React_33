@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>04. Content</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles/style.css" />
+  </head>
+  <body class="page-content">
+    <div class="container">
+      <h1>Content у Bootstrap</h1>
+      <p>
+        Content — це компоненти, які відповідають за базове представлення
+        тексту, зображень і табличних даних: Reboot, Typography, Images,
+        Tables, Figures.
+      </p>
+
+      <section>
+        <h2>Reboot</h2>
+        <p>
+          Reboot — набір CSS-правил, що "перезавантажує" стилі браузера за
+          замовчуванням (marginи, шрифти, box-sizing) до однакового базового
+          стану. Це той фундамент, на якому вже будуються всі інші класи
+          Bootstrap. Ми його не підключаємо окремо — він автоматично йде
+          разом з <code>bootstrap.min.css</code>.
+        </p>
+      </section>
+
+      <section>
+        <h2>Typography</h2>
+        <p>
+          Класи <code>.h1</code>–<code>.h6</code> дозволяють отримати вигляд
+          заголовка на будь-якому елементі, а <code>.display-*</code> — ще
+          крупніші, "вітринні" заголовки.
+        </p>
+        <h1 class="display-4">Hello, world!</h1>
+        <p class="lead">Це lead-параграф — трохи більший і світліший за звичайний текст.</p>
+        <span class="h3">span.h3 виглядає як h3</span>
+      </section>
+
+      <section>
+        <h2>Images</h2>
+        <p>
+          Клас <code>.img-fluid</code> робить зображення адаптивним:
+          <code>max-width: 100%</code> і <code>height: auto</code> —
+          картинка масштабується разом з батьківським контейнером.
+        </p>
+        <img
+          src="https://placehold.co/600x300"
+          class="img-fluid rounded"
+          alt="Приклад адаптивного зображення"
+        />
+      </section>
+
+      <section>
+        <h2>Tables</h2>
+        <p>
+          <code>.table</code> задає базові відступи й лінії, а
+          <code>.table-striped</code> додає "зебру" для рядків
+          <code>&lt;tbody&gt;</code>.
+        </p>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Ім'я</th>
+              <th scope="col">Прізвище</th>
+              <th scope="col">Handle</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>Figures</h2>
+        <p>
+          <code>&lt;figure&gt;</code> з класом <code>.figure</code> та
+          <code>&lt;figcaption&gt;</code> дозволяють показати зображення з
+          підписом як єдиний семантичний блок.
+        </p>
+        <figure class="figure">
+          <img
+            src="https://placehold.co/400x300"
+            class="figure-img img-fluid rounded"
+            alt="Заглушка з рамкою"
+          />
+          <figcaption class="figure-caption">
+            Підпис під зображенням.
+          </figcaption>
+        </figure>
+      </section>
+    </div>
+  </body>
+</html>

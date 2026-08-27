@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>07. Helpers & Utilities</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles/style.css" />
+  </head>
+  <body class="page-helpers-utilities">
+    <div class="container">
+      <h1>Helpers & Utilities</h1>
+      <p>
+        Обидва набори — це готові CSS-класи, якими можна швидко змінювати
+        вигляд елемента без написання власного CSS. Умовно: <b>helpers</b> —
+        трохи складніші, "іменовані" прийоми (наприклад,
+        stretched-link, text-truncation), а <b>utilities</b> — базові
+        атомарні класи (відступи, кольори, flex, display).
+      </p>
+
+      <section>
+        <h2>Helpers</h2>
+
+        <h3 class="h5">Stretched link</h3>
+        <div class="card" style="width: 18rem">
+          <div class="card-body position-relative">
+            <h5 class="card-title">Картка-посилання</h5>
+            <p class="card-text">Уся картка клікабельна завдяки .stretched-link на посиланні нижче.</p>
+            <a href="#" class="stretched-link">Детальніше</a>
+          </div>
+        </div>
+
+        <h3 class="h5 mt-4">Text truncation</h3>
+        <p class="text-truncate" style="max-width: 200px">
+          Дуже довгий текст, який не поміститься в контейнер і буде обрізаний з трьома крапками
+        </p>
+
+        <h3 class="h5">Vertical rule</h3>
+        <span>Ліворуч</span>
+        <span class="vr mx-2"></span>
+        <span>Праворуч</span>
+
+        <h3 class="h5 mt-4">Visually hidden</h3>
+        <button class="btn btn-primary">
+          <span class="visually-hidden">Закрити меню</span>
+          ×
+        </button>
+        <p class="text-muted">
+          Текст усередині кнопки прочитає скрінрідер, але візуально він
+          прихований.
+        </p>
+      </section>
+
+      <section>
+        <h2>Utilities</h2>
+
+        <h3 class="h5">Spacing</h3>
+        <div class="bg-light">
+          <span class="demo-box p-3 d-inline-block">p-3</span>
+          <span class="demo-box mt-3 d-inline-block">mt-3</span>
+        </div>
+
+        <h3 class="h5 mt-4">Background & Colors</h3>
+        <div class="p-2 bg-primary text-white">bg-primary + text-white</div>
+        <div class="p-2 bg-warning text-dark">bg-warning + text-dark</div>
+
+        <h3 class="h5 mt-4">Borders & Shadows</h3>
+        <span class="d-inline-block p-3 border rounded shadow-sm">border + rounded + shadow-sm</span>
+
+        <h3 class="h5 mt-4">Display & Flex</h3>
+        <div class="d-flex justify-content-between border p-2">
+          <span>Ліворуч</span>
+          <span>Праворуч</span>
+        </div>
+
+        <h3 class="h5 mt-4">Text utilities</h3>
+        <p class="text-center text-uppercase fw-bold">
+          text-center + text-uppercase + fw-bold
+        </p>
+
+        <h3 class="h5">Sizing</h3>
+        <div class="bg-info w-50" style="height: 8px"></div>
+      </section>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+@use "../lib" as lib
+
+.page-competitors
+  font-family: lib.$font-stack
+  max-width: 720px
+  margin: lib.spacing(5) auto
+  padding: 0 lib.spacing(2)
+  color: lib.$color-text
+
+  table
+    border-collapse: collapse
+    width: 100%
+    margin-top: lib.spacing(2)
+
+  th,
+  td
+    text-align: left
+    padding: lib.spacing(1.25) lib.spacing(1.5)
+    border-bottom: 1px solid #ddd
+    vertical-align: top
+
+  th
+    background: #f5f5f5

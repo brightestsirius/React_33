@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>01. Bootstrap через CDN</title>
+
+    <!--
+      CDN (Content Delivery Network) — мережа розподілених серверів, з якої
+      браузер завантажує файл найближчою "точкою". Не потребує встановлення
+      нічого локально: досить підключити один <link> і один <script>.
+    -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles/style.css" />
+  </head>
+  <body class="page-intro-cdn">
+    <div class="container">
+      <h1>Що таке Bootstrap?</h1>
+      <p>
+        Bootstrap — інструментарій відкритого коду для розробки на HTML, CSS
+        і JavaScript. Використовується для створення адаптивних і
+        мобільно-оптимізованих сайтів: дає готові стилі та компоненти
+        (сітку, кнопки, картки, модальні вікна, JS-плагіни), тож інтерфейс не
+        доводиться будувати з нуля.
+      </p>
+
+      <section class="theory">
+        <h2>Framework vs Library</h2>
+        <dl>
+          <dt>Бібліотека (library)</dt>
+          <dd>
+            Набір готового коду (функцій, класів), який ми самі викликаємо,
+            коли він потрібен. Ми керуємо потоком виконання програми.
+          </dd>
+          <dt>Фреймворк (framework)</dt>
+          <dd>
+            Готова структура проєкту, яка сама "викликає" наш код у потрібний
+            момент. Ми пишемо код за правилами фреймворку, а не навпаки.
+          </dd>
+          <dt>Головна відмінність</dt>
+          <dd>
+            "Хто керує потоком": з бібліотекою керуємо ми, з фреймворком —
+            він керує нами (Inversion of Control).
+          </dd>
+        </dl>
+      </section>
+
+      <section>
+        <h2>Перший компонент Bootstrap</h2>
+        <p>
+          Кнопка нижче отримала стилі виключно завдяки класам
+          <code>btn</code> і <code>btn-primary</code> — жодного власного CSS
+          ми не писали.
+        </p>
+        <button type="button" class="btn btn-primary">
+          Привіт, Bootstrap!
+        </button>
+      </section>
+    </div>
+
+    <!-- Bundle-версія JS вже містить Popper, потрібний для dropdown/tooltip/popover -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

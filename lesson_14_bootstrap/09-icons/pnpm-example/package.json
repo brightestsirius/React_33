@@ -1,0 +1,10 @@
+{
+  "name": "08-icons-pnpm-example",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Bootstrap Icons, встановлені локально через pnpm",
+  "packageManager": "pnpm@10.22.0",
+  "dependencies": {
+    "bootstrap-icons": "^1.11.3"
+  }
+}
