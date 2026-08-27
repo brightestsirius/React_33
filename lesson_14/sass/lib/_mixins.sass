@@ -1,0 +1,23 @@
+@use "variables" as vars
+
+@mixin tablet
+  @media (min-width: 600px)
+    @content
+
+@mixin desktop
+  @media (min-width: 900px)
+    @content
+
+@mixin button-primary
+  cursor: pointer
+  border: none
+  border-radius: 6px
+  background: vars.$color-primary
+  color: #fff
+  padding: vars.spacing(1.25) vars.spacing(2)
+  font: inherit
+  transition: background-color 0.2s ease
+
+  &:hover
+    background: vars.$color-primary-hover
+    cursor: pointer

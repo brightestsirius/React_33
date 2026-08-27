@@ -1,0 +1,60 @@
+@use "lib" as lib
+
+*
+    box-sizing: border-box
+
+.page
+    font-family: lib.$font-stack
+    margin: lib.spacing(3) auto
+    padding: 0 lib.spacing(2)
+    color: lib.$color-text
+    background: lib.$color-bg
+
+    @include lib.tablet
+        max-width: 640px
+        margin: lib.spacing(5) auto
+
+    @include lib.desktop
+        max-width: 900px
+        margin: lib.spacing(7.5) auto
+
+.title
+    margin-bottom: lib.spacing(1.5)
+    font-size: 24px
+    color: lib.$color-primary
+
+    @include lib.tablet
+        font-size: 32px
+
+    @include lib.desktop
+        font-size: 40px
+
+.text
+    line-height: 1.5
+    font-size: 14px
+    color: lib.$color-muted
+
+    @include lib.tablet
+        font-size: 16px
+
+.btn
+    @include lib.button-primary
+
+.row
+    display: flex
+    flex-wrap: wrap
+    gap: lib.spacing(1.5)
+    margin-top: lib.spacing(2.5)
+
+.icon
+    width: lib.spacing(3)
+    height: lib.spacing(3)
+    fill: lib.$color-primary
+    transition: fill 0.2s ease
+
+    &:hover
+        fill: lib.$color-primary-hover
+
+    @include lib.tablet
+        width: lib.spacing(4)
+        height: lib.spacing(4)
