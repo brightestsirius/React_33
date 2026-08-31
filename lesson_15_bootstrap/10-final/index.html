@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>10. Приклад ДЗ: адаптивний макет (HW 15.1)</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles/style.css" />
+  </head>
+  <body class="page-final">
+    <!-- HEADER: дворівневе меню -->
+    <header class="site-header">
+      <div class="bg-dark text-light py-1 small">
+        <div class="container d-flex flex-wrap justify-content-between align-items-center">
+          <div>
+            <a href="tel:+380441234567" class="link-light text-decoration-none me-3">
+              +38 (044) 123-45-67
+            </a>
+            <a href="mailto:hello@travelblog.example" class="link-light text-decoration-none">
+              hello@travelblog.example
+            </a>
+          </div>
+          <div class="d-flex align-items-center gap-3">
+            <a href="#" class="link-light text-decoration-none">Instagram</a>
+            <a href="#" class="link-light text-decoration-none">Facebook</a>
+            <div class="dropdown">
+              <button
+                class="btn btn-sm btn-outline-light dropdown-toggle py-0"
+                type="button"
+                data-bs-toggle="dropdown"
+              >
+                UA
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="#">Українська</a></li>
+                <li><a class="dropdown-item" href="#">English</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+        <div class="container">
+          <a class="navbar-brand fw-bold" href="#">TravelBlog</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mainNav"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="mainNav">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" href="#">Головна</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  data-bs-toggle="dropdown"
+                >
+                  Напрямки
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Європа</a></li>
+                  <li><a class="dropdown-item" href="#">Азія</a></li>
+                  <li><a class="dropdown-item" href="#">Південна Америка</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Про нас</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Контакти</a>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input
+                class="form-control me-2"
+                type="search"
+                placeholder="Пошук..."
+                aria-label="Пошук"
+              />
+              <button class="btn btn-outline-primary" type="submit">Знайти</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Адаптивна сітка: LEFT / MAIN / RIGHT -->
+    <div class="container my-4">
+      <div class="row g-4">
+        <!-- LEFT: слайдер з вертикальними зображеннями -->
+        <aside class="col-12 col-md-4 col-lg-3">
+          <h2 class="h5">Фото з подорожі</h2>
+          <div id="photoCarousel" class="carousel slide shadow-sm" data-bs-ride="carousel">
+            <div class="carousel-inner rounded">
+              <div class="carousel-item active">
+                <img
+                  src="https://placehold.co/480x640/0d6efd/ffffff?text=Карпати"
+                  class="d-block w-100"
+                  alt="Гори Карпати"
+                />
+              </div>
+              <div class="carousel-item">
+                <img
+                  src="https://placehold.co/480x640/198754/ffffff?text=Лісабон"
+                  class="d-block w-100"
+                  alt="Вулиці Лісабона"
+                />
+              </div>
+              <div class="carousel-item">
+                <img
+                  src="https://placehold.co/480x640/dc3545/ffffff?text=Кіото"
+                  class="d-block w-100"
+                  alt="Храми Кіото"
+                />
+              </div>
+              <div class="carousel-item">
+                <img
+                  src="https://placehold.co/480x640/6f42c1/ffffff?text=Ісландія"
+                  class="d-block w-100"
+                  alt="Водоспади Ісландії"
+                />
+              </div>
+            </div>
+            <button
+              class="carousel-control-prev"
+              type="button"
+              data-bs-target="#photoCarousel"
+              data-bs-slide="prev"
+            >
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </button>
+            <button
+              class="carousel-control-next"
+              type="button"
+              data-bs-target="#photoCarousel"
+              data-bs-slide="next"
+            >
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </button>
+            <div class="carousel-indicators">
+              <button
+                type="button"
+                data-bs-target="#photoCarousel"
+                data-bs-slide-to="0"
+                class="active"
+              ></button>
+              <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="1"></button>
+              <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="2"></button>
+              <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="3"></button>
+            </div>
+          </div>
+        </aside>
+
+        <!-- MAIN: акордеон + форма -->
+        <main class="col-12 col-md-8 col-lg-6">
+          <h1 class="h3">10 днів у Карпатах: маршрут вихідного дня</h1>
+          <p class="text-muted">
+            Детальний план подорожі: розгорніть кожен день, щоб побачити маршрут,
+            місця ночівлі та поради.
+          </p>
+
+          <div class="accordion mb-4" id="tripAccordion">
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#day1"
+                >
+                  День 1 — Прибуття та акліматизація
+                </button>
+              </h2>
+              <div id="day1" class="accordion-collapse collapse show" data-bs-parent="#tripAccordion">
+                <div class="accordion-body">
+                  Заїзд у гірський будиночок, коротка прогулянка околицями та
+                  вечеря з місцевою кухнею.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#day2"
+                >
+                  День 2 — Сходження на вершину
+                </button>
+              </h2>
+              <div id="day2" class="accordion-collapse collapse" data-bs-parent="#tripAccordion">
+                <div class="accordion-body">
+                  Ранній старт, 6-годинний маршрут до вершини та повернення
+                  затемна стежкою через ліс.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#day3"
+                >
+                  День 3 — Термальні джерела та від'їзд
+                </button>
+              </h2>
+              <div id="day3" class="accordion-collapse collapse" data-bs-parent="#tripAccordion">
+                <div class="accordion-body">
+                  Відпочинок біля термальних джерел, обід у місцевій садибі та
+                  зворотна дорога.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h2 class="h4">Підписатися на новини маршрутів</h2>
+          <form class="row g-3 needs-validation" novalidate>
+            <div class="col-12 col-sm-6">
+              <label for="fullName" class="form-label">Ім'я та прізвище</label>
+              <input type="text" class="form-control" id="fullName" required />
+              <div class="invalid-feedback">Вкажіть ім'я та прізвище.</div>
+            </div>
+            <div class="col-12 col-sm-6">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" required />
+              <div class="invalid-feedback">Введіть коректний email.</div>
+            </div>
+            <div class="col-12 col-sm-6">
+              <label for="phone" class="form-label">Телефон</label>
+              <input type="tel" class="form-control" id="phone" pattern="^\+?[0-9\s-]{7,15}$" required />
+              <div class="invalid-feedback">Введіть коректний номер телефону.</div>
+            </div>
+            <div class="col-12 col-sm-6">
+              <label for="direction" class="form-label">Улюблений напрямок</label>
+              <select class="form-select" id="direction" required>
+                <option value="" selected disabled>Оберіть напрямок</option>
+                <option value="europe">Європа</option>
+                <option value="asia">Азія</option>
+                <option value="south-america">Південна Америка</option>
+              </select>
+              <div class="invalid-feedback">Оберіть напрямок.</div>
+            </div>
+            <div class="col-12">
+              <label for="message" class="form-label">Коментар</label>
+              <textarea class="form-control" id="message" rows="3"></textarea>
+            </div>
+            <div class="col-12">
+              <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="agree" required />
+                <label class="form-check-label" for="agree">
+                  Погоджуюсь на обробку персональних даних
+                </label>
+                <div class="invalid-feedback">Потрібно погодитись з умовами.</div>
+              </div>
+            </div>
+            <div class="col-12 d-flex gap-2">
+              <button type="submit" class="btn btn-primary">Підписатися</button>
+              <button type="reset" class="btn btn-outline-secondary">Очистити</button>
+            </div>
+          </form>
+        </main>
+
+        <!-- RIGHT: бокова панель -->
+        <aside class="col-12 col-lg-3">
+          <h2 class="h5">Популярні пости</h2>
+          <ul class="list-group mb-4">
+            <li class="list-group-item">
+              <a href="#" class="text-decoration-none">Топ-5 треків Карпат</a>
+            </li>
+            <li class="list-group-item">
+              <a href="#" class="text-decoration-none">Бюджетна подорож у Лісабон</a>
+            </li>
+            <li class="list-group-item">
+              <a href="#" class="text-decoration-none">Що взяти в гори восени</a>
+            </li>
+          </ul>
+
+          <h2 class="h5">Теги</h2>
+          <div class="d-flex flex-wrap gap-2">
+            <span class="badge bg-secondary">гори</span>
+            <span class="badge bg-secondary">бюджетно</span>
+            <span class="badge bg-secondary">Європа</span>
+            <span class="badge bg-secondary">похід</span>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-dark text-light pt-5 pb-3 mt-4">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-12 col-md-4">
+            <h2 class="h5">TravelBlog</h2>
+            <p class="text-white-50">
+              Ділимося маршрутами, порадами та фотографіями з подорожей по
+              всьому світу.
+            </p>
+          </div>
+          <div class="col-6 col-md-2">
+            <h3 class="h6">Меню</h3>
+            <ul class="list-unstyled">
+              <li><a href="#" class="link-light text-decoration-none">Головна</a></li>
+              <li><a href="#" class="link-light text-decoration-none">Напрямки</a></li>
+              <li><a href="#" class="link-light text-decoration-none">Про нас</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-md-3">
+            <h3 class="h6">Контакти</h3>
+            <ul class="list-unstyled text-white-50">
+              <li>+38 (044) 123-45-67</li>
+              <li>hello@travelblog.example</li>
+              <li>Київ, Україна</li>
+            </ul>
+          </div>
+          <div class="col-12 col-md-3">
+            <h3 class="h6">Розсилка</h3>
+            <form class="d-flex">
+              <input
+                type="email"
+                class="form-control form-control-sm me-2"
+                placeholder="Ваш email"
+                aria-label="Email для розсилки"
+              />
+              <button class="btn btn-sm btn-primary" type="submit">OK</button>
+            </form>
+          </div>
+        </div>
+        <hr class="border-secondary" />
+        <p class="text-center text-white-50 small mb-0">
+          &copy; 2026 TravelBlog. Навчальний приклад для HW 15.1.
+        </p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      document.querySelectorAll(".needs-validation").forEach((form) => {
+        form.addEventListener(
+          "submit",
+          (event) => {
+            if (!form.checkValidity()) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add("was-validated");
+          },
+          false
+        );
+      });
+    </script>
+  </body>
+</html>
