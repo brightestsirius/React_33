@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>01. Bootstrap через CDN</title>
+    <title>01. Bootstrap через CDN + перевизначення кольорів</title>
 
     <!--
       CDN (Content Delivery Network) — мережа розподілених серверів, з якої
@@ -58,6 +58,64 @@
         <button type="button" class="btn btn-primary">
           Привіт, Bootstrap!
         </button>
+      </section>
+
+      <section>
+        <h2>Перевизначення кольорів через CSS-змінні (<code>--bs-*</code>)</h2>
+        <p>
+          Bootstrap 5.3 генерує CSS custom properties, і їх можна
+          перевизначити прямо у своєму CSS — без будь-якої збірки, навіть
+          якщо Bootstrap підключений через CDN, як тут.
+        </p>
+
+        <p><strong>Стандартні кольори:</strong></p>
+        <div class="theme-demo">
+          <button type="button" class="btn btn-primary">Primary</button>
+          <button type="button" class="btn btn-danger">Danger</button>
+        </div>
+        <div class="alert alert-primary" role="alert">
+          Стандартний <code>alert-primary</code>.
+        </div>
+
+        <p><strong>Той самий блок, але з перевизначеними кольорами:</strong></p>
+        <div class="theme-custom">
+          <div class="theme-demo">
+            <button type="button" class="btn btn-primary">Primary</button>
+            <button type="button" class="btn btn-danger">Danger</button>
+          </div>
+          <div class="alert alert-primary" role="alert">
+            Той самий <code>alert-primary</code>, але вже перефарбований.
+          </div>
+        </div>
+
+        <pre><code>/* sass/pages/_intro-cdn.sass */
+.theme-custom
+  .btn-primary
+    --bs-btn-bg: #ff6600
+    --bs-btn-border-color: #ff6600
+    --bs-btn-hover-bg: #cc5200
+    --bs-btn-hover-border-color: #bf4d00
+    --bs-btn-active-bg: #bf4d00
+    --bs-btn-active-border-color: #b34700
+
+  .alert-primary
+    --bs-alert-color: #7a3300
+    --bs-alert-bg: #ffe0cc
+    --bs-alert-border-color: #ffc299</code></pre>
+
+        <p class="text-muted">
+          Зверніть увагу: перевизначення лише <code>--bs-primary</code> у
+          <code>:root</code> тут не спрацює для кнопок. Bootstrap рахує
+          кольори кнопок ще на етапі Sass-компіляції і записує їх у
+          <code>.btn-primary</code> як окремі готові змінні
+          (<code>--bs-btn-bg</code>, <code>--bs-btn-hover-bg</code> тощо), а
+          не бере <code>--bs-primary</code> напряму. Тому доводиться
+          перевизначати змінні кожного компонента окремо — точкове правило
+          на готовому Bootstrap із CDN. Повністю перерахувати всю палітру
+          одразу (кнопки, бейджі, форми, тіні тощо) можна лише перевизначивши
+          Sass-змінні до компіляції — див.
+          <a href="../02-intro-pnpm/">02. Bootstrap через pnpm</a>.
+        </p>
       </section>
     </div>
 

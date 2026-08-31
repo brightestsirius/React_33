@@ -1,0 +1,19 @@
+@use "lib" as lib
+
+// 1. спочатку свої значення
+$primary: #ff6600
+$danger: #e63946
+
+// 2. потім сам Bootstrap — він побачить вже змінені змінні
+@import "../node_modules/bootstrap/scss/bootstrap"
+
+.page-intro-pnpm
+  padding: lib.spacing(3)
+
+  section
+    margin-bottom: lib.spacing(5)
+
+  .theme-demo
+    display: flex
+    gap: lib.spacing(2)
+    flex-wrap: wrap

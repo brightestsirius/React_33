@@ -20,5 +20,8 @@
     "gulp-sourcemaps": "^3.0.0",
     "postcss": "^8.5.26",
     "sass": "^1.103.1"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.8"
   }
 }

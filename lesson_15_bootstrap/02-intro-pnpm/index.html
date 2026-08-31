@@ -3,47 +3,74 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>02. Bootstrap через pnpm</title>
+    <title>02. Bootstrap через pnpm + Sass-змінні</title>
 
     <!--
-      Встановлено командою: pnpm add bootstrap
-      Файли лежать локально у node_modules/bootstrap/dist — жодного запиту
-      до зовнішнього CDN не робиться, сайт працює навіть офлайн.
-      Мінус порівняно з CDN: браузер користувача не зможе взяти вже
-      закешований bootstrap.min.css з іншого сайту — файл довантажиться саме з нашого сервера.
+      Bootstrap тут встановлений як залежність (pnpm add bootstrap), а не
+      підключений через готовий dist/css чи CDN. Він компілюється разом із
+      власним sass/custom-colors-sass.sass — див. sass/custom-colors-sass.sass
+      та gulpfile.js (stylesCustomColorsSass / stylesCustomColorsSassProd).
     -->
-    <link
-      rel="stylesheet"
-      href="./node_modules/bootstrap/dist/css/bootstrap.min.css"
-    />
-    <link rel="stylesheet" href="../styles/style.css" />
+    <link rel="stylesheet" href="../styles/custom-colors-sass.css" />
   </head>
   <body class="page-intro-pnpm">
     <div class="container">
       <h1>Bootstrap, встановлений через pnpm</h1>
       <p>
-        Та сама кнопка, що і в прикладі з CDN, але стилі й скрипт беруться з
-        <code>node_modules/bootstrap</code>, а не із зовнішнього сервера.
+        Встановлено командою <code>pnpm add bootstrap</code>: файли лежать
+        локально у <code>node_modules/bootstrap</code>, жодного запиту до
+        зовнішнього CDN не робиться, сайт працює навіть офлайн. Мінус порівняно
+        з CDN: браузер користувача не зможе взяти вже закешований
+        <code>bootstrap.min.css</code> з іншого сайту — файл довантажиться саме
+        з нашого сервера.
       </p>
-      <button type="button" class="btn btn-primary">
-        Привіт, Bootstrap!
-      </button>
-
-      <hr />
-
       <p class="text-muted">
         У реальному проєкті з бандлером (Vite, webpack, gulp+sass) Bootstrap
-        зазвичай не лінкують так напряму, а імпортують його SCSS у свій
-        <code>main.sass</code>, наприклад:
+        зазвичай не лінкують напряму через готовий
+        <code>dist/css/bootstrap.min.css</code>, а імпортують його SCSS у свій
+        sass, наприклад:
       </p>
-      <pre><code>// sass/main.sass
-@import "bootstrap/scss/bootstrap"</code></pre>
-      <p class="text-muted">
-        Це дозволяє переозначити змінні Bootstrap (кольори, розміри
-        breakpoints тощо) ще до того, як вони будуть скомпільовані у CSS.
-      </p>
-    </div>
+      <pre><code>// sass/custom-colors-sass.sass
 
-    <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+// 1. спочатку свої значення
+$primary: #ff6600
+$danger: #e63946
+
+// 2. потім сам Bootstrap — він побачить вже змінені змінні
+@import "../node_modules/bootstrap/scss/bootstrap"</code></pre>
+      <p class="text-muted">
+        Це дозволяє переозначити змінні Bootstrap (кольори, розміри breakpoints
+        тощо) ще до того, як вони будуть скомпільовані у CSS — так, як зроблено
+        нижче на цій сторінці.
+      </p>
+
+      <section>
+        <h2>Результат: перевизначені $primary і $danger</h2>
+        <p>Це звичайні Bootstrap-компоненти без жодного додаткового CSS:</p>
+        <div class="theme-demo">
+          <button type="button" class="btn btn-primary">Primary</button>
+          <button type="button" class="btn btn-danger">Danger</button>
+          <span class="badge text-bg-primary">badge primary</span>
+        </div>
+        <br />
+        <div class="alert alert-primary" role="alert">
+          <code>alert-primary</code> — колір узятий із перевизначеного
+          <code>$primary</code>, а не з дефолтного Bootstrap.
+        </div>
+      </section>
+
+      <section>
+        <h2>Чим це відрізняється від CSS-змінних</h2>
+        <p class="text-muted">
+          Тут не потрібно вручну переозначати <code>--bs-btn-bg</code>,
+          <code>--bs-alert-bg</code> та інші похідні змінні окремо для кожного
+          компонента — Bootstrap сам рахує їх під час компіляції Sass, виходячи
+          з нового <code>$primary</code>. Це "правильний" спосіб зробити власну
+          тему, але він вимагає збірки (<code>pnpm add bootstrap</code> +
+          <code>gulp dev</code> / <code>gulp build</code>), на відміну від
+          точкового патчу поверх CDN (див. <a href="../01-intro-cdn/">01</a>).
+        </p>
+      </section>
+    </div>
   </body>
 </html>
