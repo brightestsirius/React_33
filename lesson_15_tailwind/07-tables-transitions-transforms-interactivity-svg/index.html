@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>07. Tables, Transitions, Transforms, Interactivity & SVG</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-slate-50 text-slate-800 antialiased">
+    <div class="max-w-3xl mx-auto px-4 py-10 space-y-12">
+      <a href="../" class="text-sm text-blue-600 hover:underline">← Головна</a>
+
+      <header>
+        <h1 class="text-3xl font-bold text-slate-900">Tables, Transitions, Transforms, Interactivity & SVG</h1>
+      </header>
+
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold text-slate-900">Tables</h2>
+        <p class="text-slate-600">
+          <code class="bg-slate-200 px-1 rounded">border-collapse</code> об'єднує межі сусідніх клітинок,
+          <code class="bg-slate-200 px-1 rounded">table-fixed</code> робить ширину колонок фіксованою,
+          смугастість рядків — через <code class="bg-slate-200 px-1 rounded">odd:</code>/<code class="bg-slate-200 px-1 rounded">even:</code>.
+        </p>
+        <table class="w-full table-fixed border-collapse rounded overflow-hidden text-sm">
+          <caption class="caption-top text-left text-slate-500 mb-2">
+            Заголовок таблиці (caption-top)
+          </caption>
+          <thead>
+            <tr class="bg-slate-800 text-white">
+              <th class="p-2 text-left">Ім'я</th>
+              <th class="p-2 text-left">Роль</th>
+              <th class="p-2 text-left">Статус</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="odd:bg-white even:bg-slate-100">
+              <td class="p-2 border border-slate-200">Оксана</td>
+              <td class="p-2 border border-slate-200">Frontend</td>
+              <td class="p-2 border border-slate-200">Активна</td>
+            </tr>
+            <tr class="odd:bg-white even:bg-slate-100">
+              <td class="p-2 border border-slate-200">Марко</td>
+              <td class="p-2 border border-slate-200">Backend</td>
+              <td class="p-2 border border-slate-200">Активний</td>
+            </tr>
+            <tr class="odd:bg-white even:bg-slate-100">
+              <td class="p-2 border border-slate-200">Ліна</td>
+              <td class="p-2 border border-slate-200">QA</td>
+              <td class="p-2 border border-slate-200">У відпустці</td>
+            </tr>
+          </tbody>
+        </table>
+        <pre class="bg-slate-900 text-slate-100 text-xs rounded p-3 overflow-x-auto"><code>&lt;table class="table-fixed border-collapse"&gt;
+  &lt;caption class="caption-top"&gt;...&lt;/caption&gt;
+  &lt;tr class="odd:bg-white even:bg-slate-100"&gt;...&lt;/tr&gt;</code></pre>
+      </section>
+
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold text-slate-900">Transitions & Animation</h2>
+        <div class="flex flex-wrap items-center gap-6">
+          <button class="bg-indigo-500 hover:bg-indigo-600 hover:scale-110 transition duration-300 ease-in-out text-white font-bold py-2 px-4 rounded">
+            transition + hover:scale-110
+          </button>
+          <div class="h-10 w-10 rounded-full border-4 border-slate-300 border-t-indigo-500 animate-spin"></div>
+          <div class="h-10 w-10 rounded-full bg-emerald-500 animate-ping opacity-75"></div>
+          <div class="h-10 w-10 rounded bg-amber-400 animate-bounce"></div>
+        </div>
+        <pre class="bg-slate-900 text-slate-100 text-xs rounded p-3 overflow-x-auto"><code>&lt;button class="hover:scale-110 transition duration-300 ease-in-out"&gt;
+&lt;div class="animate-spin"&gt;
+&lt;div class="animate-ping"&gt;
+&lt;div class="animate-bounce"&gt;</code></pre>
+      </section>
+
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold text-slate-900">Transforms</h2>
+        <div class="flex flex-wrap gap-8 pt-2">
+          <div class="h-16 w-16 bg-sky-500 rounded hover:scale-125 transition flex items-center justify-center text-white text-xs">scale</div>
+          <div class="h-16 w-16 bg-sky-500 rounded hover:rotate-45 transition flex items-center justify-center text-white text-xs">rotate</div>
+          <div class="h-16 w-16 bg-sky-500 rounded hover:translate-y-[-8px] transition flex items-center justify-center text-white text-xs">translate</div>
+          <div class="h-16 w-16 bg-sky-500 rounded hover:skew-x-12 transition flex items-center justify-center text-white text-xs">skew</div>
+          <div class="h-16 w-16 bg-sky-500 rounded origin-bottom-right hover:rotate-12 transition flex items-center justify-center text-white text-xs">transform-origin</div>
+        </div>
+        <pre class="bg-slate-900 text-slate-100 text-xs rounded p-3 overflow-x-auto"><code>&lt;div class="hover:scale-125 transition"&gt;
+&lt;div class="hover:rotate-45 transition"&gt;
+&lt;div class="hover:translate-y-[-8px] transition"&gt;
+&lt;div class="hover:skew-x-12 transition"&gt;
+&lt;div class="origin-bottom-right hover:rotate-12 transition"&gt;</code></pre>
+      </section>
+
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold text-slate-900">Interactivity</h2>
+        <div class="flex flex-wrap items-center gap-6">
+          <button class="cursor-pointer bg-slate-200 px-3 py-2 rounded text-sm">cursor-pointer</button>
+          <button disabled class="cursor-not-allowed bg-slate-100 text-slate-400 px-3 py-2 rounded text-sm">cursor-not-allowed</button>
+          <input type="range" class="accent-pink-500" />
+          <textarea class="resize border border-slate-300 rounded p-2 text-sm" rows="2">resize: тягніть за кутик</textarea>
+          <p class="select-none bg-slate-100 px-3 py-2 rounded text-sm">select-none: текст не виділяється</p>
+        </div>
+        <pre class="bg-slate-900 text-slate-100 text-xs rounded p-3 overflow-x-auto"><code>&lt;button class="cursor-pointer"&gt;
+&lt;button disabled class="cursor-not-allowed"&gt;
+&lt;input type="range" class="accent-pink-500"&gt;
+&lt;textarea class="resize"&gt;
+&lt;p class="select-none"&gt;</code></pre>
+      </section>
+
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold text-slate-900">SVG</h2>
+        <p class="text-slate-600">
+          <code class="bg-slate-200 px-1 rounded">fill-*</code> і <code class="bg-slate-200 px-1 rounded">stroke-*</code>
+          керують кольором SVG прямо утилітарними класами (<code class="bg-slate-200 px-1 rounded">fill-current</code>
+          бере поточний text-колір).
+        </p>
+        <div class="flex items-center gap-6 text-rose-500">
+          <svg class="h-10 w-10 fill-current" viewBox="0 0 24 24">
+            <path d="M12 21s-6.716-4.35-9.428-8.06C.657 10.02 1.1 6.5 4 4.9c2.2-1.2 4.6-.4 6 1.3 1.4-1.7 3.8-2.5 6-1.3 2.9 1.6 3.343 5.12 1.428 8.04C18.716 16.65 12 21 12 21z" />
+          </svg>
+          <svg class="h-10 w-10 stroke-blue-500 fill-none" viewBox="0 0 24 24" stroke-width="2">
+            <circle cx="12" cy="12" r="9" />
+          </svg>
+          <svg class="h-10 w-10 stroke-emerald-600 fill-none" viewBox="0 0 24 24" stroke-width="4">
+            <circle cx="12" cy="12" r="9" />
+          </svg>
+        </div>
+        <pre class="bg-slate-900 text-slate-100 text-xs rounded p-3 overflow-x-auto"><code>&lt;svg class="fill-current text-rose-500"&gt;...&lt;/svg&gt;
+&lt;svg class="stroke-blue-500 fill-none" stroke-width="2"&gt;...&lt;/svg&gt;</code></pre>
+      </section>
+
+      <nav class="flex justify-between pt-6 border-t border-slate-200">
+        <a href="../06-backgrounds-borders-effects-filters/" class="text-blue-600 hover:underline">← Backgrounds, Borders, Effects & Filters</a>
+        <a href="../08-customization-vs-bootstrap/" class="text-blue-600 hover:underline">Далі: Кастомізація + Tailwind vs Bootstrap →</a>
+      </nav>
+    </div>
+  </body>
+</html>

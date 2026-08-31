@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>02. Tailwind через pnpm + Sass</title>
+
+    <!--
+      Tailwind тут НЕ підключений через Play CDN (<script src="cdn.tailwindcss.com">),
+      а встановлений як залежність (pnpm add -D tailwindcss) і скомпільований власним
+      gulp + Sass — див. sass/tailwind-pnpm.sass, tailwind.config.js та gulpfile.js
+      (styles / stylesProd).
+    -->
+    <link rel="stylesheet" href="../styles/tailwind-pnpm.css" />
+  </head>
+  <body class="bg-slate-50 text-slate-800 antialiased">
+    <div class="max-w-3xl mx-auto px-4 py-10 space-y-10">
+      <a href="../" class="text-sm text-blue-600 hover:underline">← Головна</a>
+
+      <header>
+        <h1 class="text-3xl font-bold text-slate-900">Tailwind, встановлений через pnpm</h1>
+        <p class="mt-3 text-slate-600 leading-relaxed">
+          Встановлено командою <code class="bg-slate-200 px-1 rounded">pnpm add -D tailwindcss</code>:
+          файли лежать локально у <code class="bg-slate-200 px-1 rounded">node_modules/tailwindcss</code>,
+          жодного запиту до <code class="bg-slate-200 px-1 rounded">cdn.tailwindcss.com</code> не робиться.
+          На відміну від <a class="text-blue-600 hover:underline" href="../01-intro/">Play CDN</a>, який
+          віддає браузеру <em>всі</em> утиліти одним файлом, тут у фінальний CSS потрапляють лише ті
+          класи, що реально використані в HTML — файл виходить значно меншим і придатний для продакшну.
+        </p>
+      </header>
+
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold text-slate-900">Як це збирається</h2>
+        <p class="text-slate-600">
+          У реальному проєкті Tailwind не підключають через готовий CDN-скрипт, а описують у власному
+          Sass-файлі трьома директивами, які під час збірки розгортає PostCSS-плагін
+          <code class="bg-slate-200 px-1 rounded">tailwindcss</code>:
+        </p>
+        <pre class="bg-slate-900 text-slate-100 text-sm rounded-lg p-4 overflow-x-auto"><code>// sass/tailwind-pnpm.sass
+@tailwind base
+@tailwind components
+@tailwind utilities</code></pre>
+        <p class="text-slate-600">
+          А <code class="bg-slate-200 px-1 rounded">tailwind.config.js</code> вказує, які файли скановані
+          на предмет використаних класів (щоб непотрібні утиліти не потрапили у збірку):
+        </p>
+        <pre class="bg-slate-900 text-slate-100 text-sm rounded-lg p-4 overflow-x-auto"><code>// tailwind.config.js
+module.exports = {
+  content: ["./02-intro-pnpm/**/*.html"],
+  theme: { extend: {} },
+  plugins: [],
+};</code></pre>
+        <p class="text-slate-600">
+          Gulp прогонює <code class="bg-slate-200 px-1 rounded">sass/tailwind-pnpm.sass</code> через
+          <code class="bg-slate-200 px-1 rounded">gulp-sass</code>, а потім через PostCSS-пайплайн
+          <code class="bg-slate-200 px-1 rounded">[tailwindcss(), autoprefixer()]</code> — так само, як
+          у сусідньому <code class="bg-slate-200 px-1 rounded">lesson_15_bootstrap</code> компілюється
+          Bootstrap із перевизначеними Sass-змінними:
+        </p>
+        <pre class="bg-slate-900 text-slate-100 text-sm rounded-lg p-4 overflow-x-auto"><code>pnpm add -D tailwindcss
+gulp dev    # компіляція + watch на sass/**/*.sass та 02-intro-pnpm/**/*.html
+gulp build  # мінімізована версія для продакшну</code></pre>
+      </section>
+
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold text-slate-900">Результат: ті самі утиліти, свій білд</h2>
+        <p class="text-slate-600">
+          Класи нижче стилізовані не через <code class="bg-slate-200 px-1 rounded">cdn.tailwindcss.com</code>,
+          а через локально скомпільований <code class="bg-slate-200 px-1 rounded">../styles/tailwind-pnpm.css</code>:
+        </p>
+        <div class="flex flex-wrap items-center gap-4 rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+          <button class="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-600">Кнопка</button>
+          <span class="inline-flex items-center rounded-full bg-emerald-100 text-emerald-700 text-sm font-medium px-3 py-1">
+            badge
+          </span>
+          <div class="h-10 w-10 rounded-full bg-indigo-500"></div>
+        </div>
+      </section>
+
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold text-slate-900">CDN vs pnpm + build</h2>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="rounded-lg border border-slate-200 bg-white p-4 space-y-2">
+            <p class="font-semibold text-slate-900">Play CDN (01)</p>
+            <ul class="text-sm text-slate-600 list-disc list-inside space-y-1">
+              <li>Один <code class="bg-slate-200 px-1 rounded">&lt;script&gt;</code>, без збірки</li>
+              <li>Усі утиліти генеруються прямо в браузері</li>
+              <li>Швидкий старт, зручно для навчання й прототипів</li>
+              <li>Не рекомендовано для продакшну</li>
+            </ul>
+          </div>
+          <div class="rounded-lg border border-slate-200 bg-white p-4 space-y-2">
+            <p class="font-semibold text-slate-900">pnpm + gulp (02, ця сторінка)</p>
+            <ul class="text-sm text-slate-600 list-disc list-inside space-y-1">
+              <li>Локальна залежність, працює офлайн</li>
+              <li>У CSS потрапляють лише використані класи</li>
+              <li>Sass дозволяє додати власні змінні/міксини поруч</li>
+              <li>Потребує кроку збірки (<code class="bg-slate-200 px-1 rounded">gulp dev</code>/<code class="bg-slate-200 px-1 rounded">build</code>)</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <nav class="flex justify-between pt-6 border-t border-slate-200">
+        <a href="../01-intro/" class="text-blue-600 hover:underline">← Що таке Tailwind CSS</a>
+        <a href="../03-states-responsive-dark/" class="text-blue-600 hover:underline">Далі: States, Responsive, Dark Mode →</a>
+      </nav>
+    </div>
+  </body>
+</html>

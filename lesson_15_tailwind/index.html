@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Заняття 15: Tailwind CSS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-slate-50 text-slate-800 antialiased">
+    <div class="max-w-3xl mx-auto px-4 py-10">
+      <h1 class="text-3xl font-bold text-slate-900">Заняття 15: Tailwind CSS</h1>
+      <p class="mt-2 text-slate-500">
+        Utility-first · States & Responsive & Dark mode · Layout & Flexbox & Grid ·
+        Spacing & Sizing & Typography · Backgrounds & Borders & Effects & Filters ·
+        Tables & Transitions & Transforms & Interactivity & SVG · Customization ·
+        Tailwind vs Bootstrap
+      </p>
+
+      <ol class="mt-8 space-y-4 list-decimal list-inside">
+        <li>
+          <a class="text-blue-600 font-semibold hover:underline" href="01-intro/">01. Що таке Tailwind CSS</a>
+          <p class="text-sm text-slate-500 ml-5">
+            utility-first підхід, переваги, порівняння з написанням "звичайного" CSS, підключення через CDN.
+          </p>
+        </li>
+        <li>
+          <a class="text-blue-600 font-semibold hover:underline" href="02-intro-pnpm/">02. Tailwind через pnpm + Sass</a>
+          <p class="text-sm text-slate-500 ml-5">
+            Tailwind встановлений як залежність (<code>pnpm add -D tailwindcss</code>)
+            і компілюється власним gulp + Sass, на відміну від Play CDN з попередньої сторінки.
+          </p>
+        </li>
+        <li>
+          <a class="text-blue-600 font-semibold hover:underline" href="03-states-responsive-dark/">03. States, Responsive Design, Dark Mode</a>
+          <p class="text-sm text-slate-500 ml-5">
+            hover/focus, брейкпоінти (sm/md/lg/xl), перемикання темної теми.
+          </p>
+        </li>
+        <li>
+          <a class="text-blue-600 font-semibold hover:underline" href="04-layout-flexbox-grid/">04. Layout, Flexbox & Grid</a>
+          <p class="text-sm text-slate-500 ml-5">
+            container, display, position, overflow, z-index + flexbox та grid для розкладки.
+          </p>
+        </li>
+        <li>
+          <a class="text-blue-600 font-semibold hover:underline" href="05-spacing-sizing-typography/">05. Spacing, Sizing & Typography</a>
+          <p class="text-sm text-slate-500 ml-5">
+            padding/margin/space-between, width/height/min/max/size, шрифти та текст.
+          </p>
+        </li>
+        <li>
+          <a class="text-blue-600 font-semibold hover:underline" href="06-backgrounds-borders-effects-filters/">06. Backgrounds, Borders, Effects & Filters</a>
+          <p class="text-sm text-slate-500 ml-5">
+            кольори/градієнти фону, рамки та ring, тіні/прозорість, фільтри (blur, grayscale тощо).
+          </p>
+        </li>
+        <li>
+          <a class="text-blue-600 font-semibold hover:underline" href="07-tables-transitions-transforms-interactivity-svg/">07. Tables, Transitions, Transforms, Interactivity & SVG</a>
+          <p class="text-sm text-slate-500 ml-5">
+            стилізація таблиць, переходи й анімації, трансформації, інтерактивність, SVG.
+          </p>
+        </li>
+        <li>
+          <a class="text-blue-600 font-semibold hover:underline" href="08-customization-vs-bootstrap/">08. Кастомізація Tailwind + Tailwind vs Bootstrap</a>
+          <p class="text-sm text-slate-500 ml-5">
+            tailwind.config (theme/colors/spacing/plugins), принципова відмінність від Bootstrap.
+          </p>
+        </li>
+        <li>
+          <a class="text-blue-600 font-semibold hover:underline" href="09-final/">09. Фінальний приклад: адаптивний макет</a>
+          <p class="text-sm text-slate-500 ml-5">
+            аналог HW 15.1 (див. <code>lesson_15_bootstrap/10-final</code>), той самий макет —
+            дворівневе меню, слайдер, акордеон, форма з валідацією — реалізований на Tailwind
+            utility-класах замість Bootstrap-компонентів.
+          </p>
+        </li>
+      </ol>
+    </div>
+  </body>
+</html>

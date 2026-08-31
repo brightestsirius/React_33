@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>08. Кастомізація Tailwind + Tailwind vs Bootstrap</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      // Кастомізація теми: у реальному проєкті це живе у tailwind.config.js,
+      // тут (Play CDN) той самий об'єкт передається через глобальну змінну.
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                DEFAULT: "#cc3333",
+                light: "#e88",
+                dark: "#911",
+              },
+            },
+            spacing: {
+              18: "4.5rem",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-slate-50 text-slate-800 antialiased">
+    <div class="max-w-3xl mx-auto px-4 py-10 space-y-12">
+      <a href="../" class="text-sm text-blue-600 hover:underline">← Головна</a>
+
+      <header>
+        <h1 class="text-3xl font-bold text-slate-900">Кастомізація Tailwind CSS</h1>
+      </header>
+
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold text-slate-900">tailwind.config: theme, colors, spacing</h2>
+        <p class="text-slate-600">
+          У продакшн-проєкті налаштування живе у файлі <code class="bg-slate-200 px-1 rounded">tailwind.config.js</code>.
+          Ключові розділи:
+        </p>
+        <ul class="list-disc list-inside text-slate-600 space-y-1">
+          <li><strong>content</strong> — де шукати класи (файли HTML/JS), щоб знати, які утиліти лишити у збірці.</li>
+          <li><strong>theme</strong> — базові значення (кольори, шрифти, розміри); <strong>theme.extend</strong> — додає, не замінюючи стандартні.</li>
+          <li><strong>screens</strong> — власні брейкпоінти для responsive-префіксів.</li>
+          <li><strong>colors</strong> / <strong>spacing</strong> — брендові кольори та власна шкала відступів.</li>
+          <li><strong>plugins</strong> — розширення новими утилітами (наприклад, <code class="bg-slate-200 px-1 rounded">@tailwindcss/forms</code>, <code class="bg-slate-200 px-1 rounded">@tailwindcss/typography</code>).</li>
+          <li><strong>presets</strong> — готова базова конфігурація, яку можна перевикористовувати між проєктами.</li>
+        </ul>
+
+        <p class="text-slate-600">
+          На цій сторінці вище підключений такий конфіг — і клас <code class="bg-slate-200 px-1 rounded">bg-brand</code>
+          та <code class="bg-slate-200 px-1 rounded">p-18</code> вже працюють, хоча їх немає у стандартній палітрі Tailwind:
+        </p>
+
+        <div class="flex flex-wrap items-center gap-4">
+          <button class="bg-brand hover:bg-brand-dark text-white font-bold py-2 px-4 rounded">bg-brand</button>
+          <div class="bg-brand-light text-brand-dark p-18 rounded text-sm font-semibold">p-18 (4.5rem)</div>
+        </div>
+
+        <pre class="bg-slate-900 text-slate-100 text-xs rounded p-3 overflow-x-auto"><code>// tailwind.config.js
+module.exports = {
+  content: ["./**/*.html"],
+  theme: {
+    extend: {
+      colors: {
+        brand: { DEFAULT: "#cc3333", light: "#e88", dark: "#911" },
+      },
+      spacing: { 18: "4.5rem" },
+    },
+  },
+  plugins: [],
+};</code></pre>
+      </section>
+
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold text-slate-900">Власні стилі поверх утиліт</h2>
+        <p class="text-slate-600">
+          У реальній збірці (з PostCSS) для повторюваних комбінацій утиліт використовують
+          <code class="bg-slate-200 px-1 rounded">@layer components</code> і
+          <code class="bg-slate-200 px-1 rounded">@apply</code> у CSS-файлі:
+        </p>
+        <pre class="bg-slate-900 text-slate-100 text-xs rounded p-3 overflow-x-auto"><code>/* styles.css */
+@layer components {
+  .btn-brand {
+    @apply bg-brand hover:bg-brand-dark text-white font-bold py-2 px-4 rounded;
+  }
+}
+
+&lt;button class="btn-brand"&gt;Кнопка&lt;/button&gt;</code></pre>
+        <p class="text-sm text-slate-500">
+          Без збірки (Play CDN, як тут) <code class="bg-slate-200 px-1 rounded">@apply</code> недоступний —
+          повторне використання досягається копіюванням набору класів або компонентами фреймворку (React/Vue/Angular).
+        </p>
+      </section>
+
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold text-slate-900">Tailwind CSS vs Bootstrap: принципова відмінність</h2>
+        <p class="text-slate-600">
+          Обидва — популярні CSS-фреймворки, але з різною філософією іменування класів.
+        </p>
+
+        <div class="overflow-x-auto rounded-lg border border-slate-200">
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr class="bg-slate-800 text-white">
+                <th class="p-3 text-left">Bootstrap</th>
+                <th class="p-3 text-left">Tailwind CSS</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="odd:bg-white even:bg-slate-100">
+                <td class="p-3 border border-slate-200">Component-based: готові компоненти зі своїм CSS</td>
+                <td class="p-3 border border-slate-200">Utility-first: маленькі класи по одній властивості</td>
+              </tr>
+              <tr class="odd:bg-white even:bg-slate-100">
+                <td class="p-3 border border-slate-200"><code>btn btn-primary</code></td>
+                <td class="p-3 border border-slate-200"><code>bg-blue-500 text-white font-bold py-2 px-4 rounded</code></td>
+              </tr>
+              <tr class="odd:bg-white even:bg-slate-100">
+                <td class="p-3 border border-slate-200">Швидкий старт: готовий вигляд "з коробки"</td>
+                <td class="p-3 border border-slate-200">Швидкий у кастомізації: унікальний дизайн без перезапису чужого CSS</td>
+              </tr>
+              <tr class="odd:bg-white even:bg-slate-100">
+                <td class="p-3 border border-slate-200">Кастомізація через Sass-змінні / CSS custom properties</td>
+                <td class="p-3 border border-slate-200">Кастомізація через tailwind.config (theme/extend)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="text-slate-600">Одна й та сама кнопка двома способами:</p>
+        <div class="flex flex-wrap gap-4">
+          <div class="space-y-1">
+            <p class="text-xs text-slate-500">Bootstrap</p>
+            <pre class="bg-slate-900 text-slate-100 text-xs rounded p-3 overflow-x-auto"><code>&lt;button class="btn btn-primary"&gt;
+  Кнопка
+&lt;/button&gt;</code></pre>
+          </div>
+          <div class="space-y-1">
+            <p class="text-xs text-slate-500">Tailwind</p>
+            <pre class="bg-slate-900 text-slate-100 text-xs rounded p-3 overflow-x-auto"><code>&lt;button class="bg-blue-500 text-white
+  font-bold py-2 px-4 rounded"&gt;
+  Кнопка
+&lt;/button&gt;</code></pre>
+          </div>
+        </div>
+        <p class="text-sm text-slate-500">
+          Обидва підходи дозволяють кастомізацію під власні потреби — різниця у тому,
+          <strong>звідки ми стартуємо</strong>: від готового компонента (Bootstrap) чи від набору "цеглинок" (Tailwind).
+        </p>
+      </section>
+
+      <nav class="flex justify-between pt-6 border-t border-slate-200">
+        <a href="../07-tables-transitions-transforms-interactivity-svg/" class="text-blue-600 hover:underline">← Tables, Transitions, Transforms, Interactivity & SVG</a>
+        <a href="../" class="text-blue-600 hover:underline">Головна →</a>
+      </nav>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>06. Backgrounds, Borders, Effects & Filters</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-slate-50 text-slate-800 antialiased">
+    <div class="max-w-3xl mx-auto px-4 py-10 space-y-12">
+      <a href="../" class="text-sm text-blue-600 hover:underline">← Головна</a>
+
+      <header>
+        <h1 class="text-3xl font-bold text-slate-900">Backgrounds, Borders, Effects & Filters</h1>
+      </header>
+
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold text-slate-900">Backgrounds</h2>
+        <div class="grid sm:grid-cols-3 gap-3">
+          <div class="h-20 rounded bg-amber-400 flex items-center justify-center text-white text-sm font-semibold">bg-amber-400</div>
+          <div class="h-20 rounded bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center text-white text-sm font-semibold">gradient-to-r</div>
+          <div class="h-20 rounded bg-slate-800 bg-[radial-gradient(#ffffff33_1px,transparent_1px)] bg-[length:12px_12px] flex items-center justify-center text-white text-sm font-semibold">bg-repeat патерн</div>
+        </div>
+        <pre class="bg-slate-900 text-slate-100 text-xs rounded p-3 overflow-x-auto"><code>&lt;div class="bg-amber-400"&gt;
+&lt;div class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"&gt;
+&lt;div class="bg-[length:12px_12px] bg-[radial-gradient(...)]"&gt;</code></pre>
+      </section>
+
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold text-slate-900">Borders</h2>
+        <div class="flex flex-wrap gap-4">
+          <div class="h-16 w-16 border-2 border-slate-400 rounded flex items-center justify-center text-xs">border-2</div>
+          <div class="h-16 w-16 border-4 border-dashed border-rose-400 rounded flex items-center justify-center text-xs">dashed</div>
+          <div class="h-16 w-16 border-4 border-emerald-500 rounded-full flex items-center justify-center text-xs">rounded-full</div>
+          <div class="h-16 w-16 ring-4 ring-blue-400 ring-offset-2 rounded flex items-center justify-center text-xs bg-white">ring-4</div>
+        </div>
+
+        <p class="text-sm font-semibold text-slate-500 pt-2">divide-y: розділювачі між дочірніми елементами</p>
+        <div class="divide-y divide-slate-200 rounded border border-slate-200 bg-white max-w-xs">
+          <p class="p-2 text-sm">Пункт 1</p>
+          <p class="p-2 text-sm">Пункт 2</p>
+          <p class="p-2 text-sm">Пункт 3</p>
+        </div>
+
+        <pre class="bg-slate-900 text-slate-100 text-xs rounded p-3 overflow-x-auto"><code>&lt;div class="border-2 border-slate-400 rounded"&gt;
+&lt;div class="border-4 border-dashed border-rose-400"&gt;
+&lt;div class="ring-4 ring-blue-400 ring-offset-2"&gt;
+&lt;div class="divide-y divide-slate-200"&gt;</code></pre>
+      </section>
+
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold text-slate-900">Effects: shadow, opacity</h2>
+        <div class="flex flex-wrap gap-6">
+          <div class="h-16 w-16 rounded bg-white shadow-sm flex items-center justify-center text-xs">shadow-sm</div>
+          <div class="h-16 w-16 rounded bg-white shadow-lg flex items-center justify-center text-xs">shadow-lg</div>
+          <div class="h-16 w-16 rounded bg-white shadow-xl shadow-indigo-300 flex items-center justify-center text-xs">кольорова тінь</div>
+          <div class="h-16 w-16 rounded bg-blue-500 opacity-50 flex items-center justify-center text-xs text-white">opacity-50</div>
+        </div>
+        <pre class="bg-slate-900 text-slate-100 text-xs rounded p-3 overflow-x-auto"><code>&lt;div class="shadow-lg"&gt;
+&lt;div class="shadow-xl shadow-indigo-300"&gt;   &lt;!-- кольорова тінь --&gt;
+&lt;div class="opacity-50"&gt;</code></pre>
+      </section>
+
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold text-slate-900">Filters</h2>
+        <p class="text-slate-600">Наведіть курсор на плитку — фільтр повертається до норми через <code class="bg-slate-200 px-1 rounded">hover:</code>.</p>
+        <div class="grid grid-cols-3 sm:grid-cols-6 gap-3 text-center text-xs">
+          <div class="space-y-1">
+            <div class="h-16 rounded bg-gradient-to-br from-orange-400 to-pink-500 blur-sm hover:blur-none transition"></div>
+            <p>blur-sm</p>
+          </div>
+          <div class="space-y-1">
+            <div class="h-16 rounded bg-gradient-to-br from-orange-400 to-pink-500 grayscale hover:grayscale-0 transition"></div>
+            <p>grayscale</p>
+          </div>
+          <div class="space-y-1">
+            <div class="h-16 rounded bg-gradient-to-br from-orange-400 to-pink-500 brightness-50 hover:brightness-100 transition"></div>
+            <p>brightness-50</p>
+          </div>
+          <div class="space-y-1">
+            <div class="h-16 rounded bg-gradient-to-br from-orange-400 to-pink-500 contrast-200 hover:contrast-100 transition"></div>
+            <p>contrast-200</p>
+          </div>
+          <div class="space-y-1">
+            <div class="h-16 rounded bg-gradient-to-br from-orange-400 to-pink-500 hue-rotate-90 hover:hue-rotate-0 transition"></div>
+            <p>hue-rotate-90</p>
+          </div>
+          <div class="space-y-1">
+            <div class="h-16 rounded bg-gradient-to-br from-orange-400 to-pink-500 invert hover:invert-0 transition"></div>
+            <p>invert</p>
+          </div>
+        </div>
+
+        <p class="text-sm font-semibold text-slate-500 pt-2">backdrop-blur: фільтр застосований до того, що позаду елемента</p>
+        <div class="relative h-24 rounded overflow-hidden bg-gradient-to-r from-fuchsia-500 to-cyan-500">
+          <div class="absolute inset-0 flex items-center justify-center">
+            <div class="backdrop-blur-sm bg-white/30 text-white px-4 py-2 rounded font-semibold">backdrop-blur-sm bg-white/30</div>
+          </div>
+        </div>
+
+        <pre class="bg-slate-900 text-slate-100 text-xs rounded p-3 overflow-x-auto"><code>&lt;div class="blur-sm hover:blur-none transition"&gt;
+&lt;div class="grayscale hover:grayscale-0 transition"&gt;
+&lt;div class="backdrop-blur-sm bg-white/30"&gt;</code></pre>
+      </section>
+
+      <nav class="flex justify-between pt-6 border-t border-slate-200">
+        <a href="../05-spacing-sizing-typography/" class="text-blue-600 hover:underline">← Spacing, Sizing & Typography</a>
+        <a href="../07-tables-transitions-transforms-interactivity-svg/" class="text-blue-600 hover:underline">Далі: Tables, Transitions, Transforms, Interactivity & SVG →</a>
+      </nav>
+    </div>
+  </body>
+</html>

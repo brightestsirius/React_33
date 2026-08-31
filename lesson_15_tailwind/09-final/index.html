@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>09. Фінальний приклад: адаптивний макет (Tailwind, аналог HW 15.1)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-slate-50 text-slate-800 antialiased">
+    <!-- HEADER: дворівневе меню -->
+    <header class="border-b border-slate-200">
+      <div class="bg-slate-900 text-slate-300 text-xs sm:text-sm py-1.5">
+        <div class="max-w-6xl mx-auto px-4 flex flex-wrap items-center justify-between gap-2">
+          <div class="flex items-center gap-3">
+            <a href="tel:+380441234567" class="hover:text-white">+38 (044) 123-45-67</a>
+            <a href="mailto:hello@travelblog.example" class="hover:text-white">hello@travelblog.example</a>
+          </div>
+          <div class="flex items-center gap-3">
+            <a href="#" class="hover:text-white">Instagram</a>
+            <a href="#" class="hover:text-white">Facebook</a>
+            <details class="relative">
+              <summary class="list-none cursor-pointer border border-slate-600 rounded px-2 py-0.5 select-none">
+                UA
+              </summary>
+              <ul class="absolute right-0 mt-1 w-32 bg-white text-slate-800 text-sm rounded shadow-lg overflow-hidden z-20">
+                <li><a href="#" class="block px-3 py-1.5 hover:bg-slate-100">Українська</a></li>
+                <li><a href="#" class="block px-3 py-1.5 hover:bg-slate-100">English</a></li>
+              </ul>
+            </details>
+          </div>
+        </div>
+      </div>
+
+      <nav class="bg-white">
+        <div class="max-w-6xl mx-auto px-4 flex flex-wrap items-center justify-between py-3 gap-4">
+          <a href="#" class="font-bold text-lg text-slate-900">TravelBlog</a>
+
+          <details class="w-full md:w-auto">
+            <summary
+              class="md:hidden list-none inline-flex items-center justify-center p-2 rounded border border-slate-300 cursor-pointer select-none"
+            >
+              <span class="sr-only">Меню</span>
+              ☰
+            </summary>
+
+            <div class="w-full md:flex md:w-auto md:items-center md:gap-6">
+              <ul class="flex flex-col md:flex-row md:items-center gap-1 md:gap-6 py-4 md:py-0">
+                <li><a href="#" class="block px-1 py-1 font-semibold text-blue-600">Головна</a></li>
+                <li class="relative">
+                  <details class="group">
+                    <summary
+                      class="flex list-none cursor-pointer items-center justify-between gap-1 px-1 py-1 hover:text-blue-600 md:w-auto md:justify-start"
+                    >
+                      Напрямки <span class="text-xs transition-transform group-open:rotate-180">▾</span>
+                    </summary>
+                    <ul class="pl-4 md:absolute md:top-full md:left-0 md:mt-1 md:w-48 md:pl-0 md:bg-white md:shadow-lg md:rounded md:border md:border-slate-200 md:py-1 md:z-20">
+                      <li><a href="#" class="block px-1 py-1 md:px-3 md:py-1.5 hover:bg-slate-100">Європа</a></li>
+                      <li><a href="#" class="block px-1 py-1 md:px-3 md:py-1.5 hover:bg-slate-100">Азія</a></li>
+                      <li><a href="#" class="block px-1 py-1 md:px-3 md:py-1.5 hover:bg-slate-100">Південна Америка</a></li>
+                    </ul>
+                  </details>
+                </li>
+                <li><a href="#" class="block px-1 py-1 hover:text-blue-600">Про нас</a></li>
+                <li><a href="#" class="block px-1 py-1 hover:text-blue-600">Контакти</a></li>
+              </ul>
+
+              <form class="flex gap-2 pb-4 md:pb-0" role="search">
+                <input
+                  type="search"
+                  placeholder="Пошук..."
+                  aria-label="Пошук"
+                  class="border border-slate-300 rounded px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                />
+                <button type="submit" class="border border-blue-600 text-blue-600 rounded px-3 py-1.5 text-sm hover:bg-blue-50">
+                  Знайти
+                </button>
+              </form>
+            </div>
+          </details>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Адаптивна сітка: LEFT / MAIN / RIGHT -->
+    <div class="max-w-6xl mx-auto px-4 py-8">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+        <!-- LEFT: галерея фото -->
+        <aside class="md:col-span-4 lg:col-span-3">
+          <h2 class="text-lg font-semibold text-slate-900 mb-3">Фото з подорожі</h2>
+          <div class="grid grid-cols-2 gap-3">
+            <img
+              src="https://placehold.co/480x640/0d6efd/ffffff?text=Карпати"
+              alt="Гори Карпати"
+              class="col-span-2 w-full h-56 md:h-64 object-cover rounded-lg shadow-sm"
+            />
+            <img
+              src="https://placehold.co/480x640/198754/ffffff?text=Лісабон"
+              alt="Вулиці Лісабона"
+              class="w-full h-28 object-cover rounded-lg shadow-sm"
+            />
+            <img
+              src="https://placehold.co/480x640/dc3545/ffffff?text=Кіото"
+              alt="Храми Кіото"
+              class="w-full h-28 object-cover rounded-lg shadow-sm"
+            />
+          </div>
+        </aside>
+
+        <!-- MAIN: акордеон + форма -->
+        <main class="md:col-span-8 lg:col-span-6">
+          <h1 class="text-2xl font-bold text-slate-900">10 днів у Карпатах: маршрут вихідного дня</h1>
+          <p class="mt-2 text-slate-500">
+            Детальний план подорожі: розгорніть кожен день, щоб побачити маршрут,
+            місця ночівлі та поради.
+          </p>
+
+          <div class="mt-6 space-y-2">
+            <details class="group border border-slate-200 rounded-lg" open>
+              <summary class="flex list-none items-center justify-between cursor-pointer px-4 py-3 font-semibold text-slate-900">
+                День 1 — Прибуття та акліматизація
+                <span class="transition-transform group-open:rotate-180">▾</span>
+              </summary>
+              <div class="px-4 pb-4 text-sm text-slate-600">
+                Заїзд у гірський будиночок, коротка прогулянка околицями та
+                вечеря з місцевою кухнею.
+              </div>
+            </details>
+            <details class="group border border-slate-200 rounded-lg">
+              <summary class="flex list-none items-center justify-between cursor-pointer px-4 py-3 font-semibold text-slate-900">
+                День 2 — Сходження на вершину
+                <span class="transition-transform group-open:rotate-180">▾</span>
+              </summary>
+              <div class="px-4 pb-4 text-sm text-slate-600">
+                Ранній старт, 6-годинний маршрут до вершини та повернення
+                затемна стежкою через ліс.
+              </div>
+            </details>
+            <details class="group border border-slate-200 rounded-lg">
+              <summary class="flex list-none items-center justify-between cursor-pointer px-4 py-3 font-semibold text-slate-900">
+                День 3 — Термальні джерела та від'їзд
+                <span class="transition-transform group-open:rotate-180">▾</span>
+              </summary>
+              <div class="px-4 pb-4 text-sm text-slate-600">
+                Відпочинок біля термальних джерел, обід у місцевій садибі та
+                зворотна дорога.
+              </div>
+            </details>
+          </div>
+
+          <h2 class="mt-10 text-xl font-semibold text-slate-900">Підписатися на новини маршрутів</h2>
+          <form id="subscribeForm" class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="fullName" class="block text-sm font-medium text-slate-700 mb-1">Ім'я та прізвище</label>
+              <input
+                type="text"
+                id="fullName"
+                placeholder="Ім'я та прізвище"
+                required
+                class="w-full border border-slate-300 rounded px-3 py-2 invalid:border-red-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              />
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium text-slate-700 mb-1">Email</label>
+              <input
+                type="email"
+                id="email"
+                placeholder="you@example.com"
+                required
+                class="w-full border border-slate-300 rounded px-3 py-2 invalid:border-red-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              />
+            </div>
+            <div>
+              <label for="phone" class="block text-sm font-medium text-slate-700 mb-1">Телефон</label>
+              <input
+                type="tel"
+                id="phone"
+                placeholder="+380441234567"
+                pattern="^\+?[0-9\s-]{7,15}$"
+                title="Наприклад: +380441234567"
+                required
+                class="w-full border border-slate-300 rounded px-3 py-2 invalid:border-red-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              />
+            </div>
+            <div>
+              <label for="direction" class="block text-sm font-medium text-slate-700 mb-1">Улюблений напрямок</label>
+              <select
+                id="direction"
+                required
+                class="w-full border border-slate-300 rounded px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              >
+                <option value="" selected disabled>Оберіть напрямок</option>
+                <option value="europe">Європа</option>
+                <option value="asia">Азія</option>
+                <option value="south-america">Південна Америка</option>
+              </select>
+            </div>
+            <div class="sm:col-span-2">
+              <label for="message" class="block text-sm font-medium text-slate-700 mb-1">Коментар</label>
+              <textarea
+                id="message"
+                rows="3"
+                class="w-full border border-slate-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              ></textarea>
+            </div>
+            <div class="sm:col-span-2">
+              <label class="flex items-start gap-2 text-sm text-slate-700">
+                <input type="checkbox" id="agree" required class="mt-0.5" />
+                <span>Погоджуюсь на обробку персональних даних</span>
+              </label>
+            </div>
+            <div class="sm:col-span-2 flex gap-2">
+              <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded">
+                Підписатися
+              </button>
+              <button type="reset" class="border border-slate-300 text-slate-700 hover:bg-slate-100 font-semibold px-4 py-2 rounded">
+                Очистити
+              </button>
+            </div>
+          </form>
+        </main>
+
+        <!-- RIGHT: бокова панель -->
+        <aside class="lg:col-span-3">
+          <h2 class="text-lg font-semibold text-slate-900 mb-3">Популярні пости</h2>
+          <ul class="mb-8 divide-y divide-slate-200 rounded-lg border border-slate-200 overflow-hidden">
+            <li class="p-3"><a href="#" class="text-blue-600 hover:underline text-sm">Топ-5 треків Карпат</a></li>
+            <li class="p-3"><a href="#" class="text-blue-600 hover:underline text-sm">Бюджетна подорож у Лісабон</a></li>
+            <li class="p-3"><a href="#" class="text-blue-600 hover:underline text-sm">Що взяти в гори восени</a></li>
+          </ul>
+
+          <h2 class="text-lg font-semibold text-slate-900 mb-3">Теги</h2>
+          <div class="flex flex-wrap gap-2">
+            <span class="bg-slate-200 text-slate-700 text-xs px-3 py-1 rounded-full">гори</span>
+            <span class="bg-slate-200 text-slate-700 text-xs px-3 py-1 rounded-full">бюджетно</span>
+            <span class="bg-slate-200 text-slate-700 text-xs px-3 py-1 rounded-full">Європа</span>
+            <span class="bg-slate-200 text-slate-700 text-xs px-3 py-1 rounded-full">похід</span>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-300 pt-12 pb-6 mt-4">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+          <div class="md:col-span-4">
+            <h2 class="text-lg font-semibold text-white mb-2">TravelBlog</h2>
+            <p class="text-sm text-slate-400">
+              Ділимося маршрутами, порадами та фотографіями з подорожей по
+              всьому світу.
+            </p>
+          </div>
+          <div class="md:col-span-2">
+            <h3 class="text-sm font-semibold text-white mb-2">Меню</h3>
+            <ul class="space-y-1 text-sm">
+              <li><a href="#" class="hover:text-white">Головна</a></li>
+              <li><a href="#" class="hover:text-white">Напрямки</a></li>
+              <li><a href="#" class="hover:text-white">Про нас</a></li>
+            </ul>
+          </div>
+          <div class="md:col-span-3">
+            <h3 class="text-sm font-semibold text-white mb-2">Контакти</h3>
+            <ul class="space-y-1 text-sm text-slate-400">
+              <li>+38 (044) 123-45-67</li>
+              <li>hello@travelblog.example</li>
+              <li>Київ, Україна</li>
+            </ul>
+          </div>
+          <div class="md:col-span-3">
+            <h3 class="text-sm font-semibold text-white mb-2">Розсилка</h3>
+            <form class="flex gap-2">
+              <input
+                type="email"
+                placeholder="Ваш email"
+                aria-label="Email для розсилки"
+                class="min-w-0 flex-1 border border-slate-700 bg-slate-800 text-white placeholder-slate-500 rounded px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+              <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-3 py-1.5 rounded">
+                OK
+              </button>
+            </form>
+          </div>
+        </div>
+        <hr class="border-slate-700 my-6" />
+        <p class="text-center text-xs text-slate-500">
+          &copy; 2026 TravelBlog. Навчальний приклад для HW 15.1 (Tailwind CSS).
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>01. Що таке Tailwind CSS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-slate-50 text-slate-800 antialiased">
+    <div class="max-w-3xl mx-auto px-4 py-10 space-y-10">
+      <a href="../" class="text-sm text-blue-600 hover:underline">← Головна</a>
+
+      <header>
+        <h1 class="text-3xl font-bold text-slate-900">Що таке Tailwind CSS?</h1>
+        <p class="mt-3 text-slate-600 leading-relaxed">
+          Tailwind CSS — це <strong>утилітарний (utility-first) фреймворк</strong> для CSS.
+          Замість написання власних CSS-класів (<code class="bg-slate-200 px-1 rounded">.card</code>,
+          <code class="bg-slate-200 px-1 rounded">.btn-primary</code> тощо) ми стилізуємо елементи
+          прямо в розмітці, комбінуючи готові утилітарні класи —
+          кожен з яких відповідає за одну властивість CSS.
+        </p>
+      </header>
+
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold text-slate-900">Підключення через CDN (для навчання)</h2>
+        <p class="text-slate-600">
+          Для продакшн-проєктів Tailwind зазвичай встановлюють як залежність (pnpm/npm) і
+          компілюють збіркою (Vite, PostCSS). Але для швидкого старту й навчання є
+          <strong>Play CDN</strong> — один
+          <code class="bg-slate-200 px-1 rounded">&lt;script&gt;</code>, і всі утиліти вже працюють
+          без жодної збірки. Саме так підключені всі приклади цього заняття.
+        </p>
+        <pre class="bg-slate-900 text-slate-100 text-sm rounded-lg p-4 overflow-x-auto"><code>&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</code></pre>
+      </section>
+
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold text-slate-900">Traditional CSS vs Utility-first</h2>
+        <p class="text-slate-600">Той самий результат — однакова кнопка, два підходи.</p>
+
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="rounded-lg border border-slate-200 bg-white p-4 space-y-3">
+            <p class="text-sm font-semibold text-slate-500">Звичайний CSS</p>
+            <button class="btn-demo">Кнопка</button>
+            <pre class="bg-slate-900 text-slate-100 text-xs rounded p-3 overflow-x-auto"><code>&lt;button class="btn"&gt;Кнопка&lt;/button&gt;
+
+.btn {
+  background-color: #3b82f6;
+  color: white;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+}</code></pre>
+          </div>
+          <div class="rounded-lg border border-slate-200 bg-white p-4 space-y-3">
+            <p class="text-sm font-semibold text-slate-500">Tailwind (utility-first)</p>
+            <button class="bg-blue-500 text-white font-bold py-2 px-4 rounded">Кнопка</button>
+            <pre class="bg-slate-900 text-slate-100 text-xs rounded p-3 overflow-x-auto"><code>&lt;button class="bg-blue-500 text-white
+  font-bold py-2 px-4 rounded"&gt;
+  Кнопка
+&lt;/button&gt;</code></pre>
+          </div>
+        </div>
+        <p class="text-sm text-slate-500">
+          Жодного окремого CSS-файлу для кнопки не знадобилось — весь вигляд описаний класами прямо в HTML.
+          Змінити стиль так само просто, як змінити/додати клас.
+        </p>
+      </section>
+
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold text-slate-900">Переваги Tailwind CSS</h2>
+        <ul class="grid sm:grid-cols-2 gap-3">
+          <li class="rounded-lg bg-white border border-slate-200 p-3">
+            <p class="font-semibold text-slate-900">Швидкість розробки</p>
+            <p class="text-sm text-slate-600">Стилізація без перемикання між HTML і CSS-файлом.</p>
+          </li>
+          <li class="rounded-lg bg-white border border-slate-200 p-3">
+            <p class="font-semibold text-slate-900">Дизайн-система з коробки</p>
+            <p class="text-sm text-slate-600">Обмежена палітра кольорів/відступів → консистентний UI.</p>
+          </li>
+          <li class="rounded-lg bg-white border border-slate-200 p-3">
+            <p class="font-semibold text-slate-900">Гнучкість</p>
+            <p class="text-sm text-slate-600">Повний контроль над кожним елементом без "боротьби" з чужими стилями.</p>
+          </li>
+          <li class="rounded-lg bg-white border border-slate-200 p-3">
+            <p class="font-semibold text-slate-900">Мінімум зайвого CSS</p>
+            <p class="text-sm text-slate-600">При збірці невикористані класи видаляються (тут показано без збірки).</p>
+          </li>
+          <li class="rounded-lg bg-white border border-slate-200 p-3">
+            <p class="font-semibold text-slate-900">Легкий вхід</p>
+            <p class="text-sm text-slate-600">Назви класів здебільшого інтуїтивно зрозумілі.</p>
+          </li>
+          <li class="rounded-lg bg-white border border-slate-200 p-3">
+            <p class="font-semibold text-slate-900">Спільнота</p>
+            <p class="text-sm text-slate-600">Плагіни, готові компоненти, UI-кіти (Tailwind UI, DaisyUI тощо).</p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold text-slate-900">Utility-First Fundamentals: комбінування класів</h2>
+        <p class="text-slate-600">
+          Складний вигляд картки будується простим складанням маленьких утиліт: фон, рамка,
+          закруглення, тінь, внутрішній відступ, flex-розкладка.
+        </p>
+        <div class="flex items-center gap-4 rounded-xl border border-slate-200 bg-white p-4 shadow-sm max-w-sm">
+          <div class="h-12 w-12 shrink-0 rounded-full bg-indigo-500"></div>
+          <div>
+            <p class="font-semibold text-slate-900">Іван Петренко</p>
+            <p class="text-sm text-slate-500">Frontend Developer</p>
+          </div>
+        </div>
+        <pre class="bg-slate-900 text-slate-100 text-xs rounded p-3 overflow-x-auto"><code>&lt;div class="flex items-center gap-4 rounded-xl border
+  border-slate-200 bg-white p-4 shadow-sm max-w-sm"&gt;
+  &lt;div class="h-12 w-12 shrink-0 rounded-full bg-indigo-500"&gt;&lt;/div&gt;
+  &lt;div&gt;
+    &lt;p class="font-semibold text-slate-900"&gt;Іван Петренко&lt;/p&gt;
+    &lt;p class="text-sm text-slate-500"&gt;Frontend Developer&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </section>
+
+      <nav class="flex justify-end pt-6 border-t border-slate-200">
+        <a href="../02-intro-pnpm/" class="text-blue-600 hover:underline">Далі: Tailwind через pnpm + Sass →</a>
+      </nav>
+    </div>
+
+    <style>
+      .btn-demo {
+        background-color: #3b82f6;
+        color: white;
+        font-weight: bold;
+        padding: 0.5rem 1rem;
+        border-radius: 0.25rem;
+      }
+    </style>
+  </body>
+</html>

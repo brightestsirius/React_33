@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>04. Layout, Flexbox & Grid</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-slate-50 text-slate-800 antialiased">
+    <div class="max-w-3xl mx-auto px-4 py-10 space-y-12">
+      <a href="../" class="text-sm text-blue-600 hover:underline">← Головна</a>
+
+      <header>
+        <h1 class="text-3xl font-bold text-slate-900">Layout, Flexbox & Grid</h1>
+        <p class="mt-3 text-slate-600">
+          Утиліти розкладки визначають, як елемент відображається і як розташовується відносно інших.
+        </p>
+      </header>
+
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold text-slate-900">Layout: container, display, position, overflow, z-index</h2>
+
+        <div class="space-y-2">
+          <p class="text-sm font-semibold text-slate-500">display: block / inline-block / flex / grid / hidden</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="block bg-emerald-500 text-white px-3 py-1 rounded">block</span>
+            <span class="inline-block bg-emerald-500 text-white px-3 py-1 rounded">inline-block</span>
+            <span class="hidden sm:inline-block bg-slate-400 text-white px-3 py-1 rounded">hidden на &lt;640px</span>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <p class="text-sm font-semibold text-slate-500">position: relative / absolute + top/right/bottom/left</p>
+          <div class="relative h-24 rounded bg-slate-200">
+            <div class="absolute top-2 left-2 bg-rose-500 text-white text-xs px-2 py-1 rounded">top-2 left-2</div>
+            <div class="absolute bottom-2 right-2 bg-rose-500 text-white text-xs px-2 py-1 rounded">bottom-2 right-2</div>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <p class="text-sm font-semibold text-slate-500">overflow-hidden / overflow-auto</p>
+          <div class="h-16 w-full overflow-auto rounded border border-slate-300 bg-white p-2 text-sm">
+            Дуже довгий текст, що не поміщається в один рядок і не поміщається у видиму висоту блока,
+            тому з'являється прокрутка завдяки класу overflow-auto. Спробуйте прокрутити цей блок вниз і вправо.
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <p class="text-sm font-semibold text-slate-500">z-index: порядок накладання</p>
+          <div class="relative h-20">
+            <div class="absolute top-0 left-0 h-16 w-32 bg-indigo-400 rounded shadow z-10 flex items-center justify-center text-white text-sm">z-10</div>
+            <div class="absolute top-4 left-16 h-16 w-32 bg-pink-400 rounded shadow z-20 flex items-center justify-center text-white text-sm">z-20</div>
+          </div>
+        </div>
+
+        <pre class="bg-slate-900 text-slate-100 text-xs rounded p-3 overflow-x-auto"><code>&lt;span class="block"&gt; / &lt;span class="inline-block"&gt; / &lt;span class="hidden sm:inline-block"&gt;
+&lt;div class="relative"&gt;&lt;div class="absolute top-2 left-2"&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class="overflow-auto"&gt;
+&lt;div class="z-10"&gt; / &lt;div class="z-20"&gt;</code></pre>
+      </section>
+
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold text-slate-900">Flexbox</h2>
+        <p class="text-slate-600">
+          <code class="bg-slate-200 px-1 rounded">flex-direction</code>,
+          <code class="bg-slate-200 px-1 rounded">justify-content</code>,
+          <code class="bg-slate-200 px-1 rounded">align-items</code>,
+          <code class="bg-slate-200 px-1 rounded">flex-wrap</code>, <code class="bg-slate-200 px-1 rounded">gap</code>.
+        </p>
+        <div class="flex justify-between items-center gap-2 rounded bg-white border border-slate-200 p-3">
+          <div class="h-10 w-10 rounded bg-sky-500"></div>
+          <div class="h-14 w-10 rounded bg-sky-500"></div>
+          <div class="h-10 w-10 rounded bg-sky-500"></div>
+        </div>
+        <p class="text-sm text-slate-500">
+          justify-between розводить елементи по краях, align-items: center вирівнює по вертикалі попри різну висоту.
+        </p>
+
+        <p class="text-sm font-semibold text-slate-500 pt-2">order: змінюємо візуальний порядок без зміни HTML</p>
+        <div class="flex gap-2">
+          <div class="order-3 h-10 w-16 rounded bg-orange-500 text-white flex items-center justify-center text-sm">1-й у HTML</div>
+          <div class="order-1 h-10 w-16 rounded bg-orange-500 text-white flex items-center justify-center text-sm">2-й у HTML</div>
+          <div class="order-2 h-10 w-16 rounded bg-orange-500 text-white flex items-center justify-center text-sm">3-й у HTML</div>
+        </div>
+
+        <pre class="bg-slate-900 text-slate-100 text-xs rounded p-3 overflow-x-auto"><code>&lt;div class="flex justify-between items-center gap-2"&gt;
+  &lt;div class="h-10 w-10"&gt;&lt;/div&gt;
+  &lt;div class="h-14 w-10"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="order-3"&gt;1-й у HTML&lt;/div&gt;
+&lt;div class="order-1"&gt;2-й у HTML&lt;/div&gt;</code></pre>
+      </section>
+
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold text-slate-900">Grid</h2>
+        <p class="text-slate-600">
+          <code class="bg-slate-200 px-1 rounded">grid-template-columns</code> через
+          <code class="bg-slate-200 px-1 rounded">grid-cols-*</code>, а елемент може займати кілька колонок
+          через <code class="bg-slate-200 px-1 rounded">col-span-*</code>.
+        </p>
+        <div class="grid grid-cols-4 gap-2">
+          <div class="col-span-4 h-12 rounded bg-teal-500 text-white flex items-center justify-center text-sm">col-span-4 (шапка)</div>
+          <div class="col-span-1 h-16 rounded bg-teal-400 text-white flex items-center justify-center text-sm">1</div>
+          <div class="col-span-2 h-16 rounded bg-teal-400 text-white flex items-center justify-center text-sm">col-span-2</div>
+          <div class="col-span-1 h-16 rounded bg-teal-400 text-white flex items-center justify-center text-sm">1</div>
+        </div>
+        <pre class="bg-slate-900 text-slate-100 text-xs rounded p-3 overflow-x-auto"><code>&lt;div class="grid grid-cols-4 gap-2"&gt;
+  &lt;div class="col-span-4"&gt;шапка&lt;/div&gt;
+  &lt;div class="col-span-1"&gt;1&lt;/div&gt;
+  &lt;div class="col-span-2"&gt;2 колонки&lt;/div&gt;
+  &lt;div class="col-span-1"&gt;1&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </section>
+
+      <nav class="flex justify-between pt-6 border-t border-slate-200">
+        <a href="../03-states-responsive-dark/" class="text-blue-600 hover:underline">← States, Responsive, Dark Mode</a>
+        <a href="../05-spacing-sizing-typography/" class="text-blue-600 hover:underline">Далі: Spacing, Sizing & Typography →</a>
+      </nav>
+    </div>
+  </body>
+</html>
