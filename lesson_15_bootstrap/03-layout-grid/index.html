@@ -14,16 +14,27 @@
     <div class="container">
       <h1>Layout у Bootstrap</h1>
       <p>
-        Layout — це система розміщення й структурування елементів на
-        сторінці. У Bootstrap вона будується на кількох поняттях:
+        Layout — це система розміщення й структурування елементів на сторінці. У
+        Bootstrap вона будується на кількох поняттях:
       </p>
       <ul>
-        <li><b>Breakpoints</b> — точки перелому екрану (sm, md, lg, xl, xxl), на яких змінюється вигляд сітки.</li>
-        <li><b>Containers</b> — обгортка контенту, задає максимальну ширину та центрування.</li>
+        <li>
+          <b>Breakpoints</b> — точки перелому екрану (sm, md, lg, xl, xxl), на
+          яких змінюється вигляд сітки.
+        </li>
+        <li>
+          <b>Containers</b> — обгортка контенту, задає максимальну ширину та
+          центрування.
+        </li>
         <li><b>Grid</b> — система рядів і колонок для побудови макетів.</li>
-        <li><b>Columns</b> — колонки всередині сітки, автоматично діляться на рівні частини.</li>
+        <li>
+          <b>Columns</b> — колонки всередині сітки, автоматично діляться на
+          рівні частини.
+        </li>
         <li><b>Gutters</b> — проміжки між колонками/рядами.</li>
-        <li><b>Utilities</b> — допоміжні класи для відступів, вирівнювання тощо.</li>
+        <li>
+          <b>Utilities</b> — допоміжні класи для відступів, вирівнювання тощо.
+        </li>
         <li><b>Z-index</b> — керування порядком накладання елементів.</li>
       </ul>
 
@@ -47,8 +58,8 @@
       <section>
         <h2>Приклад 2: три рівні колонки (col-md-*)</h2>
         <p>
-          На екранах середнього розміру (≥768px) і ширших кожна колонка
-          займає 4/12 ширини — рівно третину.
+          На екранах середнього розміру (≥768px) і ширших кожна колонка займає
+          4/12 ширини — рівно третину.
         </p>
         <div class="row">
           <div class="col-md-4">Колонка 1</div>
@@ -60,9 +71,9 @@
       <section>
         <h2>Приклад 3: gutters (проміжки між колонками)</h2>
         <p>
-          Клас <code>g-4</code> на <code>row</code> додає однакові проміжки
-          між колонками і рядами — за замовчуванням Bootstrap уже має
-          невеликий gutter, але його розмір легко змінити.
+          Клас <code>g-4</code> на <code>row</code> додає однакові проміжки між
+          колонками і рядами — за замовчуванням Bootstrap уже має невеликий
+          gutter, але його розмір легко змінити.
         </p>
         <div class="row g-4">
           <div class="col-4">
@@ -76,6 +87,61 @@
           </div>
         </div>
       </section>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-1">Element #1</div>
+          <div class="col-1">Element #2</div>
+          <div class="col-1">Element #3</div>
+          <div class="col-1">Element #4</div>
+          <div class="col-1">Element #5</div>
+          <div class="col-1">Element #6</div>
+          <div class="col-1">Element #7</div>
+          <div class="col-1">Element #8</div>
+          <div class="col-1">Element #9</div>
+          <div class="col-1">Element #10</div>
+          <div class="col-1">Element #11</div>
+          <div class="col-1">Element #12</div>
+        </div>
+      </div>
+      <br /><br />
+      <div class="container">
+        <div class="row">
+          <div class="col-4">Element col-4</div>
+          <div class="col-8">Element col-8</div>
+        </div>
+        <br /><br />
+        <div class="row">
+          <div class="col-4">Element col-4</div>
+          <div class="col-4">Element col-4</div>
+          <div class="col-4">Element col-4</div>
+        </div>
+        <br /><br />
+        <div class="row">
+          <div class="col-3">Element col-3</div>
+          <div class="col-3">Element col-3</div>
+          <div class="col-3">Element col-3</div>
+          <div class="col-3">Element col-3</div>
+        </div>
+        <br /><br />
+        <div class="row">
+          <div class="col-6">Element col-6</div>
+          <div class="col-6">Element col-6</div>
+        </div>
+        <br /><br />
+        <div class="row">
+          <div class="col-6">Element col-6</div>
+          <div class="col-4">Element col-4</div>
+          <div class="col-4">Element col-4</div>
+        </div>
+        <br /><br />
+        <div class="row">
+          <div class="col-12 col-md-6 col-lg-3">Element col-6 col-lg-3</div>
+          <div class="col-12 col-md-6 col-lg-3">Element col-6 col-lg-3</div>
+          <div class="col-12 col-md-6 col-lg-3">Element col-6 col-lg-3</div>
+          <div class="col-12 col-md-6 col-lg-3">Element col-6 col-lg-3</div>
+        </div>
+      </div>
     </div>
   </body>
 </html>

@@ -20,11 +20,11 @@
     <div class="container">
       <h1>Що таке Bootstrap?</h1>
       <p>
-        Bootstrap — інструментарій відкритого коду для розробки на HTML, CSS
-        і JavaScript. Використовується для створення адаптивних і
-        мобільно-оптимізованих сайтів: дає готові стилі та компоненти
-        (сітку, кнопки, картки, модальні вікна, JS-плагіни), тож інтерфейс не
-        доводиться будувати з нуля.
+        Bootstrap — інструментарій відкритого коду для розробки на HTML, CSS і
+        JavaScript. Використовується для створення адаптивних і
+        мобільно-оптимізованих сайтів: дає готові стилі та компоненти (сітку,
+        кнопки, картки, модальні вікна, JS-плагіни), тож інтерфейс не доводиться
+        будувати з нуля.
       </p>
 
       <section class="theory">
@@ -32,8 +32,8 @@
         <dl>
           <dt>Бібліотека (library)</dt>
           <dd>
-            Набір готового коду (функцій, класів), який ми самі викликаємо,
-            коли він потрібен. Ми керуємо потоком виконання програми.
+            Набір готового коду (функцій, класів), який ми самі викликаємо, коли
+            він потрібен. Ми керуємо потоком виконання програми.
           </dd>
           <dt>Фреймворк (framework)</dt>
           <dd>
@@ -42,8 +42,8 @@
           </dd>
           <dt>Головна відмінність</dt>
           <dd>
-            "Хто керує потоком": з бібліотекою керуємо ми, з фреймворком —
-            він керує нами (Inversion of Control).
+            "Хто керує потоком": з бібліотекою керуємо ми, з фреймворком — він
+            керує нами (Inversion of Control).
           </dd>
         </dl>
       </section>
@@ -52,20 +52,151 @@
         <h2>Перший компонент Bootstrap</h2>
         <p>
           Кнопка нижче отримала стилі виключно завдяки класам
-          <code>btn</code> і <code>btn-primary</code> — жодного власного CSS
-          ми не писали.
+          <code>btn</code> і <code>btn-primary</code> — жодного власного CSS ми
+          не писали.
         </p>
-        <button type="button" class="btn btn-primary">
-          Привіт, Bootstrap!
-        </button>
+        <button type="button" class="btn btn-danger">Привіт, Bootstrap!</button>
+        <button type="button" class="btn btn-outline-warning">Warning</button>
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <button type="button" class="btn btn-primary">Left</button>
+          <button type="button" class="btn btn-primary">Middle</button>
+          <button type="button" class="btn btn-primary">Right</button>
+        </div>
+        <br /><br />
+        <div class="accordion" id="accordionExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseOne"
+                aria-expanded="true"
+                aria-controls="collapseOne"
+              >
+                Accordion Item #1
+              </button>
+            </h2>
+            <div
+              id="collapseOne"
+              class="accordion-collapse collapse show"
+              data-bs-parent="#accordionExample"
+            >
+              <div class="accordion-body">
+                <strong>This is the first item’s accordion body.</strong> It is
+                shown by default, until the collapse plugin adds the appropriate
+                classes that we use to style each element. These classes control
+                the overall appearance, as well as the showing and hiding via
+                CSS transitions. You can modify any of this with custom CSS or
+                overriding our default variables. It’s also worth noting that
+                just about any HTML can go within the
+                <code>.accordion-body</code>, though the transition does limit
+                overflow.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseTwo"
+                aria-expanded="false"
+                aria-controls="collapseTwo"
+              >
+                Accordion Item #2
+              </button>
+            </h2>
+            <div
+              id="collapseTwo"
+              class="accordion-collapse collapse"
+              data-bs-parent="#accordionExample"
+            >
+              <div class="accordion-body">
+                <strong>This is the second item’s accordion body.</strong> It is
+                hidden by default, until the collapse plugin adds the
+                appropriate classes that we use to style each element. These
+                classes control the overall appearance, as well as the showing
+                and hiding via CSS transitions. You can modify any of this with
+                custom CSS or overriding our default variables. It’s also worth
+                noting that just about any HTML can go within the
+                <code>.accordion-body</code>, though the transition does limit
+                overflow.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseThree"
+                aria-expanded="false"
+                aria-controls="collapseThree"
+              >
+                Accordion Item #3
+              </button>
+            </h2>
+            <div
+              id="collapseThree"
+              class="accordion-collapse collapse"
+              data-bs-parent="#accordionExample"
+            >
+              <div class="accordion-body">
+                <strong>This is the third item’s accordion body.</strong> It is
+                hidden by default, until the collapse plugin adds the
+                appropriate classes that we use to style each element. These
+                classes control the overall appearance, as well as the showing
+                and hiding via CSS transitions. You can modify any of this with
+                custom CSS or overriding our default variables. It’s also worth
+                noting that just about any HTML can go within the
+                <code>.accordion-body</code>, though the transition does limit
+                overflow.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseFour"
+                aria-expanded="false"
+                aria-controls="collapseFour"
+              >
+                Accordion Item #4
+              </button>
+            </h2>
+            <div
+              id="collapseFour"
+              class="accordion-collapse collapse"
+              data-bs-parent="#accordionExample"
+            >
+              <div class="accordion-body">
+                <strong>This is the fourth item’s accordion body.</strong> It is
+                hidden by default, until the collapse plugin adds the
+                appropriate classes that we use to style each element. These
+                classes control the overall appearance, as well as the showing
+                and hiding via CSS transitions. You can modify any of this with
+                custom CSS or overriding our default variables. It’s also worth
+                noting that just about any HTML can go within the
+                <code>.accordion-body</code>, though the transition does limit
+                overflow.
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section>
         <h2>Перевизначення кольорів через CSS-змінні (<code>--bs-*</code>)</h2>
         <p>
-          Bootstrap 5.3 генерує CSS custom properties, і їх можна
-          перевизначити прямо у своєму CSS — без будь-якої збірки, навіть
-          якщо Bootstrap підключений через CDN, як тут.
+          Bootstrap 5.3 генерує CSS custom properties, і їх можна перевизначити
+          прямо у своєму CSS — без будь-якої збірки, навіть якщо Bootstrap
+          підключений через CDN, як тут.
         </p>
 
         <p><strong>Стандартні кольори:</strong></p>
@@ -105,15 +236,15 @@
 
         <p class="text-muted">
           Зверніть увагу: перевизначення лише <code>--bs-primary</code> у
-          <code>:root</code> тут не спрацює для кнопок. Bootstrap рахує
-          кольори кнопок ще на етапі Sass-компіляції і записує їх у
+          <code>:root</code> тут не спрацює для кнопок. Bootstrap рахує кольори
+          кнопок ще на етапі Sass-компіляції і записує їх у
           <code>.btn-primary</code> як окремі готові змінні
-          (<code>--bs-btn-bg</code>, <code>--bs-btn-hover-bg</code> тощо), а
-          не бере <code>--bs-primary</code> напряму. Тому доводиться
-          перевизначати змінні кожного компонента окремо — точкове правило
-          на готовому Bootstrap із CDN. Повністю перерахувати всю палітру
-          одразу (кнопки, бейджі, форми, тіні тощо) можна лише перевизначивши
-          Sass-змінні до компіляції — див.
+          (<code>--bs-btn-bg</code>, <code>--bs-btn-hover-bg</code> тощо), а не
+          бере <code>--bs-primary</code> напряму. Тому доводиться перевизначати
+          змінні кожного компонента окремо — точкове правило на готовому
+          Bootstrap із CDN. Повністю перерахувати всю палітру одразу (кнопки,
+          бейджі, форми, тіні тощо) можна лише перевизначивши Sass-змінні до
+          компіляції — див.
           <a href="../02-intro-pnpm/">02. Bootstrap через pnpm</a>.
         </p>
       </section>
