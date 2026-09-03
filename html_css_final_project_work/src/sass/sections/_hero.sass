@@ -1,0 +1,57 @@
+@use "../lib" as *
+
+.hero
+  padding-top: 40px
+
+  @include media(desktop)
+    padding-top: 70px
+
+  h1
+    grid-area: title
+
+  p
+    grid-area: copy
+    margin: 0 0 20px
+    line-height: 24px
+
+    @include media(desktop)
+      max-width: 498px
+      margin: 0
+      font-size: 20px
+      line-height: 28px
+
+  .button
+    grid-area: action
+    width: 100%
+
+    @include media(desktop)
+      width: max-content
+
+.hero-grid
+  display: grid
+  grid-template-areas: "title" "art" "copy" "action"
+  gap: 20px
+
+  @include media(desktop)
+    grid-template-columns: 531px 1fr
+    grid-template-areas: "title art" "copy art" "action art"
+    column-gap: 108px
+    row-gap: 28px
+    align-items: start
+
+.hero-art
+  grid-area: art
+
+  @include media(desktop)
+    align-self: center
+    grid-row: 1 / 4
+
+  img
+    width: 100%
+    height: auto
+    max-height: 310px
+    object-fit: contain
+
+    @include media(desktop)
+      width: 601px
+      max-height: 515px

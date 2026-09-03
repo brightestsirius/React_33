@@ -1,0 +1,32 @@
+@use "../lib" as *
+
+.cta-card
+  position: relative
+  display: flex
+  min-height: 347px
+  align-items: center
+  padding: 45px
+  overflow: visible
+  border-radius: $radius
+  background: $grey
+
+  @include media(desktop)
+    padding: 60px
+
+  &__content
+    z-index: 1
+    max-width: 500px
+
+  &__art
+    display: none
+
+    @include media(desktop)
+      position: absolute
+      right: 9%
+      display: block
+      width: 359px
+      height: 394px
+      object-fit: contain
+
+  .button
+    margin-top: 14px

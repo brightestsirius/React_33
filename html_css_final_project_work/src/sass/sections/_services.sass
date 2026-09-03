@@ -1,0 +1,77 @@
+@use "../lib" as *
+
+.service-card
+  @include card
+  display: flex
+  width: 100%
+  min-width: 0
+  min-height: 320px
+  justify-content: space-between
+  align-items: flex-end
+  gap: 10px
+  padding: 40px
+  overflow: hidden
+  background: $grey
+
+  @include media(desktop)
+    align-items: center
+    min-height: 310px
+    padding: 50px
+
+  &--green
+    background: $green
+
+  &--dark
+    background: $dark
+    color: $white
+
+  h3
+    @include text-highlight
+    margin: 0
+    color: $dark
+
+  &--green h3
+    background: $white
+
+  &__content
+    position: relative
+    z-index: 1
+    min-width: 0
+    align-self: stretch
+
+  &__art
+    width: min(48%, 165px)
+    height: 165px
+    flex: 0 1 165px
+    align-self: flex-end
+    object-fit: contain
+
+    @include media(desktop)
+      width: 210px
+      height: 210px
+      flex-basis: 210px
+      align-self: center
+
+  .icon-link
+    position: absolute
+    bottom: 0
+    left: 0
+
+    &:hover, &:focus-visible
+      color: inherit
+
+    &__label
+      display: none
+
+      @include media(desktop)
+        display: inline
+
+    &__circle
+      flex: 0 0 41px
+
+#services
+
+  .row
+    @include media(desktop)
+      --bs-gutter-x: 40px
+      --bs-gutter-y: 40px
