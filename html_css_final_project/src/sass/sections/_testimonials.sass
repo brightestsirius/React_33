@@ -1,0 +1,113 @@
+@use "../lib" as *
+
+.testimonial-shell
+  overflow: hidden
+  padding: 30px 20px 40px
+  border-radius: $radius
+  background: $dark
+  color: $white
+
+  @include media(desktop)
+    min-height: 625px
+    padding: 84px 0 55px
+
+.testimonial-carousel
+  width: 100%
+  overflow: hidden
+
+  .carousel-inner, .carousel-item
+    width: 100%
+    overflow: hidden
+
+.testimonial-card
+  width: 100%
+  max-width: 606px
+  min-width: 0
+  margin: 0 auto
+  padding-inline: 0
+
+  @include media(desktop)
+    width: 606px
+
+  &__quote
+    position: relative
+    margin: 0
+    padding: 30px
+    border: 1px solid $green
+    border-radius: $radius
+
+    @include media(desktop)
+      padding: 38px 32px
+
+    &::after
+      content: ""
+      position: absolute
+      bottom: -16px
+      left: 45px
+      width: 30px
+      height: 30px
+      border-right: 1px solid $green
+      border-bottom: 1px solid $green
+      background: $dark
+      transform: rotate(45deg)
+
+  &__author
+    padding: 38px 35px 0
+
+    @include media(desktop)
+      padding: 38px 32px 0
+
+    strong
+      color: $green
+
+.testimonial-navigation
+  display: flex
+  width: min(100%, 564px)
+  align-items: center
+  justify-content: space-between
+  margin: 60px auto 0
+
+  @include media(desktop)
+    margin-top: 70px
+
+.testimonial-arrow
+  display: grid
+  flex: 0 0 44px
+  width: 44px
+  height: 44px
+  place-items: center
+  padding: 0
+  border: 0
+  background: transparent
+  color: $white
+
+  svg
+    display: block
+    width: 20px
+    height: 16px
+
+  &--next svg
+    transform: rotate(180deg)
+
+.testimonial-indicators
+  position: static
+  display: flex
+  align-items: center
+  gap: 19px
+  margin: 0
+
+  button[data-bs-target]
+    flex: 0 0 14px
+    width: 14px
+    height: 14px
+    margin: 0
+    padding: 0
+    border: 0
+    border-radius: 0
+    background: $white
+    -webkit-mask: url("../../assets/icons/star.svg") center / contain no-repeat
+    mask: url("../../assets/icons/star.svg") center / contain no-repeat
+    opacity: 1
+
+    &.active
+      background: $green

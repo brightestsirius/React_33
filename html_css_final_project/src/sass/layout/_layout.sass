@@ -1,0 +1,46 @@
+@use "../lib" as *
+
+.container
+  width: calc(100% - 40px)
+  padding-inline: 0
+
+  @include media(desktop)
+    width: min(calc(100% - 40px), 1240px)
+
+.section
+  padding-top: 60px
+
+  @include media(desktop)
+    padding-top: 140px
+
+.cta-section
+  padding-top: 60px
+
+  @include media(desktop)
+    padding-top: 100px
+
+.section-heading
+  margin-bottom: 40px
+
+  @include media(desktop)
+    margin-bottom: 80px
+
+  @include media(tablet)
+    display: flex
+    align-items: center
+    gap: 40px
+
+  h2
+    @include text-highlight
+    margin: 0
+    line-height: 1.25
+
+    @include media(tablet)
+      flex: 0 0 auto
+
+  p
+    max-width: 580px
+    margin: 30px auto 0
+
+    @include media(tablet)
+      margin: 0

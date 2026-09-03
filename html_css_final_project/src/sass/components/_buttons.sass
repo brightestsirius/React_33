@@ -1,0 +1,44 @@
+@use "../lib" as *
+
+.button
+  display: inline-flex
+  min-height: 68px
+  align-items: center
+  justify-content: center
+  padding: 16px 34px
+  border: 1px solid $dark
+  border-radius: 14px
+  background: $dark
+  color: $white
+  transition: .2s ease
+
+  &:hover, &:focus-visible
+    transform: translateY(-2px)
+    background: $green
+    color: $dark
+
+  &--outline
+    background: transparent
+    color: $dark
+
+  &--green
+    background: $green
+    color: $dark
+
+.icon-link
+  display: inline-flex
+  align-items: center
+  gap: 15px
+  font-size: 20px
+
+  &__circle
+    @include flex-center
+    width: 41px
+    height: 41px
+    border-radius: 50%
+    background: $dark
+    color: $green
+
+  svg
+    width: 22px
+    height: 22px
