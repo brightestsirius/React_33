@@ -1,0 +1,11 @@
+.text {
+    color: crimson;
+}
+
+.highlight {
+    text-decoration: underline;
+}
+
+.secondary {
+    font-weight: bold;
+}
