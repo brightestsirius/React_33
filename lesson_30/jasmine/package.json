@@ -1,0 +1,11 @@
+{
+  "name": "lesson_30_jasmine",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "jasmine \"spec/*.spec.js\""
+  },
+  "devDependencies": {
+    "jasmine": "^7.0.0"
+  }
+}
