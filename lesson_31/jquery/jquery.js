@@ -1,4 +1,3 @@
-// 1. Click + toggleClass
 $(`#toggleBtn`).click(function () {
   $(this).toggleClass(`active`);
 });
