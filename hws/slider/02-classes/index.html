@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slider — classes and inheritance</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="slider" id="simpleSlider">
+      <div class="slider__track"></div>
+      <button class="slider__btn slider__btn--prev">‹</button>
+      <button class="slider__btn slider__btn--next">›</button>
+      <div class="slider__footer">
+        <p class="slider__counter"></p>
+      </div>
+    </div>
+
+    <div class="slider" id="dotsSlider">
+      <div class="slider__track"></div>
+      <button class="slider__btn slider__btn--prev">‹</button>
+      <button class="slider__btn slider__btn--next">›</button>
+      <div class="slider__footer">
+        <p class="slider__counter"></p>
+        <div class="slider__dots"></div>
+      </div>
+    </div>
+  </body>
+</html>
