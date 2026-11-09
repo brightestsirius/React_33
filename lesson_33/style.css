@@ -1,0 +1,27 @@
+.list__item {
+    padding: 2px;
+}
+
+.list__item button {
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.item__email {
+    color: crimson;
+    margin-left: 5px;
+}
+
+.form__user {
+    width: fit-content;
+    margin: 10px 0;
+}
+
+.form__user fieldset {
+    display: flex;
+    flex-direction: column;
+}
+
+.form__user fieldset label {
+    margin-bottom: 10px;
+}

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 33</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <button id="btnGetUsers">Get users</button>
+
+    <form class="form__user" id="formCreateUser">
+      <fieldset>
+        <legend>Add user</legend>
+        <label>
+          Name:
+          <input type="text" id="formCreateUserName" value="Taras Sheva" />
+        </label>
+        <label>
+          Email:
+          <input
+            type="email"
+            id="formCreateUserEmail"
+            value="taras.sheva@gmail.com"
+          />
+        </label>
+        <button>Create</button>
+      </fieldset>
+    </form>
+
+    <section id="sectionUsers"></section>
+
+    <script src="scripts/script.js" type="module"></script>
+  </body>
+</html>
