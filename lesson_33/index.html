@@ -7,29 +7,20 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <button id="btnGetUsers">Get users</button>
-
-    <form class="form__user" id="formCreateUser">
-      <fieldset>
-        <legend>Add user</legend>
-        <label>
-          Name:
-          <input type="text" id="formCreateUserName" value="Taras Sheva" />
-        </label>
-        <label>
-          Email:
-          <input
-            type="email"
-            id="formCreateUserEmail"
-            value="taras.sheva@gmail.com"
-          />
-        </label>
-        <button>Create</button>
-      </fieldset>
+    <form class="user__form" id="userForm">
+      <label>
+        Name: <input type="text" id="userFormName" value="Taras Sheva" />
+      </label>
+      <label>
+        Email:
+        <input type="email" id="userFormEmail" value="taras.sheva@gmail.com" />
+      </label>
+      <button>Create user</button>
     </form>
 
+    <button id="btnGetUsers">Get users</button>
     <section id="sectionUsers"></section>
 
-    <script src="scripts/script.js" type="module"></script>
+    <script src="script.js"></script>
   </body>
 </html>
