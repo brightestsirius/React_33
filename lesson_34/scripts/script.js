@@ -1,8 +1,10 @@
 // CRUD - READ (GET), DELETE (DELETE), UPDATE (PUT, PATCH), CREATE (POST)
 import { service } from "./service.js";
+import { renderNestedList } from "./utils.js";
 
 const btnGetUsers = document.querySelector(`#btnGetUsers`);
 const sectionUsers = document.querySelector(`#sectionUsers`);
+const sectionUser = document.querySelector(`#sectionUser`);
 const userForm = document.querySelector(`#userForm`);
 
 btnGetUsers.addEventListener(`click`, async () => {
@@ -73,6 +75,13 @@ const renderListItemContent = (user, li) => {
   });
   labelMarried.append(inputMarried);
   li.append(labelMarried);
+
+  const btnReadMore = document.createElement(`button`);
+  btnReadMore.innerHTML = `Read more`;
+  btnReadMore.addEventListener(`click`, () => {
+    handleReadMore(user.id);
+  });
+  li.append(btnReadMore);
 };
 
 const updateUsersListItem = (user, li) => {
@@ -83,6 +92,7 @@ const updateUsersListItem = (user, li) => {
 const handleUserDelete = async (id, li) => {
   await service.delete(id);
   li.remove();
+  handleReadMore();
 };
 
 const handleChangeName = async (user, li) => {
@@ -94,6 +104,7 @@ const handleChangeName = async (user, li) => {
     });
 
     updateUsersListItem(updatedUser, li);
+    handleReadMore(updatedUser.id);
   } catch (error) {
     console.log(error);
   }
@@ -104,6 +115,7 @@ const handleChangeEmail = async (user, userEmail) => {
 
   const updatedUser = await service.put(user.id, { email: newUserEmail });
   userEmail.innerHTML = updatedUser.email;
+  handleReadMore(updatedUser.id);
 };
 
 userForm.addEventListener(`submit`, async (event) => {
@@ -136,10 +148,26 @@ const handleChangeMarried = async (user, input, li) => {
     input.disabled = true;
     const updatedUser = await service.put(user.id, { married: input.checked });
     updateUsersListItem(updatedUser, li);
+    handleReadMore(user.id);
   } catch (error) {
     console.log(error);
     input.checked = !input.checked;
   } finally {
     input.disabled = false;
+  }
+};
+
+const handleReadMore = async (id) => {
+  if (!id) {
+    sectionUser.innerHTML = ``;
+    return;
+  }
+  try {
+    const userInfo = await service.get(id);
+    const list = renderNestedList(userInfo);
+    sectionUser.innerHTML = ``;
+    sectionUser.append(list);
+  } catch (error) {
+    console.log(error);
   }
 };

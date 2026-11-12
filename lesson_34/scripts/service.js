@@ -1,8 +1,8 @@
 const API = `https://6af1f8e942c6561ced38dcd0.mockapi.io/users`;
 
 export const service = {
-  get: () =>
-    fetch(API).then((response) => {
+  get: (id) =>
+    fetch(id ? `${API}/${id}` : API).then((response) => {
       if (!response.ok) throw new Error(response.statusText);
       return response.json();
     }),
