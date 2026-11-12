@@ -24,98 +24,110 @@ const renderUsersList = async () => {
   });
 };
 
+const updateUsersListItem = (user, li) => {
+  li.innerHTML = ``;
+  renderUserListItemContent(user, li);
+};
+
 const renderUsersListItem = (user, ul) => {
   const li = document.createElement(`li`);
   li.className = `list__item`;
-
-  renderListItemContent(user, li);
-
+  renderUserListItemContent(user, li);
   ul.append(li);
 };
 
-const renderListItemContent = (user, li) => {
-  const userName = document.createElement(`span`);
-  userName.className = `item__name`;
-  userName.innerHTML = user.name;
-  li.append(userName);
+const renderUserListItemContent = (user, li) => {
+  const spanUserName = document.createElement(`span`);
+  spanUserName.className = `item__name`;
+  spanUserName.innerHTML = user.name;
+  li.append(spanUserName);
 
-  const userEmail = document.createElement(`span`);
-  userEmail.className = `item__email`;
-  userEmail.innerHTML = user.email;
-  li.append(userEmail);
+  const spanUserEmail = document.createElement(`span`);
+  spanUserEmail.className = `item__email`;
+  spanUserEmail.innerHTML = user.email;
+  li.append(spanUserEmail);
 
   const btnDelete = document.createElement(`button`);
   btnDelete.innerHTML = `Delete`;
   btnDelete.addEventListener(`click`, () => {
-    handleUserDelete(user.id, li);
+    handleUserDelete(user, li);
   });
   li.append(btnDelete);
 
   const btnChangeName = document.createElement(`button`);
   btnChangeName.innerHTML = `Change name`;
   btnChangeName.addEventListener(`click`, () => {
-    handleChangeName(user, li);
+    handleChangeName(user, spanUserName, li);
   });
   li.append(btnChangeName);
 
   const btnChangeEmail = document.createElement(`button`);
   btnChangeEmail.innerHTML = `Change email`;
   btnChangeEmail.addEventListener(`click`, () => {
-    handleChangeEmail(user, userEmail);
+    handleChangeEmail(user);
   });
   li.append(btnChangeEmail);
-
-  const labelMarried = document.createElement(`label`);
-  labelMarried.innerHTML = `Married: `;
-  const inputMarried = document.createElement(`input`);
-  inputMarried.type = `checkbox`;
-  inputMarried.checked = user.married;
-  inputMarried.addEventListener(`change`, () => {
-    handleChangeMarried(user, inputMarried, li);
-  });
-  labelMarried.append(inputMarried);
-  li.append(labelMarried);
 
   const btnReadMore = document.createElement(`button`);
   btnReadMore.innerHTML = `Read more`;
   btnReadMore.addEventListener(`click`, () => {
-    handleReadMore(user.id);
+    handleUserInfo(user.id);
   });
   li.append(btnReadMore);
 };
 
-const updateUsersListItem = (user, li) => {
-  li.innerHTML = ``;
-  renderListItemContent(user, li);
-};
-
-const handleUserDelete = async (id, li) => {
-  await service.delete(id);
-  li.remove();
-  handleReadMore();
-};
-
-const handleChangeName = async (user, li) => {
+const handleUserInfo = async (id) => {
   try {
-    const newUserName = prompt(`Enter new name`, user.name);
+    if(sectionUser.dataset.user && id !== sectionUser.dataset.user) return;
 
-    const updatedUser = await service.put(user.id, {
-      name: newUserName,
-    });
+    const userInfo = await service.get(id);
+    const ul = renderNestedList(userInfo);
 
-    updateUsersListItem(updatedUser, li);
-    handleReadMore(updatedUser.id);
+    sectionUser.innerHTML = ``;
+    sectionUser.dataset.user = id;
+    sectionUser.append(ul);
   } catch (error) {
     console.log(error);
   }
 };
 
-const handleChangeEmail = async (user, userEmail) => {
-  const newUserEmail = prompt(`Enter new email`, user.email);
+const handleUserDelete = async (user, li) => {
+  try {
+    await service.delete(user.id);
+    li.remove();
+  } catch (error) {
+    console.log(error);
+    li.classList.add("error");
+  }
+};
 
-  const updatedUser = await service.put(user.id, { email: newUserEmail });
-  userEmail.innerHTML = updatedUser.email;
-  handleReadMore(updatedUser.id);
+const handleChangeName = async (user, spanUserName, li) => {
+  try {
+    const newUserName = prompt(`Enter new name`, user.name);
+
+    const updatedUser = await service.put(user.id, { name: newUserName });
+    updateUsersListItem(updatedUser, li);
+    handleUserInfo(updatedUser.id);
+  } catch (error) {
+    console.log(error);
+    spanUserName.classList.add(`error`);
+  }
+};
+
+const handleChangeEmail = async (user) => {
+  try {
+    const newUserEmail = prompt(`Enter new email`, user.email);
+    const updatedUser = await service.put(user.id, { email: newUserEmail });
+
+    const userList = document.querySelector(`#userList`);
+    if (userList) {
+      userList.remove();
+      renderUsersList();
+    }
+    handleUserInfo(updatedUser.id);
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 userForm.addEventListener(`submit`, async (event) => {
@@ -127,47 +139,18 @@ userForm.addEventListener(`submit`, async (event) => {
   const userFormEmail = document.querySelector(`#userFormEmail`),
     email = userFormEmail.value;
 
-  const userFormMarried = document.querySelector(`#userFormMarried`),
-    married = userFormMarried.checked;
-
   const user = {
     name,
     email,
-    married,
   };
 
-  await service.post(user);
+  const createdUser = await service.post(user);
 
   let userList = document.querySelector(`#userList`);
-  if (userList) userList.remove();
-  renderUsersList();
+
+  if (!userList) {
+    renderUsersList();
+  } else {
+    renderUsersListItem(createdUser, userList);
+  }
 });
-
-const handleChangeMarried = async (user, input, li) => {
-  try {
-    input.disabled = true;
-    const updatedUser = await service.put(user.id, { married: input.checked });
-    updateUsersListItem(updatedUser, li);
-    handleReadMore(user.id);
-  } catch (error) {
-    console.log(error);
-    input.checked = !input.checked;
-  } finally {
-    input.disabled = false;
-  }
-};
-
-const handleReadMore = async (id) => {
-  if (!id) {
-    sectionUser.innerHTML = ``;
-    return;
-  }
-  try {
-    const userInfo = await service.get(id);
-    const list = renderNestedList(userInfo);
-    sectionUser.innerHTML = ``;
-    sectionUser.append(list);
-  } catch (error) {
-    console.log(error);
-  }
-};

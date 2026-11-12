@@ -6,6 +6,11 @@
     margin-right: 5px
 }
 
+.error {
+    color: red;
+    text-decoration: underline;
+}
+
 .item__email {
     color: crimson;
 }

@@ -1,4 +1,7 @@
 const API = `https://6af1f8e942c6561ced38dcd0.mockapi.io/users`;
+const contentType = {
+  "Content-type": "application/json",
+};
 
 export const service = {
   get: (id) =>
@@ -15,9 +18,7 @@ export const service = {
     fetch(`${API}/${id}`, {
       method: `PUT`,
       body: JSON.stringify(payload),
-      headers: {
-        "Content-type": "application/json",
-      },
+      headers: contentType,
     }).then((response) => {
       if (!response.ok) throw new Error(response.statusText);
       return response.json();
@@ -26,9 +27,7 @@ export const service = {
     fetch(API, {
       method: `POST`,
       body: JSON.stringify(payload),
-      headers: {
-        "Content-type": "application/json",
-      },
+      headers: contentType,
     }).then((response) => {
       if (!response.ok) throw new Error(response.statusText);
       return response.json();
