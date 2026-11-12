@@ -1,0 +1,24 @@
+.list {
+    border: 1px solid black;
+}
+
+.list__item * {
+    margin-right: 5px
+}
+
+.item__email {
+    color: crimson;
+}
+
+.user__form {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px 0;
+    width: fit-content;
+}
+
+.user__form label {
+    margin-bottom: 10px;
+}
