@@ -26,6 +26,12 @@ const renderUsersListItem = (user, ul) => {
   const li = document.createElement(`li`);
   li.className = `list__item`;
 
+  renderListItemContent(user, li);
+
+  ul.append(li);
+};
+
+const renderListItemContent = (user, li) => {
   const userName = document.createElement(`span`);
   userName.className = `item__name`;
   userName.innerHTML = user.name;
@@ -46,7 +52,7 @@ const renderUsersListItem = (user, ul) => {
   const btnChangeName = document.createElement(`button`);
   btnChangeName.innerHTML = `Change name`;
   btnChangeName.addEventListener(`click`, () => {
-    handleChangeName(user, userName);
+    handleChangeName(user, li);
   });
   li.append(btnChangeName);
 
@@ -57,7 +63,21 @@ const renderUsersListItem = (user, ul) => {
   });
   li.append(btnChangeEmail);
 
-  ul.append(li);
+  const labelMarried = document.createElement(`label`);
+  labelMarried.innerHTML = `Married: `;
+  const inputMarried = document.createElement(`input`);
+  inputMarried.type = `checkbox`;
+  inputMarried.checked = user.married;
+  inputMarried.addEventListener(`change`, () => {
+    handleChangeMarried(user, inputMarried, li);
+  });
+  labelMarried.append(inputMarried);
+  li.append(labelMarried);
+};
+
+const updateUsersListItem = (user, li) => {
+  li.innerHTML = ``;
+  renderListItemContent(user, li);
 };
 
 const handleUserDelete = async (id, li) => {
@@ -65,14 +85,18 @@ const handleUserDelete = async (id, li) => {
   li.remove();
 };
 
-const handleChangeName = async (user, userName) => {
-  const newUserName = prompt(`Enter new name`, user.name);
+const handleChangeName = async (user, li) => {
+  try {
+    const newUserName = prompt(`Enter new name`, user.name);
 
-  const updatedUser = await service.put(user.id, {
-    ...user,
-    name: newUserName,
-  });
-  userName.innerHTML = updatedUser.name;
+    const updatedUser = await service.put(user.id, {
+      name: newUserName,
+    });
+
+    updateUsersListItem(updatedUser, li);
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const handleChangeEmail = async (user, userEmail) => {
@@ -91,18 +115,31 @@ userForm.addEventListener(`submit`, async (event) => {
   const userFormEmail = document.querySelector(`#userFormEmail`),
     email = userFormEmail.value;
 
+  const userFormMarried = document.querySelector(`#userFormMarried`),
+    married = userFormMarried.checked;
+
   const user = {
     name,
     email,
+    married,
   };
 
-  const createdUser = await service.post(user);
+  await service.post(user);
 
   let userList = document.querySelector(`#userList`);
-
-  if (!userList) {
-    renderUsersList();
-  } else {
-    renderUsersListItem(createdUser, userList);
-  }
+  if (userList) userList.remove();
+  renderUsersList();
 });
+
+const handleChangeMarried = async (user, input, li) => {
+  try {
+    input.disabled = true;
+    const updatedUser = await service.put(user.id, { married: input.checked });
+    updateUsersListItem(updatedUser, li);
+  } catch (error) {
+    console.log(error);
+    input.checked = !input.checked;
+  } finally {
+    input.disabled = false;
+  }
+};
