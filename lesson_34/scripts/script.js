@@ -76,9 +76,15 @@ const renderUserListItemContent = (user, li) => {
   li.append(btnReadMore);
 };
 
-const handleUserInfo = async (id) => {
+const handleUserInfo = async (id, onlyIfShown = false, isDeleted = false) => {
   try {
-    if(sectionUser.dataset.user && id !== sectionUser.dataset.user) return;
+    if (onlyIfShown && sectionUser.dataset.user !== String(id)) return;
+
+    if (isDeleted) {
+      sectionUser.innerHTML = ``;
+      delete sectionUser.dataset.user;
+      return;
+    }
 
     const userInfo = await service.get(id);
     const ul = renderNestedList(userInfo);
@@ -95,6 +101,7 @@ const handleUserDelete = async (user, li) => {
   try {
     await service.delete(user.id);
     li.remove();
+    handleUserInfo(user.id, true, true);
   } catch (error) {
     console.log(error);
     li.classList.add("error");
@@ -107,7 +114,7 @@ const handleChangeName = async (user, spanUserName, li) => {
 
     const updatedUser = await service.put(user.id, { name: newUserName });
     updateUsersListItem(updatedUser, li);
-    handleUserInfo(updatedUser.id);
+    handleUserInfo(updatedUser.id, true);
   } catch (error) {
     console.log(error);
     spanUserName.classList.add(`error`);
@@ -124,7 +131,7 @@ const handleChangeEmail = async (user) => {
       userList.remove();
       renderUsersList();
     }
-    handleUserInfo(updatedUser.id);
+    handleUserInfo(updatedUser.id, true);
   } catch (error) {
     console.log(error);
   }
