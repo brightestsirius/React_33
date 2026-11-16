@@ -1,0 +1,26 @@
+@use "../variables" as *;
+
+$notice-types: (
+  success: $color-success,
+  error: $color-danger,
+);
+
+.notice {
+  position: fixed;
+  right: $gap;
+  bottom: $gap;
+  left: $gap;
+  max-width: 420px;
+  margin-left: auto;
+  padding: 14px $gap;
+  color: $color-surface;
+  border-radius: $radius * 0.5;
+  box-shadow: 0 8px 24px rgba($color-text, 0.2);
+
+  // Модифікатори генеруються циклом з мапи
+  @each $type, $color in $notice-types {
+    &--#{$type} {
+      background: $color;
+    }
+  }
+}

@@ -1,0 +1,18 @@
+@use "../variables" as v;
+
+// Налаштування Bootstrap задаються до підключення його змінних
+$enable-dark-mode: false;
+$font-family-base: v.$font-main;
+$modal-content-border-radius: v.$radius;
+$modal-inner-padding: v.$gap;
+
+// Лише те, що потрібно модалці, а не весь bootstrap.scss.
+// Bootstrap 5 досі написаний на @import, тому тут @import, а не @use
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/root";
+@import "bootstrap/scss/transitions";
+@import "bootstrap/scss/modal";
+@import "bootstrap/scss/close";

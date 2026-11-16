@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="uk">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="./assets/favicon/favicon.ico">
+  <title>Книжкова полиця</title>
+</head>
+
+<body>
+
+  <header class="header">
+    <div class="container header__inner">
+      <h1 class="header__title">Книжкова полиця</h1>
+      <p class="header__subtitle">Каталог книг на webpack + SCSS + mockapi</p>
+    </div>
+  </header>
+
+  <main class="container main">
+    <section class="toolbar" aria-label="Пошук і фільтри">
+      <input class="field toolbar__search" id="search" type="search" placeholder="Пошук за назвою або автором"
+        aria-label="Пошук">
+      <select class="field" id="genreFilter" aria-label="Жанр"></select>
+      <select class="field" id="sort" aria-label="Сортування"></select>
+      <button class="btn btn--ghost" id="btnStats" type="button">Статистика</button>
+    </section>
+
+    <div class="layout">
+      <section class="books">
+        <h2 class="books__title">Книги <span class="books__count" id="booksCount"></span></h2>
+        <ul class="books__list" id="booksList">
+          <li class="books__empty">Завантаження…</li>
+        </ul>
+      </section>
+
+      <form class="form" id="bookForm">
+        <h2 class="form__title">Нова книга</h2>
+        <label class="form__label">
+          Назва
+          <input class="field" name="title" type="text" required>
+        </label>
+        <label class="form__label">
+          Автор
+          <input class="field" name="author" type="text" required>
+        </label>
+        <label class="form__label">
+          Рік
+          <input class="field" name="year" type="number" min="1000" max="2100" required>
+        </label>
+        <label class="form__label">
+          Жанр
+          <select class="field" name="genre" required>
+            <option value="">Оберіть жанр</option>
+          </select>
+        </label>
+        <label class="form__label">
+          Рейтинг
+          <select class="field" name="rating"></select>
+        </label>
+        <div class="form__actions">
+          <button class="btn" type="submit">Зберегти</button>
+          <button class="btn btn--ghost" type="button" data-action="cancel" hidden>Скасувати</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <!-- Розмітка модалки Bootstrap; стилі та JS для неї завантажуються лише після кліку на «Статистика» -->
+  <div class="modal fade" id="statsModal" tabindex="-1" aria-labelledby="statsModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title stats__title" id="statsModalTitle">Статистика</h2>
+          <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Закрити"></button>
+        </div>
+        <div class="modal-body stats"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="notice" id="notice" role="status" hidden></div>
+
+</body>
+
+</html>

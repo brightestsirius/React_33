@@ -1,0 +1,74 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-main;
+  line-height: 1.5;
+  color: $color-text;
+  background: $color-bg;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+// Класи з display не повинні перебивати атрибут hidden
+[hidden] {
+  display: none !important;
+}
+
+// Стилі Bootstrap для модалки приходять лише після кліку,
+// тому до того моменту її розмітку ховаємо самі
+.modal {
+  display: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.container {
+  max-width: $container;
+  margin: 0 auto;
+  padding: 0 $gap;
+}
+
+.main {
+  display: grid;
+  gap: $gap;
+  padding-block: $gap * 1.5;
+}
+
+.layout {
+  display: grid;
+  gap: $gap;
+  align-items: start;
+
+  @include respond($bp-desktop) {
+    grid-template-columns: 1fr 340px;
+  }
+}
+
+.field {
+  width: 100%;
+  padding: 10px 12px;
+  font: inherit;
+  color: inherit;
+  background: $color-surface;
+  border: 1px solid $color-border;
+  border-radius: $radius * 0.5;
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}

@@ -1,0 +1,4 @@
+// Стилі модалки статистики: імпортуються в modules/stats.js,
+// тому webpack виносить їх в окремий CSS-чанк, який завантажується лише після кліку
+@use "vendor/bootstrap-modal";
+@use "components/stats";

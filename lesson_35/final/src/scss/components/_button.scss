@@ -1,0 +1,53 @@
+@use "sass:color";
+@use "../variables" as *;
+@use "../mixins" as *;
+@use "../functions" as *;
+
+@mixin btn-color($color) {
+  color: $color-surface;
+  background: $color;
+  border-color: $color;
+
+  &:hover:not(:disabled) {
+    background: color.adjust($color, $lightness: -8%);
+  }
+}
+
+.btn {
+  padding: 10px 18px;
+  font: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: $radius * 0.5;
+  transition: background-color 0.2s;
+  @include btn-color($color-accent);
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+
+  &:disabled {
+    cursor: wait;
+    opacity: 0.6;
+  }
+
+  &--ghost {
+    color: $color-accent;
+    background: transparent;
+    border-color: $color-accent;
+
+    &:hover:not(:disabled) {
+      background: rgba($color-accent, 0.08);
+    }
+  }
+
+  &--danger {
+    @include btn-color($color-danger);
+  }
+
+  &--small {
+    padding: 6px 12px;
+    font-size: rem(14px);
+  }
+}

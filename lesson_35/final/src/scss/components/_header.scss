@@ -1,0 +1,40 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+@use "../functions" as *;
+
+.header {
+  padding-block: $gap * 1.5;
+  color: $color-surface;
+  background: $color-accent;
+
+  &__inner {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: $gap * 0.75;
+    align-items: center;
+
+    // Картинка з SCSS теж проходить через webpack (asset/resource)
+    &::before {
+      content: "";
+      grid-row: span 2;
+      width: 48px;
+      height: 48px;
+      background: url("../assets/images/logo.svg") center / contain no-repeat;
+      border: 2px solid rgba($color-surface, 0.6);
+      border-radius: $radius;
+    }
+  }
+
+  &__title {
+    font-size: rem(24px);
+    font-weight: 700;
+
+    @include respond($bp-tablet) {
+      font-size: rem(32px);
+    }
+  }
+
+  &__subtitle {
+    opacity: 0.85;
+  }
+}

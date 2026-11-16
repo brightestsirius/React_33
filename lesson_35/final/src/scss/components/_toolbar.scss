@@ -1,0 +1,13 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.toolbar {
+  @include surface;
+  display: grid;
+  gap: $gap * 0.5;
+  padding: $gap;
+
+  @include respond($bp-tablet) {
+    grid-template-columns: 1fr repeat(2, 180px) auto;
+  }
+}
