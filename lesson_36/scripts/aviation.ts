@@ -99,21 +99,3 @@ export class PassengerJet extends Airplane implements Aircraft, Refuelable, Pass
         this.status = FlightStatus.Boarding;
     }
 }
-
-const jet = new PassengerJet("Boeing", "737", "PS101");
-
-console.log(jet.status);
-
-jet.refuel(AIRCRAFT_SPECS.FUEL_CAPACITY_L);
-jet.board(180);
-console.log(jet.status);
-
-jet.accelerate(AIRCRAFT_SPECS.MAX_SPEED_KMH);
-jet.climb(AIRCRAFT_SPECS.CRUISE_ALTITUDE_M);
-
-console.log(jet.fly());
-console.log(jet.status);
-console.log(`Пасажирів: ${jet.passengers}, пальне: ${jet.fuel} л`);
-
-console.log(jet.land());
-console.log(jet.status);

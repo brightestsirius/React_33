@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "strict": true,
+    "noEmitOnError": true,
+    "skipLibCheck": true
+  },
+  "include": [
+    "**/*.ts"
+  ]
+}
